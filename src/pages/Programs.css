@@ -1,0 +1,22 @@
+/* ==========================================================================
+   PROGRAMS PAGE (LAYOUT & SECTION STACKING)
+   ========================================================================== */
+
+.programs-page {
+  position: relative;
+  overflow-x: clip;
+}
+
+.programs-page__divider {
+  width: 100%;
+  line-height: 0;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.programs-cta-wrapper {
+  padding-block: var(--section-pad);
+  background-color: var(--paper);
+}

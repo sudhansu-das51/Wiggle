@@ -1,0 +1,23 @@
+/* ==========================================================================
+   WIGGLE — ABOUT PAGE (About.css)
+   Page-level layout, section stacking, and divider spacing.
+   ========================================================================== */
+
+.about-page {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Page Section Dividers */
+.about-page__divider {
+  position: relative;
+  z-index: 10;
+  margin-top: -1px; /* Seamless overlap between sections */
+  margin-bottom: -1px;
+}
+
+/* CTA Section Wrapping */
+.about-page__cta-section {
+  padding-block: clamp(3rem, 6vw, 5rem);
+}

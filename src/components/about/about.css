@@ -1,0 +1,1182 @@
+/* ==========================================================================
+   WIGGLE — ABOUT PAGE COMPONENTS (about.css)
+   Tokens from index.css only. No Tailwind, no hardcoded colors.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. STORYBOOK SPREAD (Section 2)
+   -------------------------------------------------------------------------- */
+.about-storybook-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-storybook__spread {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sticker);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  transform: rotate(-0.75deg);
+  margin-block: 1rem;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.about-storybook__spread:hover {
+  transform: rotate(0deg);
+}
+
+/* Center Spine Gutter Fold */
+.about-storybook__gutter {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 36px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to right,
+    rgba(35, 42, 92, 0.08) 0%,
+    rgba(35, 42, 92, 0.02) 25%,
+    transparent 45%,
+    transparent 55%,
+    rgba(35, 42, 92, 0.02) 75%,
+    rgba(35, 42, 92, 0.08) 100%
+  );
+  border-left: 1.5px solid rgba(35, 42, 92, 0.12);
+  border-right: 1.5px solid rgba(35, 42, 92, 0.12);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.about-storybook__page {
+  padding: clamp(2rem, 4vw, 3.5rem);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-storybook__page--left {
+  border-right: 1.5px solid rgba(35, 42, 92, 0.15);
+}
+
+.about-storybook__body {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about-storybook__paragraph {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--ink);
+  max-width: 55ch;
+}
+
+/* Typographic Drop Cap */
+.about-storybook__dropcap {
+  float: left;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 3.75rem;
+  line-height: 0.8;
+  padding-top: 0.25rem;
+  padding-right: 0.65rem;
+  padding-bottom: 0.1rem;
+  color: var(--ink);
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  user-select: none;
+}
+
+.about-storybook__dropcap:focus-visible {
+  outline: 2px solid var(--sunny);
+  border-radius: var(--r-sm);
+}
+
+/* Page Numbers */
+.about-storybook__page-num {
+  margin-top: auto;
+  padding-top: 2rem;
+  font-family: var(--font-note);
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+.about-storybook__page-num--right {
+  text-align: right;
+}
+
+/* Right Page Visuals */
+.about-storybook__photo-wrap {
+  position: relative;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(2deg);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.about-storybook__photo-wrap:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.about-storybook__photo {
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 4px 4px 0 var(--ink);
+  border-radius: 999px 999px var(--r-md) var(--r-md);
+}
+
+.about-storybook__caption {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+/* Framed Pull Quote */
+.about-storybook__quote-box {
+  background-color: var(--tint-yellow);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 1.5rem;
+  position: relative;
+  transform: rotate(-1.5deg);
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-storybook__quote-box:focus-visible {
+  outline: 3px solid var(--ink);
+}
+
+.about-storybook__quote-text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-block: 0.5rem;
+}
+
+.about-storybook__quote-footer {
+  text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+   2. SIGNPOST MISSION & VISION (Section 3)
+   -------------------------------------------------------------------------- */
+.about-signpost-section {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: clamp(3.5rem, 6vw, 5.5rem) !important; /* Generous gap before next pink section */
+}
+
+.about-signpost__wrapper {
+  position: relative;
+  max-width: 860px;
+  margin-inline: auto;
+  min-height: 480px;
+  padding-bottom: 50px; /* Room for pole to penetrate deep into earth base */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Pole */
+.about-signpost__pole-column {
+  position: absolute;
+  top: 0;
+  bottom: 0; /* Continuous pole extends all the way down into the ground */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.about-signpost__finial {
+  width: 28px;
+  height: 18px;
+  background-color: #5C4033;
+  border: 2.5px solid var(--ink);
+  border-radius: 4px 4px 0 0;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.about-signpost__pole {
+  width: 20px;
+  flex: 1;
+  background: linear-gradient(90deg, #8D6E63 0%, #795548 50%, #5D4037 100%);
+  border-left: 2.5px solid var(--ink);
+  border-right: 2.5px solid var(--ink);
+  position: relative;
+  box-shadow: 2px 0 0 rgba(35, 42, 92, 0.12);
+}
+
+.about-signpost__wood-grain {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 24px,
+    rgba(35, 42, 92, 0.12) 25px,
+    transparent 28px
+  );
+  pointer-events: none;
+}
+
+/* Grassy Meadow Ground Mound firmly anchoring the pole */
+.about-signpost__ground {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 2; /* Grass blades sit in front of the pole */
+  pointer-events: none;
+}
+
+/* Boards Container */
+.about-signpost__boards {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  z-index: 2;
+}
+
+.about-signpost__board {
+  position: relative;
+  width: 88%;
+  max-width: 480px;
+  min-height: 170px;
+  outline: none;
+  cursor: pointer;
+  filter: drop-shadow(4px 4px 0 var(--ink));
+  transform-origin: center center;
+}
+
+.about-signpost__board:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.about-signpost__board--mission {
+  align-self: flex-start;
+  transform: rotate(-1.5deg);
+  transform-origin: right center;
+}
+
+.about-signpost__board--vision {
+  align-self: flex-end;
+  transform: rotate(1.5deg);
+  transform-origin: left center;
+}
+
+.about-signpost__board-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.about-signpost__board-content {
+  position: relative;
+  z-index: 3;
+  padding: 1.5rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.about-signpost__board--mission .about-signpost__board-content {
+  padding-left: 3.5rem;
+  padding-right: 2.75rem;
+}
+
+.about-signpost__board--vision .about-signpost__board-content {
+  padding-left: 2.75rem;
+  padding-right: 3.5rem;
+}
+
+.about-signpost__label {
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+.about-signpost__board-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.about-signpost__text {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* Nails */
+.about-signpost__nail {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #A0AEC0;
+  border: 2px solid var(--ink);
+  z-index: 4;
+}
+
+.about-signpost__nail--right {
+  right: 12px;
+}
+
+.about-signpost__nail--left {
+  left: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   3. VALUE NAME TAGS (Section 4)
+   -------------------------------------------------------------------------- */
+.about-values-section {
+  position: relative;
+}
+
+.about-values__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+
+.about-values__tag {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sticker);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: rotate(var(--tag-base-rot, 0deg)) translateY(var(--tag-offset-y, 0px));
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  outline: none;
+  cursor: pointer;
+}
+
+.about-values__tag:focus-visible {
+  outline: 3px solid var(--ink);
+}
+
+/* Pin Detail */
+.about-values__pin {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ECC94B;
+  border: 2px solid var(--ink);
+  z-index: 5;
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.about-values__band {
+  padding-block: 0.85rem 0.5rem;
+  padding-inline: 1rem;
+  border-bottom: 2.5px solid var(--ink);
+  text-align: center;
+}
+
+.about-values__greeting {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.about-values__body {
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  flex: 1;
+}
+
+.about-values__header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.about-values__title {
+  font-size: 1.65rem;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.about-values__icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-pill);
+  background-color: #FFF7EA;
+  border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.about-values__text {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   4. JOURNEY ROAD (Section 5)
+   -------------------------------------------------------------------------- */
+.about-journey-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-journey__stage {
+  position: relative;
+  width: 100%;
+  height: 1850px; /* Explicit height ensures children percentage and pixel offsets work consistently */
+  margin-top: 2.5rem;
+}
+
+.about-journey__road-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Wig Traveling Along the Road */
+.about-journey__wig {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10;
+  will-change: transform, left, top;
+  filter: drop-shadow(0 6px 8px rgba(35, 42, 92, 0.25));
+}
+
+/* Confetti */
+.about-journey__confetti {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.about-journey__confetti-piece {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+/* Mile-Marker Signs Along Road */
+.about-journey__markers {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.about-journey__marker {
+  position: absolute;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 350px;
+  z-index: 5;
+  will-change: transform, opacity;
+  transition: filter 0.25s ease;
+}
+
+/* Active Highlight when mascot is nearby */
+.about-journey__marker.is-active .about-journey__badge {
+  box-shadow: 0 0 0 4px var(--sunny), 4px 4px 0 var(--ink);
+  transform: scale(1.06);
+}
+
+.about-journey__marker.is-active .about-journey__card {
+  border-color: var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+/* Staggered Desktop Positioning with 360px+ vertical breathing room */
+.about-journey__marker--0 {
+  top: 170px;
+  left: clamp(1rem, 4vw, 3.5rem);
+}
+
+.about-journey__marker--1 {
+  top: 530px;
+  right: clamp(1rem, 4vw, 3.5rem);
+  flex-direction: row-reverse;
+}
+
+.about-journey__marker--2 {
+  top: 910px;
+  left: clamp(1rem, 4vw, 3.5rem);
+}
+
+.about-journey__marker--3 {
+  top: 1290px;
+  right: clamp(1rem, 4vw, 3.5rem);
+  flex-direction: row-reverse;
+}
+
+.about-journey__marker--4 {
+  top: 1600px;
+  left: auto;
+  right: calc(50% + 16px);
+  max-width: 350px;
+}
+
+/* Year Badge */
+.about-journey__badge {
+  width: 72px;
+  height: 72px;
+  border: var(--outline);
+  box-shadow: 3px 3px 0 var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.about-journey__badge:hover {
+  transform: scale(1.08) rotate(-2deg);
+}
+
+.about-journey__year {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--ink);
+}
+
+/* Card */
+.about-journey__card {
+  position: relative;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sticker);
+  padding: 1.25rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.about-journey__card:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+/* Speech bubble pointer arrow pointing towards the road */
+.about-journey__card-pointer {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  background-color: var(--paper);
+  border: 2.5px solid var(--ink);
+  pointer-events: none;
+}
+
+.about-journey__card-pointer--right {
+  right: -8px;
+  transform: translateY(-50%) rotate(45deg);
+  border-left: none;
+  border-bottom: none;
+}
+
+.about-journey__card-pointer--left {
+  left: -8px;
+  transform: translateY(-50%) rotate(45deg);
+  border-right: none;
+  border-top: none;
+}
+
+.about-journey__card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.about-journey__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.about-journey__toggle-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--tint-yellow);
+  border: 1.5px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--ink);
+  flex-shrink: 0;
+  cursor: pointer;
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.about-journey__text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.about-journey__card-extra {
+  margin-top: 0.35rem;
+  padding-top: 0.4rem;
+  border-top: 1.5px solid rgba(35, 42, 92, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   5. GROWTH CHART (Section 6)
+   -------------------------------------------------------------------------- */
+.about-growth-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-growth__chart-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  max-width: 780px;
+  margin-inline: auto;
+  align-items: stretch;
+  margin-top: 2.5rem;
+}
+
+.about-growth__ruler {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.about-growth__ruler-wood {
+  width: 56px;
+  height: 100%;
+  min-height: 480px;
+  filter: drop-shadow(4px 4px 0 var(--ink));
+}
+
+.about-growth__ruler-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.about-growth__marks-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 2.25rem;
+  padding-block: 1.5rem;
+}
+
+.about-growth__mark-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.about-growth__pencil-line {
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.about-growth__line-svg {
+  width: 100%;
+  height: 20px;
+  overflow: visible;
+}
+
+.about-growth__stat-card {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 0.85rem 1.4rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  transition: transform 0.25s ease;
+}
+
+.about-growth__stat-card:hover {
+  transform: translateX(4px);
+}
+
+.about-growth__stat-number {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  line-height: 1;
+  color: var(--ink);
+}
+
+.about-growth__stat-label {
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   6. FOUNDER LETTER (Section 7)
+   -------------------------------------------------------------------------- */
+.about-founder-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-founder__letter {
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 31px,
+    #E8DFD0 31px,
+    #E8DFD0 32px
+  );
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(2rem, 5vw, 4rem);
+  position: relative;
+  max-width: 820px;
+  margin-inline: auto;
+  transform: rotate(-0.8deg);
+  transition: transform 0.3s ease;
+  outline: none;
+}
+
+.about-founder__letter:focus-visible {
+  outline: 3px solid var(--ink);
+}
+
+/* Polaroid taped to top right */
+.about-founder__polaroid {
+  position: absolute;
+  top: -28px;
+  right: 24px;
+  width: 200px;
+  transform: rotate(4deg);
+  z-index: 10;
+  outline: none;
+}
+
+.about-founder__polaroid-inner {
+  background-color: #FFFFFF;
+  border: var(--outline);
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 0.65rem 0.65rem 0.85rem;
+  border-radius: var(--r-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.about-founder__polaroid-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  padding-top: 0.3rem;
+  line-height: 1.25;
+}
+
+.about-founder__polaroid-role {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--tangerine);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.about-founder__polaroid-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-top: 2px;
+}
+
+.about-founder__letterhead {
+  margin-bottom: 2rem;
+  max-width: 440px;
+}
+
+.about-founder__stationery-note {
+  font-size: 1.15rem;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.about-founder__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.8vw, 1.95rem);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.about-founder__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+  max-width: 480px;
+}
+
+.about-founder__paragraph {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 52ch;
+}
+
+.about-founder__signoff {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.about-founder__warmly {
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+
+.about-founder__signature-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-block: 0.25rem;
+}
+
+.about-founder__signature {
+  font-family: var(--font-note);
+  font-size: 2.75rem;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.about-founder__credentials {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-founder__name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.about-founder__role {
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+/* --------------------------------------------------------------------------
+   7. TEAM STRIP (Section 8)
+   -------------------------------------------------------------------------- */
+.about-team-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-team__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 680px;
+  margin-inline: auto;
+  gap: 1.75rem;
+}
+
+.about-team__avatars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.about-team__avatars:focus-visible {
+  outline: 2px solid var(--ink);
+  border-radius: var(--r-md);
+}
+
+.about-team__avatar-item {
+  position: relative;
+  margin-left: -20px;
+  transition: transform 0.25s ease;
+}
+
+.about-team__avatar-item:first-child {
+  margin-left: 0;
+}
+
+.about-team__avatar-circle {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background-color: var(--paper);
+  border: 3px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  outline: 4px solid var(--ring-color, var(--tint-yellow));
+  outline-offset: -1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.about-team__avatar-initials {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--ink);
+}
+
+.about-team__avatar-tooltip {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-pill);
+  padding: 0.15rem 0.55rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.about-team__avatar-item:hover .about-team__avatar-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(4px);
+}
+
+.about-team__summary {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.about-team__action {
+  margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (1024, 768, 640, 375)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .about-values__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-values__tag {
+    transform: none !important;
+  }
+
+  .about-journey__marker--0,
+  .about-journey__marker--2 {
+    left: 4%;
+  }
+
+  .about-journey__marker--4 {
+    left: auto;
+    right: calc(50% + 16px);
+  }
+
+  .about-journey__marker--1,
+  .about-journey__marker--3 {
+    right: 4%;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Storybook single column on mobile */
+  .about-storybook__spread {
+    grid-template-columns: 1fr;
+    transform: none;
+  }
+
+  .about-storybook__gutter {
+    display: none;
+  }
+
+  .about-storybook__page--left {
+    border-right: none;
+    border-bottom: 2px solid rgba(35, 42, 92, 0.15);
+  }
+
+  /* Signpost stacked down left on mobile */
+  .about-signpost__wrapper {
+    min-height: auto;
+    padding-left: 12px;
+    padding-bottom: 60px;
+    align-items: flex-start;
+  }
+
+  .about-signpost__pole-column {
+    left: 36px;
+    transform: none;
+  }
+
+  .about-signpost__ground {
+    left: 36px;
+    transform: translateX(-50%);
+  }
+
+  .about-signpost__boards {
+    margin-left: 54px;
+    gap: 2rem;
+  }
+
+  .about-signpost__board {
+    width: 100%;
+    align-self: flex-start !important;
+    transform: none !important;
+  }
+
+  /* Journey Road: road on left, markers staggered cleanly on right */
+  .about-journey__stage {
+    height: 1650px;
+  }
+
+  .about-journey__marker {
+    left: 76px !important;
+    right: 12px !important;
+    max-width: none !important;
+    width: auto !important;
+    flex-direction: row !important;
+  }
+
+  .about-journey__card-pointer--right {
+    display: none;
+  }
+
+  .about-journey__card-pointer--left {
+    display: block;
+    left: -8px;
+  }
+
+  .about-journey__marker--0 { top: 60px; }
+  .about-journey__marker--1 { top: 360px; }
+  .about-journey__marker--2 { top: 660px; }
+  .about-journey__marker--3 { top: 960px; }
+  .about-journey__marker--4 {
+    top: 1260px;
+    left: 76px !important;
+    transform: none !important;
+  }
+
+  /* Founder polaroid layout on mobile */
+  .about-founder__polaroid {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 0 auto 1.5rem;
+    transform: rotate(2deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .about-values__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-growth__chart-wrap {
+    grid-template-columns: 56px 1fr;
+    gap: 1rem;
+  }
+
+  .about-growth__pencil-line {
+    width: 40px;
+  }
+
+  .about-growth__stat-number {
+    font-size: 1.75rem;
+  }
+
+  .about-team__avatar-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .about-team__avatar-item {
+    margin-left: -14px;
+  }
+}

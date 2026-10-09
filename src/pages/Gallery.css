@@ -1,0 +1,24 @@
+/* ==========================================================================
+   WIGGLE — GALLERY PAGE (Gallery.css)
+   Page-level layout, section stacking, and divider spacing.
+   ========================================================================== */
+
+.gallery-page {
+  position: relative;
+  width: 100%;
+  overflow-x: clip;
+}
+
+/* Page Section Dividers with seamless margin-overlap */
+.gal-divider {
+  position: relative;
+  z-index: 10;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  overflow: hidden;
+}
+
+/* CTA Section Wrapping */
+.gal-cta-section {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}

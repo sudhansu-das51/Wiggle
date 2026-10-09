@@ -1,0 +1,192 @@
+/**
+ * Frequently asked questions at Wiggle.
+ * Items covering programs, admissions, food, settling, safety, and routines.
+ */
+export const faqs = [
+  {
+    id: 'faq-1',
+    category: 'Admissions',
+    question: 'At what age can my child join Wiggle?',
+    answer: 'We welcome toddlers into Playgroup starting at 18 months (1.5 years). Admissions remain open throughout the academic year depending on class group availability.',
+  },
+  {
+    id: 'faq-2',
+    category: 'Settling in',
+    question: 'How do you support children experiencing separation anxiety?',
+    answer: 'We follow a gradual, loving settling protocol. Parents or familiar caregivers are encouraged to stay in the lounge or join short circle sessions during the first 3 to 5 days until your toddler feels confident.',
+  },
+  {
+    id: 'faq-3',
+    category: 'Class size',
+    question: 'What is the teacher-to-child ratio in each room?',
+    answer: 'We strictly maintain a 1:8 ratio across all programs. Playgroup and Nursery rooms also have dedicated support aides to assist with handwashing, meals, and bathroom independence.',
+  },
+  {
+    id: 'faq-4',
+    category: 'Meals & Health',
+    question: 'What kind of snacks are provided during the day?',
+    answer: 'Our organic in-house pantry serves warm, freshly prepared vegetarian snacks, seasonal fruits, and millet porridges. We never use refined sugars, artificial coloring, or preservatives, and cater carefully to allergy requirements.',
+  },
+  {
+    id: 'faq-5',
+    category: 'Safety',
+    question: 'How secure is the campus during school hours?',
+    answer: 'The campus is protected by 24/7 CCTV surveillance, single-entry biometric doors, and verified photo-ID pickup passes. Only authorized parents or nominated guardians may collect a child.',
+  },
+  {
+    id: 'faq-6',
+    category: 'Admissions',
+    question: 'Do you require children to be fully toilet trained?',
+    answer: 'Not at all for Playgroup or early Nursery! We partner gently with families to support toilet training when your child shows readiness, with zero pressure or shame.',
+  },
+  {
+    id: 'faq-prog-1',
+    category: 'Programs',
+    question: 'Which program is right for my child’s age?',
+    answer: 'Our programs follow clear developmental bands: Playgroup (1.5 to 2.5 yrs), Nursery (2.5 to 3.5 yrs), Jr. KG (3.5 to 4.5 yrs), and Sr. KG (4.5 to 5.5 yrs). If your child sits right on an age boundary, our educators spend time observing their emotional comfort and social readiness during a school visit to recommend the gentlest fit.',
+  },
+  {
+    id: 'faq-prog-2',
+    category: 'Programs',
+    question: 'Can my child start mid-year or between school terms?',
+    answer: 'Yes! We welcome children throughout the academic year whenever a class spot is available. Because our learning framework is project-based and child-led rather than rigid test-oriented syllabus, children settle in naturally at any time of year.',
+  },
+  {
+    id: 'faq-prog-3',
+    category: 'Programs',
+    question: 'Can parents stay with their child during the first week?',
+    answer: 'Yes, we strongly encourage a gentle settling period. A parent or trusted caregiver can sit inside the room or in our adjoining courtyard lounge during the first few days until your child feels happy, safe, and ready to explore independently.',
+  },
+  {
+    id: 'faq-prog-4',
+    category: 'Programs',
+    question: 'What does a typical day look like across our programs?',
+    answer: 'Every day is anchored in joyful rhythms: warm eye-level greetings, morning circle, deep unstructured play or project exploration, fresh pantry snacks, outdoor garden time, and a quiet story or acoustic rhythm wind-down before homeward pickup.',
+  },
+  {
+    id: 'faq-cur-1',
+    category: 'Curriculum',
+    question: 'When do children start learning letters and numbers?',
+    answer: 'We introduce letters and numbers through tactile, joyful play starting in Nursery and deepening through Jr. and Sr. KG. Rather than rote flashcards, children trace sandpaper letters, count pinecones and pebbles, identify sounds in rhymes, and write in sensory sand trays.',
+  },
+  {
+    id: 'faq-cur-2',
+    category: 'Curriculum',
+    question: 'What is your policy on digital screens and tablets in class?',
+    answer: 'Wiggle is a 100% screen-free learning environment. Early childhood brains thrive on three-dimensional, tactile reality—digging in soil, mixing paints, turning paper book pages, and listening to real human voices. There are no screens in our classrooms.',
+  },
+  {
+    id: 'faq-cur-3',
+    category: 'Curriculum',
+    question: 'How do educators support a child who isn’t developmentally ready for an activity?',
+    answer: 'Every child blooms at their own pace. We never force participation or compare milestones. If a child prefers observing before joining a craft or game, our educators offer gentle parallel invitations and allow confidence to grow without anxiety.',
+  },
+  {
+    id: 'faq-cur-4',
+    category: 'Curriculum',
+    question: 'Which languages are spoken and taught in the classroom?',
+    answer: 'English is our primary medium of storytelling, song, and conversation. However, during the settling phase and whenever comfort is needed, our teachers warmly embrace each child’s mother tongue so every toddler feels emotionally safe and understood.',
+  },
+  {
+    id: 'faq-fac-1',
+    category: 'Facilities',
+    question: 'Can parents view the CCTV footage or live classroom cameras?',
+    answer: 'Yes. Live security feeds are visible to visiting parents at reception, and all cameras record high-definition footage across common rooms, gates, and corridors. If you ever have a question about an incident or bump, our leadership reviews the timestamped recordings with you openly.',
+  },
+  {
+    id: 'faq-fac-2',
+    category: 'Facilities',
+    question: 'How does the organic kitchen manage food allergies and dietary needs?',
+    answer: 'Every child’s dietary preferences and allergies are documented on day one with custom medical alert tags. Our kitchen is strictly zero-peanut, zero-refined-sugar, and vegetarian. Special meals are prepared separately with dedicated utensils to prevent cross-contact.',
+  },
+  {
+    id: 'faq-fac-3',
+    category: 'Facilities',
+    question: 'What happens if my child feels unwell or has a fever during the day?',
+    answer: 'Your child is gently escorted to our dedicated Care Room, where our certified pediatric registered nurse checks vitals, offers cozy hydration, and phones you immediately. We provide a calm resting cot and never administer medication without written guardian consent.',
+  },
+  {
+    id: 'faq-fac-4',
+    category: 'Facilities',
+    question: 'Are all campus areas and rooms open for inspection during a tour?',
+    answer: 'Absolutely. We practice complete open-door transparency. On your scheduled school visit, you will walk through the classrooms, open the pantry kitchen, check the care room, and inspect our outdoor sensory gardens firsthand.',
+  },
+  {
+    id: 'faq-tch-1',
+    category: 'Teachers',
+    question: 'Who is with my child all day?',
+    answer: 'Your child is guided by their lead program educator and a dedicated co-educator throughout the morning. Specialized facilitators (like music, rhythm, or emotional wellness guides) join for specific joyful sessions, ensuring continuous 1:8 supervision and warm familiar faces.',
+  },
+  {
+    id: 'faq-tch-2',
+    category: 'Teachers',
+    question: 'What happens if my child does not bond with a teacher?',
+    answer: 'Children form connections at their own rhythm. During the settling weeks, we observe which grown-up your child naturally looks to for comfort. If a preference emerges, that educator becomes your child’s primary anchor while others offer gentle, unforced presence.',
+  },
+  {
+    id: 'faq-tch-3',
+    category: 'Teachers',
+    question: 'How often do teachers change?',
+    answer: 'We maintain very low staff turnover (average tenure of over 5 years). We deliberately keep the same core educators with your child across the full academic year so relationships, trust, and routines stay steady, predictable, and reassuring.',
+  },
+  {
+    id: 'faq-vis-1',
+    category: 'Visiting',
+    question: 'How do I book a school visit?',
+    answer: 'You can tap our WhatsApp button to pick a convenient morning slot, or call our desk directly. We schedule unhurried tours between 9:00 am and 12:00 pm on weekdays so you can see authentic classroom rhythms in action.',
+  },
+  {
+    id: 'faq-vis-2',
+    category: 'Visiting',
+    question: 'Can I bring my child along on the visit?',
+    answer: 'Yes, absolutely—we strongly encourage it! The visit is meant for them as much as for you. They are welcome to play in our sandbox, explore sensory bins, and meet the educators on the floor.',
+  },
+  {
+    id: 'faq-vis-3',
+    category: 'Visiting',
+    question: 'Where do I park when I visit?',
+    answer: 'Free visitor parking is available directly inside our main gate opposite Green Park. Our security team will guide you to a dedicated visitor bay right by the reception courtyard.',
+  },
+  {
+    id: 'faq-car-1',
+    category: 'Careers',
+    question: 'Do I need a teaching degree to apply?',
+    answer: 'For lead educators, we require an accredited qualification in Early Childhood Education, Montessori, or Elementary Education. For specialist, movement, or support aide roles, relevant hands-on experience and a natural, patient rapport with toddlers matter most.',
+  },
+  {
+    id: 'faq-car-2',
+    category: 'Careers',
+    question: 'Do you hire freshers without prior school experience?',
+    answer: 'Yes! We actively welcome passionate fresh graduates for our co-educator and aide positions. Our 1-month structured mentorship pairs you side-by-side with experienced teachers to build practical classroom confidence.',
+  },
+  {
+    id: 'faq-car-3',
+    category: 'Careers',
+    question: 'How long does the hiring process usually take?',
+    answer: 'Our hopscotch hiring takes about 7 to 10 days from your first conversation to a formal offer. This gives enough time for a relaxed chai chat, a morning floor trial with children, and reference checks.',
+  },
+  {
+    id: 'faq-adm-1',
+    category: 'Admissions',
+    question: 'Which documents are needed for admission?',
+    answer: 'We only need a copy of your child’s birth certificate, their immunization record, four passport-size photos, and proof of residence. Everything can be uploaded digitally.',
+  },
+  {
+    id: 'faq-adm-2',
+    category: 'Admissions',
+    question: 'How strict is the age cut-off for each group?',
+    answer: 'We look at emotional and social comfort, not just a calendar date. If your child sits right on an age boundary, our educators spend time observing them during a morning visit to recommend the gentlest fit.',
+  },
+  {
+    id: 'faq-adm-3',
+    category: 'Admissions',
+    question: 'Where can I see the fee structure?',
+    answer: 'We believe in full, transparent fee breakdowns with zero surprise add-ons. Simply ask us for the current fee sheet via WhatsApp or email, and our admissions team will share it immediately.',
+  },
+  {
+    id: 'faq-adm-4',
+    category: 'Admissions',
+    question: 'Is there a waiting list if class groups are full?',
+    answer: 'Yes. Because we maintain a strict 1:8 educator-to-child ratio, popular morning groups fill quickly. We invite families to join our waiting list; as soon as a spot opens, we reach out in order of enquiry.',
+  },
+];

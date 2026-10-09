@@ -1,0 +1,40 @@
+/* ==========================================================================
+   WIGGLE PRESCHOOL — ENQUIRE NOW PAGE STYLES
+   ========================================================================== */
+
+/* Hide floating WhatsApp button on this page only */
+body[data-hide-wa-float="true"] .whatsapp-float-btn {
+  display: none !important;
+}
+
+.enquire-page {
+  position: relative;
+  width: 100%;
+  overflow-x: clip;
+}
+
+.enq-wizard-section {
+  position: relative;
+  overflow-x: clip;
+  padding: 3.5rem 0 4.5rem;
+}
+
+.enq-wizard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .enq-wizard-grid {
+    grid-template-columns: 1.62fr 1fr;
+    gap: 3.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .enq-wizard-section {
+    padding: 2rem 0 3rem;
+  }
+}

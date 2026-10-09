@@ -1,0 +1,1327 @@
+/* ==========================================================================
+   WIGGLE — CURRICULUM PAGE COMPONENT STYLES
+   All classes prefixed with .cur-
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Visibility Utilities
+   -------------------------------------------------------------------------- */
+.cur-desktop-only {
+  display: grid;
+}
+
+.cur-mobile-only {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .cur-desktop-only {
+    display: none !important;
+  }
+  .cur-mobile-only {
+    display: flex !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Section 2: Recipe for a Happy Learner
+   -------------------------------------------------------------------------- */
+.cur-recipe-section {
+  position: relative;
+  overflow-x: clip;
+}
+
+.cur-recipe-card-wrapper {
+  max-width: 960px;
+  margin: 2.5rem auto 0;
+  position: relative;
+}
+
+.cur-recipe-card {
+  position: relative;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-bottom: none;
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  box-shadow: var(--shadow-sticker);
+  padding: 3rem clamp(1.5rem, 4vw, 3.5rem) 4.5rem;
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease;
+}
+
+.cur-recipe-tape {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%) rotate(1deg);
+  width: 120px;
+  height: 32px;
+  z-index: 5;
+}
+
+.cur-recipe-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1.5px solid rgba(35, 42, 92, 0.2);
+}
+
+.cur-recipe-meta-line {
+  font-family: var(--font-note);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.cur-recipe-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+@media (max-width: 767px) {
+  .cur-recipe-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.cur-recipe-col-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+/* Ingredients List */
+.cur-ingredients-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cur-ingredient-row {
+  display: grid;
+  grid-template-columns: 44px auto 1fr;
+  align-items: baseline;
+  gap: 0.85rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--r-md);
+  border: 1.5px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  outline: none;
+  cursor: default;
+}
+
+.cur-ingredient-row:focus-visible,
+.cur-ingredient-row:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(35, 42, 92, 0.2);
+}
+
+.cur-ingredient-icon-bubble {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.cur-ingredient-measure {
+  font-family: var(--font-note);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--bubblegum);
+  white-space: nowrap;
+}
+
+.cur-ingredient-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.cur-ingredient-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+}
+
+.cur-ingredient-text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--ink);
+  opacity: 0.88;
+  margin: 0;
+}
+
+/* Method List */
+.cur-method-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cur-method-step {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.cur-method-number {
+  font-family: var(--font-note);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 2rem;
+}
+
+.cur-method-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cur-method-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+}
+
+.cur-method-text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+  opacity: 0.88;
+  margin: 0;
+}
+
+/* Sticky Note at Bottom of Recipe */
+.cur-recipe-sticky-note {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  background-color: var(--sunny);
+  border: var(--outline);
+  border-radius: var(--r-sm);
+  padding: 0.85rem 1.25rem;
+  box-shadow: var(--shadow-sticker);
+  transform: rotate(3deg);
+  z-index: 4;
+}
+
+.cur-sticky-tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 18px;
+  background-color: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(35, 42, 92, 0.2);
+}
+
+.cur-sticky-text {
+  font-family: var(--font-note);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Serrated Torn Bottom Edge */
+.cur-recipe-torn-edge {
+  position: absolute;
+  bottom: -22px;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Section 3: Crayon Box (Learning Areas Tablist)
+   -------------------------------------------------------------------------- */
+.cur-crayon-section {
+  position: relative;
+  overflow-x: clip;
+}
+
+.cur-crayon-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  margin-top: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 1023px) {
+  .cur-crayon-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Crayon Box Container */
+.cur-crayon-box {
+  background-color: #f7dfa5;
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: 2rem 1.5rem 1.5rem;
+  transform: rotate(-1.5deg);
+  position: relative;
+}
+
+.cur-crayon-box__front {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid rgba(35, 42, 92, 0.2);
+  padding-bottom: 0.75rem;
+}
+
+.cur-box-label {
+  font-family: var(--font-note);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.cur-crayons-rack {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(0.35rem, 1.2vw, 0.75rem);
+  padding-top: 2.5rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.cur-crayons-rack::-webkit-scrollbar {
+  display: none;
+}
+
+/* Crayon Buttons */
+.cur-crayon-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.cur-crayon-btn.is-selected {
+  transform: translateY(-30px) rotate(3deg);
+}
+
+.cur-crayon-btn:hover:not(.is-selected) {
+  transform: translateY(-12px);
+}
+
+.cur-crayon-btn:focus-visible .cur-crayon-wrapper {
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.cur-crayon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cur-crayon-svg {
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(2px 3px 0 rgba(35, 42, 92, 0.35));
+  transition: filter 0.2s ease;
+}
+
+.cur-crayon-btn.is-selected .cur-crayon-svg {
+  filter: drop-shadow(3px 5px 0 var(--ink));
+}
+
+/* Drawing Sheet Panel */
+.cur-drawing-sheet {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: 2.5rem clamp(1.5rem, 3.5vw, 2.75rem);
+  position: relative;
+  min-height: 400px;
+}
+
+.cur-sheet-squiggle-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.cur-sheet-squiggle-svg {
+  width: 100%;
+  height: 20px;
+}
+
+.cur-sheet-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.cur-sheet-icon-bubble {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: var(--outline);
+  box-shadow: var(--shadow-sticker);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cur-sheet-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+}
+
+.cur-sheet-description {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.cur-sheet-skills-label {
+  font-family: var(--font-note);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+
+.cur-sheet-skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+}
+
+.cur-skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-pill);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.cur-sheet-programs-section {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  border-top: 1.5px solid rgba(35, 42, 92, 0.2);
+  padding-top: 1.25rem;
+}
+
+.cur-found-in-label {
+  font-family: var(--font-note);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.cur-found-in-chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cur-program-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-pill);
+  padding: 0.35rem 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cur-program-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+}
+
+.cur-chip-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   Section 4: The Landscape Painting (Year Plan)
+   -------------------------------------------------------------------------- */
+.cur-painting-section {
+  position: relative;
+  overflow-x: clip;
+}
+
+.cur-painting-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 3.5vw, 3rem);
+  margin-top: 2.5rem;
+  width: 100%;
+}
+
+.cur-canvas-col {
+  width: 100%;
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+.cur-canvas-frame {
+  position: relative;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(1rem, 2vw, 1.35rem);
+  transform: rotate(-0.5deg);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cur-canvas-tape {
+  position: absolute;
+  width: 70px;
+  height: 22px;
+  z-index: 5;
+}
+
+.cur-tape-tl {
+  top: -10px;
+  left: 20px;
+  transform: rotate(-6deg);
+}
+
+.cur-tape-tr {
+  top: -10px;
+  right: 20px;
+  transform: rotate(5deg);
+}
+
+.cur-painting-svg {
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+  display: block;
+  border-radius: var(--r-md);
+  border: 2px solid var(--ink);
+  background-color: var(--paper);
+}
+
+/* 4 Academic Term Reveal Animation */
+.cur-term-layer {
+  opacity: 0;
+  transition: opacity 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cur-term-layer.is-revealed {
+  opacity: 1;
+}
+
+@media (max-width: 1023px) {
+  .cur-painting-svg {
+    max-height: 210px;
+  }
+}
+
+/* Paint Palette */
+.cur-paint-palette {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 0.85rem;
+  background-color: rgba(255, 255, 255, 0.65);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-pill);
+  padding: 0.35rem 1rem;
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.cur-palette-label {
+  font-family: var(--font-note);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.cur-palette-blobs {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.cur-palette-blob {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+.cur-palette-blob:hover {
+  transform: translateY(-3px) scale(1.08);
+}
+
+.cur-palette-blob.is-filled {
+  background-color: var(--blob-color);
+}
+
+.cur-palette-blob.is-active {
+  transform: translateY(-4px) scale(1.15);
+  box-shadow: 2px 2px 0 var(--ink);
+  border-width: 2.5px;
+}
+
+.cur-blob-num {
+  font-family: var(--font-note);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+/* Bottom: 4 Academic Term Cards in 2x2 Grid */
+.cur-terms-col {
+  width: 100%;
+}
+
+.cur-terms-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+  width: 100%;
+}
+
+@media (max-width: 639px) {
+  .cur-terms-list {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+}
+
+.cur-term-card {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: 1.65rem clamp(1.25rem, 2vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  opacity: 0.88;
+  transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+  outline: none;
+  cursor: pointer;
+}
+
+.cur-term-card:hover,
+.cur-term-card:focus-visible,
+.cur-term-card.is-active {
+  opacity: 1;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-sticker-hover);
+  background-color: #FFFDF8;
+  border-color: var(--ink);
+}
+
+.cur-term-label {
+  font-family: var(--font-note);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--ink);
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  width: fit-content;
+}
+
+.cur-term-theme {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.cur-term-focus {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Section 5: Chalkboard (A Week at Wiggle)
+   -------------------------------------------------------------------------- */
+.cur-chalkboard-section {
+  position: relative;
+  overflow-x: clip;
+}
+
+/* Mobile Day Chips */
+.cur-chalkboard-chips {
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cur-day-chip {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-pill);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 0.5rem 1.15rem;
+  cursor: pointer;
+  min-height: 44px;
+  box-shadow: var(--shadow-sticker);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.cur-day-chip.is-active {
+  background-color: var(--sunny);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sticker-hover);
+}
+
+/* Chalkboard Frame */
+.cur-chalkboard-frame {
+  position: relative;
+  background-color: #1a1f3c;
+  border: 12px solid var(--sunny);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: 2.5rem clamp(1.5rem, 3.5vw, 3rem) 3.5rem;
+  color: var(--paper);
+}
+
+.cur-chalk-smudges {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 60%),
+              radial-gradient(circle at 75% 65%, rgba(255, 255, 255, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.cur-chalk-corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--ink);
+  background-color: var(--tangerine);
+  z-index: 2;
+}
+
+.cur-corner-tl { top: -6px; left: -6px; }
+.cur-corner-tr { top: -6px; right: -6px; }
+.cur-corner-bl { bottom: -6px; left: -6px; }
+.cur-corner-br { bottom: -6px; right: -6px; }
+
+/* Desktop 5-Column Grid */
+.cur-chalk-desktop-grid {
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(1rem, 2vw, 2rem);
+  position: relative;
+  z-index: 1;
+}
+
+.cur-chalk-day-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border-right: 1.5px solid rgba(250, 246, 238, 0.2);
+  padding-right: clamp(0.75rem, 1.5vw, 1.5rem);
+}
+
+.cur-chalk-day-col:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.cur-chalk-day-name {
+  font-family: var(--font-note);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--sunny);
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+
+.cur-chalk-theme-wrapper {
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+.cur-chalk-theme {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--paper);
+  margin: 0 0 0.35rem 0;
+  line-height: 1.3;
+}
+
+.cur-chalk-squiggle-svg {
+  width: 100%;
+  height: 12px;
+}
+
+.cur-chalk-activities-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.cur-chalk-activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-family: var(--font-note);
+  font-size: 1rem;
+  color: rgba(250, 246, 238, 0.92);
+  line-height: 1.35;
+}
+
+.cur-chalk-bullet {
+  color: var(--sunny);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+/* Mobile Single Day Panel */
+.cur-chalk-mobile-panel {
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Bottom Chalk Ledge */
+.cur-chalk-ledge {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  gap: 0.65rem;
+  padding: 0.4rem 1.5rem 0.2rem;
+  background-color: var(--sunny);
+  border: 2px solid var(--ink);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cur-chalk-stick {
+  width: 24px;
+  height: 10px;
+  border-radius: 4px;
+  border: 1px solid var(--ink);
+}
+
+.cur-chalk-white { background-color: var(--paper); }
+.cur-chalk-yellow { background-color: #ffe680; }
+.cur-chalk-pink { background-color: var(--bubblegum); }
+
+.cur-chalk-eraser {
+  width: 44px;
+  height: 14px;
+  background-color: #554030;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Section 6: Progress Pieces (Tangible Artefacts Collage)
+   -------------------------------------------------------------------------- */
+.cur-progress-section {
+  position: relative;
+  overflow-x: clip;
+}
+
+.cur-progress-collage {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 3.5rem;
+  position: relative;
+}
+
+@media (max-width: 900px) {
+  .cur-progress-collage {
+    flex-direction: column;
+    align-items: center;
+    gap: 2.25rem;
+    max-width: 520px;
+    margin-inline: auto;
+  }
+}
+
+.cur-piece {
+  position: relative;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sticker);
+  padding: 2.25rem 1.75rem 2.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 370px;
+  flex: 1 1 340px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, z-index 0.3s ease;
+  outline: none;
+}
+
+.cur-piece--note {
+  transform: rotate(-3.5deg);
+  margin-right: -1.5rem;
+  z-index: 1;
+}
+
+.cur-piece--journal {
+  transform: rotate(2.5deg) translateY(-0.75rem);
+  z-index: 2;
+}
+
+.cur-piece--ticket {
+  transform: rotate(-2deg);
+  margin-left: -1.5rem;
+  z-index: 3;
+}
+
+@media (max-width: 900px) {
+  .cur-piece--note {
+    transform: rotate(-1.5deg);
+    margin-right: 0;
+  }
+  .cur-piece--journal {
+    transform: rotate(1.5deg);
+    margin-top: 0;
+  }
+  .cur-piece--ticket {
+    transform: rotate(-1deg);
+    margin-left: 0;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cur-piece:hover,
+  .cur-piece:focus-visible {
+    transform: rotate(0deg) translateY(-12px) scale(1.03) !important;
+    box-shadow: var(--shadow-sticker-hover);
+    z-index: 12 !important;
+  }
+}
+
+.cur-piece-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 80px;
+  height: 24px;
+  z-index: 3;
+}
+
+.cur-piece-tag {
+  font-family: var(--font-note);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.cur-piece-desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Lined Notepad piece */
+.cur-lined-notepad {
+  position: relative;
+  background: repeating-linear-gradient(
+    var(--paper),
+    var(--paper) 28px,
+    rgba(35, 42, 92, 0.15) 29px,
+    rgba(35, 42, 92, 0.15) 30px
+  );
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-sm);
+  padding: 1.25rem 1.25rem 0.85rem 2.5rem;
+  margin-top: 0.5rem;
+}
+
+.cur-notepad-margin-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1.75rem;
+  width: 2px;
+  background-color: rgba(228, 87, 46, 0.4);
+}
+
+.cur-notepad-sample {
+  font-family: var(--font-note);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.45;
+  margin: 0 0 1rem 0;
+}
+
+.cur-notepad-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(35, 42, 92, 0.2);
+  padding-top: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* Journal page piece */
+.cur-journal-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin-block: 0.5rem;
+}
+
+.cur-polaroid-frame {
+  background-color: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-sm);
+  padding: 0.5rem 0.5rem 0.85rem;
+  box-shadow: 2px 2px 0 var(--ink);
+  position: relative;
+  text-align: center;
+}
+
+.cur-polaroid-tape {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  width: 40px;
+  height: 14px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(35, 42, 92, 0.2);
+  z-index: 2;
+}
+
+.cur-polaroid-caption {
+  font-family: var(--font-note);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: block;
+  margin-top: 0.35rem;
+}
+
+.cur-journal-sample {
+  font-family: var(--font-note);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+  border-left: 3px solid var(--meadow);
+  padding-left: 0.75rem;
+}
+
+/* Ticket piece */
+.cur-piece--ticket {
+  position: relative;
+  background-color: #fcefd4;
+  overflow: hidden;
+}
+
+.cur-ticket-notch {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--sunny);
+  border: var(--outline);
+  z-index: 2;
+}
+
+.cur-notch-left {
+  top: 50%;
+  left: -13px;
+  transform: translateY(-50%);
+}
+
+.cur-notch-right {
+  top: 50%;
+  right: -13px;
+  transform: translateY(-50%);
+}
+
+.cur-piece-torn-edge {
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  pointer-events: none;
+}
+
+.cur-ticket-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 2px solid rgba(35, 42, 92, 0.25);
+  padding-top: 1rem;
+}
+
+.cur-ticket-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-pill);
+  padding: 0.35rem 0.85rem;
+  width: fit-content;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.cur-stamp-text {
+  font-family: var(--font-note);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.cur-ticket-sample {
+  font-family: var(--font-note);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.cur-ticket-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-top: 1px solid rgba(35, 42, 92, 0.15);
+  padding-top: 0.65rem;
+}
+
+.cur-ticket-detail {
+  font-family: var(--font-note);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+/* --------------------------------------------------------------------------
+   Section 7: Syllabus Request Panel
+   -------------------------------------------------------------------------- */
+.cur-syllabus-section {
+  position: relative;
+  overflow-x: clip;
+}
+
+.cur-syllabus-card {
+  max-width: 840px;
+  margin: 0 auto;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.cur-syllabus-inner {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: clamp(1.5rem, 3.5vw, 3rem);
+  align-items: center;
+}
+
+@media (max-width: 680px) {
+  .cur-syllabus-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .cur-booklet-illustration {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.cur-booklet-illustration {
+  transition: transform 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cur-syllabus-card:hover .cur-booklet-illustration {
+    animation: curBookletWobble 0.6s ease-in-out;
+  }
+}
+
+@keyframes curBookletWobble {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-4deg) scale(1.04); }
+  50% { transform: rotate(3deg) scale(1.04); }
+  75% { transform: rotate(-1.5deg) scale(1.01); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.cur-syllabus-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.cur-syllabus-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+}
+
+.cur-syllabus-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink);
+  opacity: 0.9;
+  margin: 0;
+}
+
+.cur-syllabus-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 680px) {
+  .cur-syllabus-actions {
+    justify-content: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Section 8: Curriculum Questions (FAQ Accordion)
+   -------------------------------------------------------------------------- */
+.cur-faqs-section {
+  position: relative;
+  overflow-x: clip;
+}
+
+.cur-faqs-accordion-wrapper {
+  margin-top: 2rem;
+}
+
+.cur-faqs-footer {
+  margin-top: 2.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.cur-faqs-footer-prompt {
+  font-family: var(--font-note);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}

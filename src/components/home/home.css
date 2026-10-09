@@ -1,0 +1,1153 @@
+/* ==========================================================================
+   HOME PAGE SECTIONS STYLES
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Home Hero (Full Cover Immersive Background)
+   -------------------------------------------------------------------------- */
+.home-hero {
+  position: relative;
+  min-height: clamp(560px, 86vh, 760px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: clamp(3.5rem, 6.5vw, 6rem);
+  padding-bottom: clamp(3.5rem, 6.5vw, 6rem);
+  background-color: #111728;
+}
+
+.home-hero__bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.home-hero__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 36%;
+  display: block;
+}
+
+.home-hero__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(14, 20, 44, 0.72) 0%,
+    rgba(14, 20, 44, 0.42) 42%,
+    rgba(14, 20, 44, 0.76) 100%
+  );
+}
+
+.home-hero__container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.home-hero__content {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(1.2rem, 2.2vw, 1.75rem);
+}
+
+.home-hero__h1 {
+  font-size: clamp(2.35rem, 4.4vw, 3.85rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+  color: #FFFFFF;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.75), 0 1px 3px rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.home-hero__h1-accent {
+  color: #FFDE59;
+  display: block;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.75), 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.home-hero__lead {
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.96);
+  line-height: 1.62;
+  max-width: 66ch;
+  margin: 0 auto;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+}
+
+.home-hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.15rem;
+  margin-top: 0.5rem;
+}
+
+.home-hero__buttons .btn {
+  font-size: 1.05rem;
+  padding: 15px 32px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35), 2px 2px 0 var(--ink);
+}
+
+@media (max-width: 640px) {
+  .home-hero {
+    min-height: 520px;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .home-hero__content {
+    gap: 1.25rem;
+  }
+
+  .home-hero__buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    gap: 0.85rem;
+  }
+
+  .home-hero__buttons .btn {
+    width: 100%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Bus Road Scene (Grounded & Cohesive)
+   -------------------------------------------------------------------------- */
+.bus-section {
+  background-color: var(--tint-sky);
+  padding-block: var(--section-pad);
+  position: relative;
+  overflow: hidden;
+}
+
+.bus-stage {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin-top: 2.5rem;
+  overflow: hidden;
+}
+
+.bus-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.bus-layer--sky {
+  z-index: 1;
+}
+
+.bus-layer--hills {
+  z-index: 2;
+}
+
+.bus-layer--ground {
+  z-index: 3;
+}
+
+/* Roadside Signs */
+.bus-road-signs {
+  position: absolute;
+  bottom: 85px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-inline: 8%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.bus-sign-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  will-change: transform;
+}
+
+.bus-sign-card {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-sm);
+  padding: 0.45rem 1rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  white-space: nowrap;
+}
+
+.bus-sign-post {
+  width: 6px;
+  height: 48px;
+  background-color: var(--ink);
+  border-radius: 2px;
+}
+
+.bus-sign-grass-base {
+  width: 22px;
+  height: 6px;
+  background-color: var(--meadow);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-pill);
+  margin-top: -3px;
+}
+
+/* Grounded Road Infrastructure */
+.bus-road-container {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  z-index: 4;
+}
+
+.bus-road-curb {
+  width: 100%;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    #FFF0C2,
+    #FFF0C2 24px,
+    var(--ink) 24px,
+    var(--ink) 28px
+  );
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+
+.bus-road-asphalt {
+  width: 100%;
+  height: 48px;
+  background-color: var(--ink);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.bus-road-dash {
+  width: 100%;
+  height: 0;
+  border-top: 3.5px solid var(--sunny);
+}
+
+/* The School Bus */
+.bus-vehicle {
+  position: absolute;
+  bottom: 36px; /* Sits directly in road lane */
+  left: 4%;
+  z-index: 10;
+  width: 190px;
+  height: 96px;
+  will-change: transform;
+  pointer-events: none;
+}
+
+
+
+/* Destination School House */
+.bus-gate-finish {
+  position: absolute;
+  bottom: 85px; /* Sits right on the ground at Y=295 */
+  right: 24px;
+  width: 130px;
+  height: 170px;
+  z-index: 6;
+}
+
+.bus-signs-mobile {
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   3. About Collage
+   -------------------------------------------------------------------------- */
+.about-collage__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.about-collage__left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about-collage__right,
+.about-section__right {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.about-collage__frame,
+.about-section__frame {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  border-radius: var(--r-lg);
+}
+
+.about-collage__stat,
+.about-section__stat {
+  position: absolute;
+  z-index: 5;
+}
+
+.about-collage__stat--1,
+.about-section__stat--1 {
+  top: -16px;
+  right: -14px;
+}
+
+.about-collage__stat--2,
+.about-section__stat--2 {
+  bottom: -16px;
+  left: -14px;
+}
+
+/* --------------------------------------------------------------------------
+   4. Programs Staircase
+   -------------------------------------------------------------------------- */
+.programs-stairs {
+  position: relative;
+}
+
+.programs-stairs__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  position: relative;
+}
+
+.programs-stairs__step {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transform: none;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.programs-stairs__step--0,
+.programs-stairs__step--1,
+.programs-stairs__step--2,
+.programs-stairs__step--3 {
+  transform: none;
+}
+
+.programs-stairs__step:hover {
+  transform: translateY(-6px);
+}
+
+.program-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 2.25rem 1.4rem 1.75rem !important;
+}
+
+.program-card__dome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.program-card__image-badge,
+.program-card__icon-badge {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background-color: var(--paper);
+  border: 2.5px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.program-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.program-card:hover .program-card__image-badge,
+.program-card:hover .program-card__icon-badge {
+  transform: scale(1.08) rotate(3deg);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.program-card__age {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  background-color: var(--paper);
+  border: 1.5px solid var(--ink);
+  padding: 0.22rem 0.75rem;
+  border-radius: var(--r-pill);
+  box-shadow: 1.5px 1.5px 0 var(--ink);
+  letter-spacing: 0.01em;
+}
+
+.program-card__title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+  text-align: center;
+}
+
+.program-card__tagline {
+  color: var(--ink);
+  font-size: 1.05rem;
+  text-align: center;
+  margin-bottom: 0.75rem;
+  min-height: 2.8rem;
+}
+
+.program-card__highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-block: 1rem 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.program-card__highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. Why Us Bento
+   -------------------------------------------------------------------------- */
+.why-bento {
+  position: relative;
+  overflow: visible;
+}
+
+.why-bento__header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 3.5rem;
+  gap: 0.75rem;
+}
+
+.why-bento__mascot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35));
+  animation: whyMascotFloat 3.5s ease-in-out infinite alternate;
+}
+
+.why-bento__mascot-tag {
+  font-family: var(--font-note);
+  font-size: 1.05rem;
+  font-weight: 700;
+  background-color: var(--sunny);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: var(--r-pill);
+  padding: 0.2rem 0.85rem;
+  box-shadow: 2.5px 2.5px 0 var(--ink);
+  transform: rotate(-3deg);
+  white-space: nowrap;
+}
+
+@keyframes whyMascotFloat {
+  0% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+
+.why-bento__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.why-bento__tile {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--radius-cards);
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: 4px 5px 0 var(--sunny);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  position: relative;
+  min-height: 220px;
+}
+
+.why-bento__tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 6px 7px 0 var(--sunny);
+}
+
+.why-bento__tile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.why-bento__icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-md);
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 2px solid var(--ink);
+  box-shadow: 2.5px 2.5px 0 var(--ink);
+  flex-shrink: 0;
+}
+
+.why-bento__tag {
+  font-family: var(--font-note);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink) !important;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 0.2rem 0.8rem;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--ink);
+}
+
+.why-bento .why-bento__title,
+.why-bento__tile h3,
+.why-bento__title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--ink) !important;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.why-bento .why-bento__text,
+.why-bento__tile p,
+.why-bento__text {
+  font-family: var(--font-body);
+  color: var(--ink) !important;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.92;
+  margin: 0;
+  margin-top: auto;
+}
+
+/* --------------------------------------------------------------------------
+   6. Day at Wiggle Timeline
+   -------------------------------------------------------------------------- */
+.day-at-wiggle {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: clamp(1.25rem, 2.5vh, 2.25rem) !important;
+  padding-bottom: 0 !important;
+  background-color: var(--paper);
+}
+
+.day-at-wiggle .section-heading {
+  margin-bottom: 0.5rem !important;
+  gap: 0.35rem !important;
+}
+
+.day-at-wiggle__strip-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin-block: auto;
+}
+
+.day-at-wiggle__strip {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  padding-block: 0.5rem 0.75rem;
+}
+
+.day-panel {
+  width: 315px;
+  flex-shrink: 0;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: 4px 4px 0 var(--sunny);
+  padding: 1.35rem 1.35rem 1.45rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.day-panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 6px 0 var(--sunny);
+}
+
+.day-panel__time {
+  font-family: var(--font-note);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--tangerine);
+  line-height: 1;
+}
+
+.day-panel__icon-box {
+  border: var(--outline);
+  border-radius: var(--r-md);
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: transform 0.2s ease;
+}
+
+.day-panel:hover .day-panel__icon-box {
+  transform: scale(1.04);
+}
+
+.day-panel__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.day-panel__text {
+  font-family: var(--font-body);
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.day-at-wiggle__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: auto;
+  width: 100%;
+}
+
+.day-at-wiggle__progress {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  position: relative;
+  max-width: 720px;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.day-at-wiggle__time-label {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.8125rem;
+  color: var(--ink);
+  background-color: var(--paper);
+  border: 1.5px solid var(--ink);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--r-pill);
+  box-shadow: 1.5px 1.5px 0 var(--ink);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  flex-shrink: 0;
+}
+
+.day-at-wiggle__progress-bar {
+  position: relative;
+  flex: 1;
+  height: 12px;
+  background-color: #EAE3D2;
+  border: 2px solid var(--ink);
+  border-radius: var(--r-pill);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.day-at-wiggle__progress-fill {
+  height: 100%;
+  background-color: var(--tangerine, #FF5A1F);
+  width: 0%;
+  border-radius: var(--radius-buttons);
+  will-change: width;
+}
+
+.day-at-wiggle__mascot-tracker {
+  position: absolute;
+  bottom: 8px;
+  left: 0%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  z-index: 5;
+  will-change: left;
+}
+
+.day-at-wiggle__wave {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  display: block;
+}
+
+.teachers-section {
+  padding-top: clamp(2.25rem, 4.5vw, 3.5rem) !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. Teacher Polaroids
+   -------------------------------------------------------------------------- */
+.teachers-polaroid__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+  margin-block: 2.5rem;
+}
+
+.teacher-polaroid {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-sm);
+  padding: 14px 14px 28px 14px;
+  box-shadow: var(--shadow-sticker);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.teacher-polaroid:hover {
+  transform: translateY(-8px) rotate(0deg) !important;
+  box-shadow: var(--shadow-sticker-hover);
+  z-index: 10;
+}
+
+.teacher-polaroid__photo-box {
+  position: relative;
+  overflow: hidden;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  aspect-ratio: 1 / 1.15;
+  margin-bottom: 1rem;
+  background-color: #f7f3ea;
+}
+
+.teacher-polaroid__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.teacher-polaroid__fun-fact {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 247, 234, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  font-family: var(--font-note);
+  font-size: 1.15rem;
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.teacher-polaroid:hover .teacher-polaroid__fun-fact,
+.teacher-polaroid:focus-within .teacher-polaroid__fun-fact {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   8. Photo Wall
+   -------------------------------------------------------------------------- */
+.photo-wall__stage {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem 1.5rem;
+  margin-block: 2.5rem;
+  align-items: stretch;
+}
+
+.photo-wall__item {
+  position: relative;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sticker);
+  padding: 12px 12px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.photo-wall__item:hover {
+  transform: scale(1.04) rotate(0deg) !important;
+  box-shadow: var(--shadow-sticker-hover);
+  z-index: 6;
+}
+
+.photo-wall__photo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  background-color: #f7f3ea;
+  flex-shrink: 0;
+}
+
+.photo-wall__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-wall__caption {
+  padding-top: 12px;
+  padding-inline: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-grow: 1;
+  gap: 6px;
+  min-height: 64px;
+}
+
+.photo-wall__title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  margin: 0;
+  text-align: center;
+}
+
+.photo-wall__tag {
+  display: inline-block;
+  background-color: var(--tint-yellow);
+  border: 1.5px solid var(--ink);
+  padding: 2px 10px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.photo-wall__tag--yellow {
+  background-color: var(--tint-yellow);
+}
+
+.photo-wall__tag--mint {
+  background-color: var(--tint-mint);
+}
+
+.photo-wall__tag--pink {
+  background-color: var(--tint-pink);
+}
+
+.photo-wall__tag--sky {
+  background-color: var(--tint-sky);
+}
+
+/* --------------------------------------------------------------------------
+   9. Event Tickets
+   -------------------------------------------------------------------------- */
+.event-tickets__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 920px;
+  margin: 2.5rem auto 3rem;
+}
+
+.ticket-card {
+  display: flex;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sticker);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.ticket-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-sticker-hover);
+}
+
+.ticket-card__stub {
+  width: 140px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid var(--ink);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ticket-card__main {
+  flex: 1;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   10. Testimonial Bubbles
+   -------------------------------------------------------------------------- */
+.testimonial-bubbles__slider {
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.testimonial-bubbles__track {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.testimonial-bubble {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg) var(--r-lg) var(--r-lg) var(--r-sm);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-sticker);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.testimonial-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 32px;
+  width: 20px;
+  height: 16px;
+  background-color: var(--paper);
+  border-left: var(--outline);
+  border-bottom: var(--outline);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.testimonial-bubbles__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.testimonial-bubbles__arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: var(--outline);
+  background-color: var(--paper);
+  box-shadow: 2px 2px 0 var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.testimonial-bubbles__arrow:hover {
+  transform: translate(-1px, -1px);
+}
+
+.testimonial-bubbles__dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.testimonial-bubbles__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  background-color: var(--paper);
+  cursor: pointer;
+}
+
+.testimonial-bubbles__dot.is-active {
+  background-color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE BREAKPOINTS (Mobile-First Constraints)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .about-collage__grid {
+    grid-template-columns: 1fr;
+  }
+  .programs-stairs__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .programs-stairs__step {
+    transform: none !important;
+  }
+  .why-bento__header {
+    margin-bottom: 2.5rem;
+  }
+  .why-bento__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .teachers-polaroid__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .photo-wall__stage {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .bus-stage {
+    height: 240px;
+  }
+  .bus-road-signs {
+    display: none;
+  }
+  .bus-signs-mobile {
+    display: grid;
+  }
+  .day-at-wiggle {
+    min-height: auto !important;
+    display: block;
+    padding-top: 3rem !important;
+  }
+  .day-at-wiggle__strip {
+    flex-direction: column;
+    width: 100%;
+  }
+  .day-panel {
+    width: 100%;
+  }
+  .day-at-wiggle__progress {
+    display: none;
+  }
+  .testimonial-bubbles__track {
+    grid-template-columns: 1fr;
+  }
+  .ticket-card {
+    flex-direction: column;
+  }
+  .ticket-card__stub {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid var(--ink);
+    padding: 1rem;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .programs-stairs__grid {
+    grid-template-columns: 1fr;
+  }
+  .why-bento__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .why-bento__tile {
+    padding: 1.75rem 1.5rem;
+    min-height: auto;
+  }
+  .teachers-polaroid__grid {
+    grid-template-columns: 1fr;
+  }
+  .teacher-polaroid__fun-fact {
+    opacity: 1; /* Always visible on mobile touch */
+    position: relative;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+  }
+  .photo-wall__stage {
+    grid-template-columns: 1fr;
+  }
+}

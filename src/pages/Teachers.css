@@ -1,0 +1,14 @@
+/* ==========================================================================
+   TEACHERS PAGE LAYOUT CSS
+   ========================================================================== */
+
+.teachers-page {
+  position: relative;
+  width: 100%;
+  overflow-x: clip;
+}
+
+.teachers-page section {
+  position: relative;
+  overflow-x: clip;
+}

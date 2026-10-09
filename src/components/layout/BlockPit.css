@@ -1,0 +1,60 @@
+.block-pit-wrapper {
+  width: 100%;
+  max-width: 580px; /* Generous, balanced width for letter blocks */
+  margin: 0 auto 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.block-pit-canvas-container {
+  width: 100%;
+  height: 130px; /* Spacious enough to center the blocks without wasting huge space */
+  position: relative;
+  background-color: rgba(255, 247, 234, 0.045);
+  border: 2px solid rgba(255, 247, 234, 0.2);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  touch-action: pan-y;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.block-pit-canvas-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  touch-action: pan-y !important;
+}
+
+.block-pit-hint {
+  font-family: var(--font-note);
+  font-size: 1.05rem;
+  color: var(--sunny);
+  margin-top: 0.45rem;
+  display: inline-block;
+  opacity: 0.95;
+}
+
+/* Reduced motion static fallback */
+.block-pit-static {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  height: 100%;
+}
+
+.block-pit-static-cube {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.45rem;
+  color: var(--ink);
+  border: 2.5px solid var(--ink);
+  border-bottom: 5px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(15, 20, 50, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.5);
+}

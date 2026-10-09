@@ -1,0 +1,141 @@
+/**
+ * Upcoming events and calendars at Wiggle.
+ * 10 items: dates between Nov 2026 and Apr 2027.
+ * Categories: Celebration, Workshop, Trip, Admission.
+ */
+export const events = [
+  {
+    slug: 'annual-autumn-lantern-walk',
+    title: 'Autumn lantern walk & storytelling',
+    date: '2026-11-20',
+    time: '5:00 pm to 7:00 pm',
+    category: 'Celebration',
+    location: 'Wiggle Outdoor Sensory Garden',
+    description: 'Families gather at twilight with handmade paper lanterns for acoustic folk songs, warm apple cider, and fairy stories under the old banyan tree.',
+    tint: 'yellow',
+  },
+  {
+    slug: 'autumn-clay-and-mud-workshop',
+    title: 'Clay sculpting & pottery for little fingers',
+    date: '2026-11-20',
+    time: '10:00 am to 12:00 pm',
+    category: 'Workshop',
+    location: 'Wiggle Art Atelier',
+    description: 'A sensory squishing session where children shape leaves, pinch clay bowls, and explore cold earthenware with natural plant-based dyes.',
+    tint: 'pink',
+  },
+  {
+    slug: 'sensory-parent-craft-workshop',
+    title: 'Mindful parenting through sensory play',
+    date: '2026-12-05',
+    time: '10:00 am to 12:30 pm',
+    category: 'Workshop',
+    location: 'Wiggle Community Hall',
+    description: 'An interactive hands-on workshop with our child psychologist on managing toddler big feelings and crafting soothing sensory bins at home.',
+    tint: 'pink',
+  },
+  {
+    slug: 'winter-shadow-puppet-circus',
+    title: 'Winter shadow puppet theatre & cocoa',
+    date: '2026-12-19',
+    time: '4:30 pm to 6:30 pm',
+    category: 'Celebration',
+    location: 'Wiggle Sunlit Amphitheater',
+    description: 'An enchanting evening of whimsical handmade animal silhouettes, live acoustic xylophone songs, and spiced apple cider for little explorers.',
+    tint: 'yellow',
+  },
+  {
+    slug: 'winter-butterfly-nature-trail',
+    title: 'Winter butterfly park discovery trail',
+    date: '2027-01-16',
+    time: '9:00 am to 1:00 pm',
+    category: 'Trip',
+    location: 'City Botanical Sanctuary',
+    description: 'A guided field trip for Jr. and Sr. KG children to observe caterpillars, seasonal blooms, and fluttering pupae with pocket magnifying lenses.',
+    tint: 'mint',
+  },
+  {
+    slug: 'open-house-discovery-morning',
+    title: 'Spring campus open house & play trial',
+    date: '2027-02-06',
+    time: '9:30 am to 12:00 pm',
+    category: 'Admission',
+    location: 'Wiggle Main Campus',
+    description: 'Prospective parents and little ones tour classrooms, meet our teaching team, bake in the mini kitchen, and experience a typical morning circle.',
+    tint: 'sky',
+  },
+  {
+    slug: 'grandparents-rhyme-circle',
+    title: 'Grandparents story & heritage morning',
+    date: '2027-02-27',
+    time: '10:00 am to 12:00 pm',
+    category: 'Celebration',
+    location: 'Wiggle Amphitheater',
+    description: 'A beloved celebration honoring grandparents with nostalgic rhymes, clay handprint keepsakes, and homemade tea treats prepared by the kids.',
+    tint: 'yellow',
+  },
+  {
+    slug: 'little-scientists-steam-fair',
+    title: 'Little thinkers STEAM & science fair',
+    date: '2027-03-13',
+    time: '10:00 am to 1:30 pm',
+    category: 'Workshop',
+    location: 'Wiggle Multipurpose Courtyard',
+    description: 'Children showcase their curious experiments: shadow puppet theaters, balancing scales, seed germination journals, and mini waterwheels.',
+    tint: 'mint',
+  },
+  {
+    slug: 'farm-friends-harvest-trip',
+    title: 'Organic farm visit & petting paddock',
+    date: '2027-03-20',
+    time: '8:30 am to 12:30 pm',
+    category: 'Trip',
+    location: 'Happy Hooves Eco Farm',
+    description: 'Children feed gentle pygmy goats, touch fleece, plant carrot tops in garden patches, and picnic under the fragrant guava grove.',
+    tint: 'mint',
+  },
+  {
+    slug: 'spring-admissions-play-date',
+    title: 'Spring intake orientation & garden tea',
+    date: '2027-04-10',
+    time: '10:00 am to 12:30 pm',
+    category: 'Admission',
+    location: 'Wiggle Welcome Terrace',
+    description: 'A warm settling-in morning for newly registered families with sensory games, circle songs, teacher chats, and freshly baked oat muffins.',
+    tint: 'sky',
+  },
+];
+
+/**
+ * 4 recurring happenings that take place every month at Wiggle.
+ */
+export const recurringEvents = [
+  {
+    title: 'Birthday circle',
+    when: 'Every Friday',
+    text: 'A cheerful classroom tradition honoring each birthday child with crowns, song blessings, and a walk around the sun.',
+    icon: 'star',
+    tint: 'pink',
+  },
+  {
+    title: 'Parent coffee morning',
+    when: 'First Saturday of the month',
+    text: 'Casual conversations over filter coffee and warm bakes to share preschool milestones and neighborhood parenting tips.',
+    icon: 'smile',
+    tint: 'yellow',
+  },
+  {
+    title: 'Story Saturday',
+    when: 'Every second Saturday',
+    text: 'Guest picture-book authors, felt-board tales, and quiet cozy cushion corners open to all enrolled and neighborhood families.',
+    icon: 'book',
+    tint: 'sky',
+  },
+  {
+    title: 'Open house',
+    when: 'Last Saturday of the month',
+    text: 'Guided tours through learning zones and sensory ateliers for curious prospective parents and active toddlers.',
+    icon: 'home',
+    tint: 'mint',
+  },
+];

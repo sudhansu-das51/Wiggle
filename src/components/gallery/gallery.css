@@ -1,0 +1,771 @@
+/* ==========================================================================
+   WIGGLE — GALLERY PAGE COMPONENTS (gallery.css)
+   Clothesline wall, pegged swaying photos, poles, projector viewer, follow band.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CLOTHESLINE WALL SECTION & BACKDROP
+   -------------------------------------------------------------------------- */
+.gal-wall-section {
+  position: relative;
+  overflow-x: clip;
+  padding-block: clamp(3rem, 6vw, 5rem);
+  background-color: var(--tint-sky);
+}
+
+/* Sky Background Decorations */
+.gal-sky-decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.gal-decor-sun {
+  position: absolute;
+  top: 15px;
+  right: clamp(1rem, 5vw, 4rem);
+  opacity: 0.9;
+}
+
+.gal-decor-cloud {
+  position: absolute;
+  opacity: 0.8;
+}
+
+.gal-decor-cloud.cloud-1 {
+  top: 35px;
+  left: 6%;
+}
+
+.gal-decor-cloud.cloud-2 {
+  top: 180px;
+  right: 12%;
+}
+
+/* --------------------------------------------------------------------------
+   2. TOOLBAR & STATUS LINE
+   -------------------------------------------------------------------------- */
+.gal-toolbar-wrap {
+  position: relative;
+  z-index: 5;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.gal-filter-bar {
+  margin-bottom: 0.75rem !important;
+}
+
+.gal-status-line-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.gal-status-line {
+  font-family: var(--font-note);
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. CLOTHESLINE FRAMEWORK & WOODEN POLES
+   -------------------------------------------------------------------------- */
+.gal-clothesline-framework {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-inline: 22px; /* Inset matching support poles */
+  z-index: 3;
+}
+
+/* Wooden Support Poles (Desktop & Tablet) */
+.gal-pole {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.gal-pole-left {
+  left: 0;
+}
+
+.gal-pole-right {
+  right: 0;
+}
+
+@media (max-width: 767px) {
+  .gal-pole {
+    display: none;
+  }
+}
+
+.gal-pole-cap {
+  width: 32px;
+  height: 12px;
+  background-color: var(--sunny);
+  border: 2.5px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.gal-pole-timber {
+  flex: 1;
+  width: 18px;
+  background-color: var(--paper);
+  border: 2.5px solid var(--ink);
+  border-top: none;
+  box-shadow: 2px 0 0 rgba(35, 42, 92, 0.15);
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 28px,
+    rgba(35, 42, 92, 0.12) 28px,
+    rgba(35, 42, 92, 0.12) 30px
+  );
+}
+
+/* Grassy Meadow Base at the bottom of the support poles */
+.gal-pole-grass {
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.gal-rows-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* --------------------------------------------------------------------------
+   4. CLOTHESLINE ROW & SAGGING ROPE
+   -------------------------------------------------------------------------- */
+.gal-clothesline-row {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.gal-rope-svg-wrap {
+  position: absolute;
+  top: 0;
+  left: -22px;
+  right: -22px;
+  height: 48px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gal-sagging-rope {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.gal-rope-knot {
+  position: absolute;
+  top: 5px;
+  width: 18px;
+  height: 18px;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.gal-rope-knot.knot-left {
+  left: 3px; /* Centered right on the left support pole timber */
+}
+
+.gal-rope-knot.knot-right {
+  right: 3px; /* Centered right on the right support pole timber */
+}
+
+.gal-knot-wrap {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background-color: var(--sunny);
+  border: 2.5px solid var(--ink);
+  border-radius: 50%;
+  box-shadow: 1.5px 1.5px 0 var(--ink);
+  position: relative;
+}
+
+.gal-knot-wrap::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--ink);
+}
+
+.gal-knot-tail {
+  display: block;
+  position: absolute;
+  top: 14px;
+  width: 3.5px;
+  height: 13px;
+  background-color: var(--ink);
+  border-radius: 2px;
+}
+
+.knot-left .gal-knot-tail {
+  left: 7px;
+  transform: rotate(-12deg);
+}
+
+.knot-right .gal-knot-tail {
+  right: 7px;
+  transform: rotate(12deg);
+}
+
+.gal-rope-mascot {
+  position: absolute;
+  top: -26px;
+  right: clamp(16px, 5vw, 42px);
+  transform-origin: 50% 100%;
+  pointer-events: none;
+}
+
+@media (max-width: 639px) {
+  .gal-rope-mascot {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. PHOTOS LIST & POLAROID CARDS
+   -------------------------------------------------------------------------- */
+.gal-photos-list {
+  position: relative;
+  z-index: 4;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+  align-items: start;
+  width: 100%;
+}
+
+@media (max-width: 1023px) {
+  .gal-photos-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 639px) {
+  .gal-photos-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+}
+
+.gal-hanging-photo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+/* Outer wrapper: enters/exits & maintains resting tilt */
+.gal-photo-outer {
+  width: 100%;
+  height: 100%;
+  transform: rotate(var(--resting-tilt, 0deg));
+  transform-origin: 50% 0;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Inner wrapper: driven by scroll sway quickTo */
+.gal-photo-sway-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: 50% 0;
+}
+
+/* Wooden Clothes Peg */
+.gal-clothes-peg {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 32px;
+  z-index: 10;
+  pointer-events: none;
+  transform-origin: 50% 11px; /* Rotates around the rope groove */
+  filter: drop-shadow(0 2px 2px rgba(30, 27, 75, 0.18));
+}
+
+.gal-peg-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Polaroid Photo Card Button */
+.gal-photo-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(0.6rem, 1.5vw, 0.85rem);
+  padding-bottom: clamp(1rem, 2vw, 1.5rem);
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  touch-action: manipulation;
+}
+
+/* Micro-interaction: Hover & Focus straightens and lifts photo */
+@media (hover: hover) and (pointer: fine) {
+  .gal-hanging-photo:hover .gal-photo-outer {
+    transform: translateY(-6px) rotate(0deg) !important;
+  }
+
+  .gal-hanging-photo:hover .gal-photo-card {
+    box-shadow: 6px 8px 0 var(--ink);
+  }
+}
+
+.gal-hanging-photo:focus-within .gal-photo-outer {
+  transform: translateY(-6px) rotate(0deg) !important;
+}
+
+.gal-photo-card:focus-visible {
+  outline: 3px solid var(--bubblegum);
+  outline-offset: 4px;
+}
+
+/* Polaroid Image Container */
+.gal-photo-image-frame {
+  width: 100%;
+  border: 2px solid var(--ink);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  background-color: var(--tint-yellow);
+}
+
+.gal-polaroid-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Caption and Title */
+.gal-photo-caption-wrap {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.gal-photo-caption {
+  font-family: var(--font-note);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0;
+  font-weight: bold;
+  min-height: 2.5em;
+}
+
+.gal-photo-title {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.3;
+}
+
+/* --------------------------------------------------------------------------
+   6. PAGINATION & EMPTY STATE
+   -------------------------------------------------------------------------- */
+.gal-pagination-wrap {
+  margin-top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.gal-show-more-btn {
+  background-color: var(--paper);
+}
+
+.gal-pagination-note {
+  font-size: 1rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Empty State Card */
+.gal-empty-state {
+  width: 100%;
+  max-width: 520px;
+  margin: 3rem auto;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: 3rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gal-empty-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+.gal-empty-desc {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.gal-clear-btn {
+  background-color: var(--sunny);
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. PROJECTOR VIEWER (MODAL SCREEN)
+   -------------------------------------------------------------------------- */
+.gal-projector-modal-wrap {
+  max-width: 860px !important;
+  width: 95vw !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Soft Light Cone Rising from Backdrop */
+.gal-light-cone {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140vw;
+  height: 70vh;
+  background: radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.18) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Pulled-down Projector Screen */
+.gal-projector-screen {
+  position: relative;
+  width: 100%;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: 0 16px 36px rgba(22, 27, 65, 0.45), var(--shadow-sticker);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  max-height: 90svh;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Top Roller Tube */
+.gal-projector-roller {
+  position: relative;
+  width: 100%;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.gal-roller-tube {
+  flex: 1;
+  height: 12px;
+  background-color: var(--ink);
+  border-radius: 4px;
+}
+
+.gal-roller-cap {
+  width: 16px;
+  height: 18px;
+  background-color: var(--sunny);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+}
+
+/* Screen Header */
+.gal-projector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.gal-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.gal-category-chip {
+  background-color: var(--tint-yellow);
+}
+
+.gal-photo-counter {
+  font-size: 0.95rem;
+  color: var(--ink);
+  font-weight: bold;
+}
+
+.gal-close-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--r-sm);
+  box-shadow: 2px 2px 0 var(--ink);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.gal-close-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+/* Slide Canvas & Image */
+.gal-slide-canvas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.gal-slide-image-wrap {
+  width: 100%;
+  max-height: 56svh;
+  max-height: 56vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: var(--outline);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  background-color: var(--tint-yellow);
+}
+
+.gal-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gal-slide-info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-width: 640px;
+}
+
+.gal-slide-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  color: var(--ink);
+  margin: 0;
+}
+
+.gal-slide-caption {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--ink);
+  margin: 0;
+  font-weight: bold;
+}
+
+.gal-slide-date {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Screen Bottom Controls */
+.gal-projector-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1.5px solid rgba(35, 42, 92, 0.15);
+}
+
+.gal-nav-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--sunny);
+  border: 2px solid var(--ink);
+  border-radius: var(--r-sm);
+  box-shadow: 2px 2px 0 var(--ink);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.gal-nav-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+/* Decorative Pull Cord and Ring */
+.gal-screen-pull-handle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gal-pull-cord {
+  width: 2px;
+  height: 18px;
+  background-color: var(--ink);
+}
+
+.gal-pull-ring {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid var(--ink);
+  border-radius: 50%;
+  background-color: var(--paper);
+}
+
+/* --------------------------------------------------------------------------
+   8. SECTION 4: FOLLOW THE DAILY CHAOS (FollowBand)
+   -------------------------------------------------------------------------- */
+.gal-follow-section {
+  padding-block: clamp(3.5rem, 6vw, 5rem);
+  overflow-x: clip;
+}
+
+.gal-follow-card {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.gal-follow-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.gal-follow-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gal-follow-tag {
+  font-size: 1.1rem;
+  color: var(--bubblegum);
+  font-weight: bold;
+}
+
+.gal-follow-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0;
+}
+
+.gal-follow-desc {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+  max-width: 600px;
+}
+
+.gal-consent-wrap {
+  margin-top: 0.5rem;
+}
+
+.gal-consent-note {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.gal-follow-mascot {
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .gal-follow-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .gal-follow-mascot {
+    align-self: center;
+    margin-top: 1rem;
+  }
+}

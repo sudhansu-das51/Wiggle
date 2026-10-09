@@ -1,0 +1,1741 @@
+/* ==========================================================================
+   PROGRAMS PAGE COMPONENT STYLES
+   All classes prefixed with .programs-
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   General Utilities & Skip Link
+   -------------------------------------------------------------------------- */
+.visually-hidden,
+.programs-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.programs-skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--sunny);
+  color: var(--ink);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: var(--shadow-sticker);
+}
+
+.programs-skip-link:focus {
+  top: 1rem;
+}
+
+.programs-desktop-only {
+  display: block;
+}
+
+.programs-mobile-only {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .programs-desktop-only {
+    display: none !important;
+  }
+  .programs-mobile-only {
+    display: block !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Section 2: Train Journey (Signature Pinned Scene)
+   -------------------------------------------------------------------------- */
+.programs-train-section {
+  position: relative;
+  overflow-x: clip;
+  padding-block: 0 !important;
+}
+
+.programs-train-header {
+  padding-top: clamp(2rem, 4vh, 3.5rem);
+  padding-bottom: 1rem;
+}
+
+/* Desktop Pinned Scene Container */
+.programs-train-scene {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background-color: #EBF7FF; /* Soft sky tint */
+  border-bottom: var(--outline);
+}
+
+@media (min-width: 1024px) and (min-height: 640px) {
+  .programs-train-section {
+    height: 100vh;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .programs-train-header {
+    flex-shrink: 0;
+    padding-top: clamp(1rem, 2.5vh, 1.75rem);
+    padding-bottom: 0.5rem;
+  }
+
+  .programs-train-scene {
+    flex: 1;
+    min-height: 0;
+    height: auto;
+    border-top: var(--outline);
+  }
+
+  .programs-stops-bar {
+    flex-shrink: 0;
+    padding-block: 0.75rem 1.25rem;
+  }
+}
+
+/* Sky & Nature Background Parallax Layers */
+.programs-sky-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.programs-sky-sun {
+  position: absolute;
+  top: 12%;
+  left: 15%;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: var(--sunny);
+  border: var(--outline);
+  box-shadow: 0 0 0 10px rgba(255, 201, 60, 0.25);
+}
+
+.programs-cloud {
+  position: absolute;
+  background-color: #ffffff;
+  border: var(--outline);
+  border-radius: var(--r-pill);
+  box-shadow: 2px 3px 0 rgba(35, 42, 92, 0.15);
+}
+
+.programs-cloud.cloud-1 {
+  top: 18%;
+  left: 35%;
+  width: 130px;
+  height: 40px;
+}
+.programs-cloud.cloud-1::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 25px;
+  width: 50px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 50%;
+  border-top: var(--outline);
+}
+
+.programs-cloud.cloud-2 {
+  top: 24%;
+  left: 68%;
+  width: 160px;
+  height: 46px;
+}
+.programs-cloud.cloud-2::before {
+  content: '';
+  position: absolute;
+  top: -24px;
+  left: 35px;
+  width: 60px;
+  height: 60px;
+  background: #ffffff;
+  border-radius: 50%;
+  border-top: var(--outline);
+}
+
+.programs-cloud.cloud-3 {
+  top: 10%;
+  left: 85%;
+  width: 110px;
+  height: 34px;
+}
+
+/* Parallax Hills - Low horizon with minimal treeline so sky & sun are wide open */
+.programs-hills-back {
+  position: absolute;
+  bottom: 60px;
+  left: -200px;
+  width: 250%;
+  height: 70px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 70' fill='none'%3E%3Cpath d='M0,55 Q100,25 200,45 T400,35 L400,70 L0,70 Z' fill='%23D4F4DD' opacity='0.7'/%3E%3C/svg%3E");
+  background-size: 400px 70px;
+  background-repeat: repeat-x;
+  pointer-events: none;
+}
+
+.programs-hills-mid {
+  position: absolute;
+  bottom: 48px;
+  left: -200px;
+  width: 250%;
+  height: 65px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 65' fill='none'%3E%3Cpath d='M0,50 Q80,30 160,45 T320,40 L320,65 L0,65 Z' fill='%23BFECCF' stroke='%23232A5C' stroke-width='2'/%3E%3Cg stroke='%23232A5C' stroke-width='2'%3E%3Cline x1='60' y1='40' x2='60' y2='52'/%3E%3Ccircle cx='60' cy='32' r='10' fill='%236BCB77'/%3E%3Cline x1='140' y1='45' x2='140' y2='54'/%3E%3Cpolygon points='140,26 132,44 148,44' fill='%234D96FF'/%3E%3Cline x1='220' y1='40' x2='220' y2='50'/%3E%3Ccircle cx='220' cy='32' r='9' fill='%23FFD93D'/%3E%3Cline x1='280' y1='42' x2='280' y2='52'/%3E%3Ccircle cx='280' cy='34' r='8' fill='%236BCB77'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 320px 65px;
+  background-repeat: repeat-x;
+  pointer-events: none;
+}
+
+/* Fixed Steam Locomotive (~35% of viewport width) */
+.programs-train-fixed {
+  position: absolute;
+  bottom: 70px;
+  left: 35%;
+  transform: translateX(-50%);
+  z-index: 12;
+  pointer-events: none;
+}
+
+/* Chimney Steam Smoke Animation */
+.programs-train-smoke {
+  position: absolute;
+  top: -25px;
+  left: 200px;
+  pointer-events: none;
+}
+
+.programs-smoke-puff {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.programs-smoke-puff.puff-1 {
+  width: 16px;
+  height: 16px;
+  animation: smokePuff 2.2s infinite ease-out;
+}
+
+.programs-smoke-puff.puff-2 {
+  width: 24px;
+  height: 24px;
+  animation: smokePuff 2.2s infinite ease-out 0.7s;
+}
+
+.programs-smoke-puff.puff-3 {
+  width: 32px;
+  height: 32px;
+  animation: smokePuff 2.2s infinite ease-out 1.4s;
+}
+
+@keyframes smokePuff {
+  0% {
+    transform: translate(0, 0) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-45px, -65px) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Moving World Layer */
+.programs-train-world {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: max(6000px, 450vw);
+  will-change: transform;
+  z-index: 5;
+}
+
+/* Tracks & Rails */
+.programs-train-track {
+  position: absolute;
+  bottom: 35px;
+  left: -200px;
+  width: max(6500px, 500vw);
+  height: 48px;
+  background-color: #D3C3A3; /* Ballast gravel */
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--ink) 0px,
+    var(--ink) 8px,
+    transparent 8px,
+    transparent 36px
+  );
+  border-top: 2.5px solid var(--ink);
+  border-bottom: 2.5px solid var(--ink);
+}
+
+.programs-rail {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #7B8599;
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.programs-rail.rail-top {
+  top: 8px;
+}
+
+.programs-rail.rail-bottom {
+  bottom: 8px;
+}
+
+/* Station Platforms */
+.programs-platform {
+  position: absolute;
+  bottom: 72px;
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.programs-platform-sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.programs-platform-sign__board {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sticker);
+  padding: 0.5rem 1.25rem;
+  text-align: center;
+  min-width: 160px;
+}
+
+.programs-platform-sign__board--gold {
+  background-color: var(--sunny);
+}
+
+.programs-platform-sign__number {
+  display: block;
+  font-family: var(--font-note);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--tangerine);
+  text-transform: uppercase;
+}
+
+.programs-platform-sign__name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.programs-platform-sign__post {
+  width: 6px;
+  height: 45px;
+  background-color: var(--ink);
+  border-radius: 2px;
+}
+
+.programs-platform-base {
+  width: 100%;
+  height: 24px;
+  background-color: #E2DAC8;
+  border: var(--outline);
+  border-radius: 6px 6px 0 0;
+  box-shadow: 2px 2px 0 var(--ink);
+  position: relative;
+}
+
+.programs-platform-planks {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(35, 42, 92, 0.15) 0px,
+    rgba(35, 42, 92, 0.15) 2px,
+    transparent 2px,
+    transparent 24px
+  );
+}
+
+.programs-platform-lamp {
+  position: absolute;
+  bottom: 24px;
+  right: 25px;
+  width: 6px;
+  height: 60px;
+  background: var(--ink);
+  border-radius: 2px;
+}
+.programs-platform-lamp::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -4px;
+  width: 14px;
+  height: 5px;
+  background: var(--ink);
+  border-radius: 2px 2px 0 0;
+}
+.programs-platform-lamp::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -8px;
+  width: 22px;
+  height: 14px;
+  background: var(--sunny);
+  border: 2px solid var(--ink);
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 0 10px rgba(255, 201, 60, 0.6);
+}
+
+/* Miniature School Gate on Destination Platform */
+.programs-school-gate-mini {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.programs-gate-arch {
+  position: relative;
+  width: 130px;
+  height: 40px;
+  background: var(--sunny);
+  border: var(--outline);
+  border-radius: 40px 40px 0 0;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.programs-gate-doors {
+  display: flex;
+  gap: 4px;
+  width: 120px;
+  height: 70px;
+}
+
+.programs-gate-door {
+  flex: 1;
+  background: var(--paper);
+  border: 2.5px solid var(--ink);
+  border-radius: 4px;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center left;
+}
+.programs-gate-door.door-right {
+  transform-origin: center right;
+}
+
+.programs-gate-door.door-left.is-open {
+  transform: scaleX(0.2) rotateY(-60deg);
+}
+.programs-gate-door.door-right.is-open {
+  transform: scaleX(0.2) rotateY(60deg);
+}
+
+.programs-gate-mascot {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   Desktop Station Cards Overlay (Pops on right side of train)
+   -------------------------------------------------------------------------- */
+.programs-cards-overlay {
+  position: absolute;
+  top: 48%;
+  right: 5%;
+  transform: translateY(-50%);
+  width: clamp(290px, 25vw, 350px);
+  height: 410px;
+  z-index: 15;
+  pointer-events: none;
+}
+
+.programs-cards-overlay .programs-station-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+  opacity: 0;
+}
+
+/* Station Card Component */
+.programs-station-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.15rem 1.25rem 1.25rem;
+  border: var(--outline);
+  border-radius: 28px 28px var(--r-md) var(--r-md);
+  box-shadow: var(--shadow-sticker);
+  transition: box-shadow 0.25s ease;
+  pointer-events: auto;
+  position: relative;
+}
+
+.programs-station-card:hover {
+  box-shadow: var(--shadow-sticker-hover);
+}
+
+.programs-station-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.programs-station-card__badge {
+  font-family: var(--font-note);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--tangerine);
+  letter-spacing: 0.03em;
+}
+
+.programs-station-card__age-chip {
+  background-color: var(--paper);
+  border: 1.5px solid var(--ink);
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 0.18rem 0.6rem;
+}
+
+.programs-station-card__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.programs-station-card__tagline {
+  font-family: var(--font-note);
+  font-size: 0.88rem;
+  color: var(--ink);
+  opacity: 0.88;
+  margin: 0.1rem 0 0 0;
+  font-weight: 700;
+}
+
+.programs-station-card__summary {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--ink);
+  opacity: 0.85;
+  margin: 0;
+}
+
+.programs-station-card__highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.programs-station-card__highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+.programs-station-card__check-icon {
+  margin-top: 1px;
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.programs-station-card__timings {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 0.3rem 0.65rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-sm);
+  width: fit-content;
+}
+
+.programs-station-card__actions {
+  margin-top: 0.25rem;
+}
+
+.programs-station-card__actions .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Desktop Station Stops Control Bar
+   -------------------------------------------------------------------------- */
+.programs-stops-bar {
+  padding-block: 1.5rem 2rem;
+}
+
+.programs-stops-track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  max-width: 820px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.programs-stops-track::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 3rem;
+  right: 3rem;
+  height: 4px;
+  background-color: var(--ink);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.programs-stop-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+}
+
+.programs-stop-node {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--paper);
+  border: 3px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+  position: relative;
+}
+
+.programs-stop-btn.is-active .programs-stop-node {
+  background-color: var(--sunny);
+  transform: scale(1.15);
+}
+
+.programs-stop-mascot {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+.programs-stop-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.programs-stop-num {
+  font-family: var(--font-note);
+  font-size: 0.8rem;
+  color: var(--tangerine);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile & Tablet Vertical Track Journey (< 1024px)
+   -------------------------------------------------------------------------- */
+.programs-mobile-journey {
+  padding-block: 1rem 3rem;
+}
+
+.programs-mobile-sticky-bar {
+  position: sticky;
+  top: 70px;
+  z-index: 20;
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.75rem var(--gutter);
+  background: rgba(250, 246, 238, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 2px solid rgba(35, 42, 92, 0.15);
+  margin-inline: calc(-1 * var(--gutter));
+  margin-bottom: 2rem;
+  scrollbar-width: none;
+}
+.programs-mobile-sticky-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.programs-vtrack-container {
+  display: flex;
+  position: relative;
+  gap: 1.5rem;
+}
+
+/* Left Vertical Track Rail */
+.programs-vtrack-line {
+  position: relative;
+  width: 48px;
+  flex-shrink: 0;
+}
+
+.programs-vtrack-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 22px;
+  width: 4px;
+  background-color: var(--ink);
+  border-radius: 2px;
+}
+
+.programs-vtrain {
+  position: absolute;
+  top: 0;
+  left: -18px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.programs-vtrain.is-static-end {
+  top: auto;
+  bottom: 40px;
+}
+
+/* Vertical Stations Stream */
+.programs-vstations-stream {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.programs-vstation-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  position: relative;
+}
+
+.programs-vstop {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid var(--ink);
+  background-color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-note);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--ink);
+  flex-shrink: 0;
+  margin-top: 1.5rem;
+  position: relative;
+  transition: background-color 0.3s ease;
+  z-index: 5;
+}
+
+.programs-vstop.is-filled {
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.programs-vstop-wig {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.programs-vstation-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Tablet portrait 2-column layout for StationCard */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .programs-vstation-content .programs-station-card {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    column-gap: 1.75rem;
+    row-gap: 0.9rem;
+    align-items: start;
+    padding: 1.75rem 2rem;
+  }
+
+  .programs-vstation-content .programs-station-card__header {
+    grid-column: 1 / -1;
+  }
+
+  .programs-vstation-content .programs-station-card__title-group {
+    grid-column: 1;
+  }
+
+  .programs-vstation-content .programs-station-card__summary {
+    grid-column: 1;
+  }
+
+  .programs-vstation-content .programs-station-card__highlights {
+    grid-column: 2;
+    grid-row: 2 / span 2;
+    padding-top: 0.25rem;
+  }
+
+  .programs-vstation-content .programs-station-card__timings {
+    grid-column: 1;
+  }
+
+  .programs-vstation-content .programs-station-card__actions {
+    grid-column: 2;
+    margin-top: 0;
+  }
+}
+
+.programs-vstation-row--school {
+  margin-top: 1rem;
+}
+
+.programs-vschool-badge {
+  background-color: var(--sunny);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sticker);
+  flex: 1;
+}
+
+.programs-vschool-badge h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--ink);
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+.programs-vschool-badge p {
+  font-family: var(--font-body);
+  color: var(--ink);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Section 3: Age Finder
+   -------------------------------------------------------------------------- */
+.programs-finder__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+  margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .programs-finder__layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.programs-finder__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.programs-finder__readout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.programs-finder__readout-sub {
+  font-family: var(--font-note);
+  font-size: 1.1rem;
+  color: var(--ink);
+  opacity: 0.85;
+}
+
+.programs-finder__readout-value {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+/* Custom Slider Track */
+.programs-finder__slider-wrap {
+  position: relative;
+  width: 100%;
+  height: 52px;
+  display: flex;
+  align-items: center;
+}
+
+.programs-slider-track-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-pill);
+  box-shadow: 2px 2px 0 var(--ink);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.programs-slider-track-fill {
+  height: 100%;
+  background-color: var(--tangerine);
+  border-radius: var(--r-pill);
+  transition: width 0.1s linear;
+}
+
+.programs-slider-input {
+  position: relative;
+  width: 100%;
+  height: 52px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 2;
+  margin: 0;
+}
+
+.programs-slider-input:focus {
+  outline: none;
+}
+
+/* Slider Thumb (Train Engine) */
+.programs-slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--sunny);
+  border: 3px solid var(--ink);
+  box-shadow: 2px 3px 0 var(--ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='none' stroke='%23232A5C' stroke-width='2'%3E%3Crect x='4' y='3' width='16' height='15' rx='3' fill='%235CC8FF'/%3E%3Ccircle cx='8' cy='18' r='2' fill='%23232A5C'/%3E%3Ccircle cx='16' cy='18' r='2' fill='%23232A5C'/%3E%3Cpath d='M4 11h16M8 6h8'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px;
+  transition: transform 0.15s ease;
+}
+
+.programs-slider-input::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+
+.programs-slider-input::-moz-range-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--sunny);
+  border: 3px solid var(--ink);
+  box-shadow: 2px 3px 0 var(--ink);
+  cursor: pointer;
+}
+
+.programs-finder__ticks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.programs-finder__tick {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  opacity: 0.65;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.programs-finder__tick.is-active {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.programs-finder__tick-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+}
+
+.programs-finder__tick-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
+.programs-finder__tick-range {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--ink);
+}
+
+.programs-finder__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Result Ticket */
+.programs-finder__ticket {
+  position: relative;
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.programs-ticket__notch {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background-color: var(--tint-yellow);
+  border: var(--outline);
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.programs-ticket__notch.notch-top {
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.programs-ticket__notch.notch-bottom {
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.programs-ticket__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.programs-ticket__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.programs-ticket__label {
+  font-family: var(--font-note);
+  font-size: 1.05rem;
+  color: var(--tangerine);
+  font-weight: 700;
+  display: block;
+}
+
+.programs-ticket__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0.2rem 0 0.5rem 0;
+  line-height: 1.1;
+}
+
+.programs-ticket__chip {
+  background-color: var(--paper);
+  border: 1.5px solid var(--ink);
+  font-weight: 700;
+}
+
+.programs-ticket__tagline {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+
+.programs-ticket__focus {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-sm);
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.programs-ticket__focus-title {
+  font-family: var(--font-note);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--tangerine);
+}
+
+.programs-ticket__highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.programs-ticket__highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.programs-ticket__check-icon {
+  margin-top: 2px;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.programs-ticket__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Section 4: Compare Board (Railway Departure Board)
+   -------------------------------------------------------------------------- */
+.programs-board-section {
+  position: relative;
+}
+
+.programs-board-frame {
+  position: relative;
+  background-color: var(--ink);
+  border: 3.5px solid #FFC93C;
+  border-radius: var(--r-lg);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.4);
+  padding: clamp(1.25rem, 2.5vw, 2.5rem);
+  margin-top: 2rem;
+  overflow-x: auto;
+}
+
+.programs-board-rivet {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--sunny);
+  border: 1.5px solid var(--ink);
+}
+.programs-board-rivet.rivet-tl { top: 8px; left: 8px; }
+.programs-board-rivet.rivet-tr { top: 8px; right: 8px; }
+.programs-board-rivet.rivet-bl { bottom: 8px; left: 8px; }
+.programs-board-rivet.rivet-br { bottom: 8px; right: 8px; }
+
+.programs-board-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.programs-board-table thead tr {
+  background-color: var(--sunny);
+  border-bottom: 3px solid var(--ink);
+}
+
+.programs-board-table th {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--ink);
+  padding: 1rem 1.25rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.programs-board-table th:first-child {
+  border-radius: var(--r-sm) 0 0 var(--r-sm);
+}
+
+.programs-board-table th:last-child {
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+}
+
+.programs-board-row {
+  border-bottom: 1.5px solid rgba(250, 246, 238, 0.18);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  outline: none;
+}
+
+.programs-board-row:hover,
+.programs-board-row:focus {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.programs-board-table td {
+  padding: 1.25rem;
+  vertical-align: middle;
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+}
+
+.programs-board-cell--program {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.programs-board-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--paper);
+  flex-shrink: 0;
+}
+
+.programs-board-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--sunny);
+}
+
+.programs-board-val {
+  color: var(--paper);
+  line-height: 1.4;
+}
+
+.programs-board-cell--focus {
+  max-width: 240px;
+}
+
+/* Phone Stacked Departure Board (Semantic Table) */
+@media (max-width: 767px) {
+  .programs-board-frame {
+    padding: 1rem;
+    overflow: visible;
+  }
+
+  .programs-board-table,
+  .programs-board-table tbody,
+  .programs-board-table tr,
+  .programs-board-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .programs-board-table thead {
+    display: none;
+  }
+
+  .programs-board-row {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--sunny);
+    border-radius: var(--r-md);
+    margin-bottom: 1.25rem;
+    padding: 1.25rem;
+  }
+
+  .programs-board-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .programs-board-table td:last-child {
+    border-bottom: none;
+  }
+
+  .programs-board-table td::before {
+    content: attr(data-label);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--sunny);
+    flex-shrink: 0;
+    margin-right: 1rem;
+  }
+
+  .programs-board-cell--program {
+    justify-content: space-between;
+  }
+
+  .programs-board-cell--focus {
+    max-width: none;
+    text-align: right;
+  }
+}
+
+.programs-board-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.programs-board-footer__note {
+  font-family: var(--font-body);
+  color: rgba(250, 246, 238, 0.85);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Section 5: Luggage Tags (Curriculum Areas)
+   -------------------------------------------------------------------------- */
+.programs-luggage-section {
+  position: relative;
+  overflow-x: clip;
+}
+
+.programs-luggage-rail {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  position: relative;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 0;
+  z-index: 5;
+}
+
+.programs-luggage-rope {
+  width: 100%;
+  height: 8px;
+  background-color: var(--ink);
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 var(--sunny);
+}
+
+.programs-luggage-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: -3px; /* Flush against the rod with zero gap */
+  padding-top: 0;
+  position: relative;
+}
+
+.programs-luggage-col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2.5rem, 4.5vw, 3.5rem);
+  width: 100%;
+}
+
+/* Continuous long rope from rail running BEHIND upper card down to lower card */
+.programs-luggage-long-rope {
+  position: absolute;
+  top: 0; /* Directly attached to the horizontal rod */
+  bottom: 60px; /* Terminates inside the lower card eyelet behind its body */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  border-left: 2.5px solid var(--ink);
+  z-index: 1; /* BEHIND upper card body (which is z-index: 3) */
+  pointer-events: none;
+}
+
+@media (max-width: 900px) and (min-width: 768px) {
+  .programs-luggage-track {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .programs-luggage-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    padding-inline: var(--gutter);
+    margin-inline: calc(-1 * var(--gutter));
+    padding-bottom: 1.5rem;
+    scrollbar-width: none;
+    margin-top: 0;
+  }
+  .programs-luggage-track::-webkit-scrollbar {
+    display: none;
+  }
+  .programs-luggage-col {
+    display: contents;
+  }
+  .programs-luggage-long-rope {
+    display: none;
+  }
+  .programs-luggage-item {
+    flex: 0 0 260px;
+    scroll-snap-align: center;
+  }
+  .programs-luggage-item--lower .programs-luggage-string {
+    display: block !important;
+  }
+}
+
+.programs-luggage-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  transition: transform 0.3s ease;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.programs-luggage-item--upper .programs-luggage-string {
+  width: 3px;
+  height: var(--string-len, 36px);
+  border-left: 2.5px solid var(--ink);
+  margin-bottom: -6px; /* Sits directly flush with rod and eyelet */
+}
+
+/* On desktop, lower card's string is hidden because the long rope already feeds it from behind */
+.programs-luggage-item--lower .programs-luggage-string {
+  display: none;
+}
+
+.programs-luggage-tag {
+  position: relative;
+  width: 100%;
+  border: var(--outline);
+  border-radius: 24px;
+  box-shadow: var(--shadow-sticker);
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.65rem;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  z-index: 3;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .programs-luggage-item:hover .programs-luggage-tag,
+  .programs-luggage-item:focus .programs-luggage-tag {
+    box-shadow: var(--shadow-sticker-hover);
+  }
+}
+
+.programs-luggage-eyelet {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--paper);
+  border: 2.5px solid var(--ink);
+  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.25rem;
+}
+
+.programs-luggage-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--paper);
+  border: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.programs-luggage-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.programs-luggage-desc {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--ink);
+  opacity: 0.85;
+  margin: 0;
+}
+
+.programs-luggage-action {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* --------------------------------------------------------------------------
+   Section 6: Ticket Steps (How Admission Works)
+   -------------------------------------------------------------------------- */
+.programs-big-ticket {
+  position: relative;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.programs-big-ticket__notch {
+  position: absolute;
+  top: 50%;
+  width: 32px;
+  height: 32px;
+  background-color: var(--tint-mint);
+  border: var(--outline);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+.programs-big-ticket__notch.notch-left {
+  left: -16px;
+}
+
+.programs-big-ticket__notch.notch-right {
+  right: -16px;
+}
+
+.programs-big-ticket__stubs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+
+@media (max-width: 991px) and (min-width: 641px) {
+  .programs-big-ticket__stubs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .programs-big-ticket__stubs {
+    grid-template-columns: 1fr;
+  }
+}
+
+.programs-ticket-stub {
+  position: relative;
+  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: transform 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .programs-ticket-stub:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.programs-ticket-stub__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.programs-ticket-stub__badge {
+  font-family: var(--font-note);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--tangerine);
+}
+
+.programs-ticket-stub__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-sm);
+  background-color: var(--tint-yellow);
+  border: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.programs-ticket-stub__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.2;
+  margin: 0.25rem 0 0 0;
+}
+
+.programs-ticket-stub__text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+}
+
+.programs-ticket-perforation {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 2.5px;
+  border-right: 2px solid rgba(30, 27, 75, 0.25);
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .programs-ticket-perforation {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 2.5px;
+    border-right: none;
+    border-bottom: 2px solid rgba(30, 27, 75, 0.25);
+  }
+}
+
+.programs-ticket-steps__action {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Section 7: Program FAQs
+   -------------------------------------------------------------------------- */
+.programs-faqs-accordion-wrap {
+  margin-top: 2rem;
+}
+
+.programs-faqs-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.programs-faqs-footer__text {
+  font-family: var(--font-note);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion Overrides
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .programs-smoke-puff {
+    animation: none !important;
+  }
+  .programs-luggage-item {
+    transform: none !important;
+  }
+  .programs-vtrain {
+    transition: none !important;
+  }
+}

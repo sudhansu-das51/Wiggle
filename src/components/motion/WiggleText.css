@@ -1,0 +1,36 @@
+.wiggle-text {
+  display: inline;
+  position: relative;
+}
+
+.wiggle-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.wiggle-char {
+  display: inline-block;
+  will-change: transform;
+  transform-origin: center bottom;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.wiggle-text:hover .wiggle-char {
+  animation: charWobble 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes charWobble {
+  0% { transform: rotate(var(--base-rot, 0deg)) translateY(0); }
+  25% { transform: rotate(calc(var(--base-rot, 0deg) - 4deg)) translateY(-3px); }
+  50% { transform: rotate(calc(var(--base-rot, 0deg) + 4deg)) translateY(1px); }
+  75% { transform: rotate(calc(var(--base-rot, 0deg) - 2deg)) translateY(-1px); }
+  100% { transform: rotate(var(--base-rot, 0deg)) translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wiggle-char {
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}

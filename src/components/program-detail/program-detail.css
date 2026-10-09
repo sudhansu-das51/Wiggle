@@ -1,0 +1,1061 @@
+/* ==========================================================================
+   PROGRAM DETAIL PAGE COMPONENT STYLES
+   All classes prefixed with .pd-
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Visibility Utilities
+   -------------------------------------------------------------------------- */
+.pd-desktop-only {
+  display: block;
+}
+
+.pd-mobile-only {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .pd-desktop-only {
+    display: none !important;
+  }
+  .pd-mobile-only {
+    display: flex !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Section 1: Hero & Fact Stickers
+   -------------------------------------------------------------------------- */
+.pd-hero-wrapper {
+  position: relative;
+  overflow-x: clip;
+}
+
+.pd-fact-stickers-container {
+  position: relative;
+  z-index: 10;
+  margin-top: -3.5rem;
+  padding-bottom: 2rem;
+}
+
+.pd-fact-stickers-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(0.75rem, 1.8vw, 1.5rem);
+}
+
+@media (max-width: 1023px) and (min-width: 641px) {
+  .pd-fact-stickers-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .pd-fact-stickers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: -2.5rem;
+  }
+}
+
+.pd-fact-sticker {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sticker);
+  padding: 1.1rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pd-fact-sticker:hover {
+    transform: translateY(-4px) rotate(0deg) !important;
+    box-shadow: var(--shadow-sticker-hover);
+  }
+}
+
+.pd-fact-sticker__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: var(--pd-tint, var(--tint-yellow));
+  border: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.pd-fact-sticker__content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pd-fact-sticker__label {
+  font-family: var(--font-note);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+  opacity: 0.85;
+  line-height: 1.2;
+}
+
+.pd-fact-sticker__value {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.25;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* --------------------------------------------------------------------------
+   Section 2: Sticky Section Tabs
+   -------------------------------------------------------------------------- */
+.pd-section-tabs-bar {
+  position: sticky;
+  top: var(--nav-bottom, var(--nav-h, 72px));
+  z-index: 35;
+  background-color: rgba(250, 246, 238, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(35, 42, 92, 0.15);
+  padding-block: 0.65rem;
+  transition: top 0.2s ease;
+}
+
+.pd-section-tabs-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pd-section-tabs-track {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-pill);
+  padding: 0.35rem;
+  box-shadow: var(--shadow-sticker);
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.pd-section-tabs-track::-webkit-scrollbar {
+  display: none;
+}
+
+.pd-tab-btn {
+  position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 0.6rem 1.15rem;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.pd-tab-pill-bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--pd-tint, var(--sunny));
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-pill);
+  box-shadow: 2px 2px 0 var(--ink);
+  z-index: 1;
+}
+
+.pd-tab-label {
+  position: relative;
+  z-index: 2;
+}
+
+.pd-tab-btn:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Section 3: Program Overview
+   -------------------------------------------------------------------------- */
+.pd-overview-section {
+  position: relative;
+  overflow-x: clip;
+}
+
+.pd-overview-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .pd-overview-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pd-overview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pd-overview-summary {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--ink);
+  margin: 0;
+}
+
+.pd-overview-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.pd-highlight-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.pd-highlight-icon-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: var(--pd-tint, var(--tint-yellow));
+  border: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.pd-highlight-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.pd-overview-focus-box {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pd-overview-focus-tag {
+  font-family: var(--font-note);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--tangerine);
+}
+
+.pd-overview-focus-text {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Overview Visual with Arch & Giant Numeral */
+.pd-overview-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 420px;
+}
+
+.pd-giant-age-numeral {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(6.5rem, 14vw, 11rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--paper);
+  -webkit-text-stroke: 3px var(--ink);
+  opacity: 0.35;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pd-arch-card {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 340px);
+}
+
+.pd-arch-tape {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 90px;
+  height: 28px;
+  z-index: 4;
+}
+
+.pd-peeking-mascot {
+  position: absolute;
+  top: -42px;
+  right: -24px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Section 4: A Day in Class (The Clock)
+   -------------------------------------------------------------------------- */
+.pd-day-section {
+  position: relative;
+  overflow-x: clip;
+}
+
+.pd-day-layout {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2.5rem;
+}
+
+.pd-routine-col {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.pd-routine-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pd-routine-card {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: 1.6rem 1.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
+  opacity: 1;
+  outline: none;
+  cursor: pointer;
+}
+
+.pd-routine-card:hover,
+.pd-routine-card:focus-visible,
+.pd-routine-card.is-active {
+  opacity: 1;
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-sticker-hover);
+  border-color: var(--sunny);
+  border-width: 3px;
+  background-color: #FFFDF7;
+}
+
+.pd-routine-card.is-active .pd-routine-time-badge {
+  background-color: var(--sunny);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.pd-routine-card__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pd-routine-time-badge {
+  background-color: var(--pd-tint, var(--tint-yellow));
+  border: 1.5px solid var(--ink);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.pd-routine-card__title,
+.pd-routine-card h3.pd-routine-card__title,
+.pd-day-section .pd-routine-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--ink) !important;
+  margin: 0;
+}
+
+.pd-routine-card__text,
+.pd-routine-card p,
+.pd-day-section .pd-routine-card p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink) !important;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   Section 5: What Your Child Will Learn (Sticker Chart)
+   -------------------------------------------------------------------------- */
+.pd-learning-section {
+  position: relative;
+  background-color: var(--pd-tint, var(--tint-yellow));
+  overflow-x: clip;
+}
+
+.pd-reward-board {
+  position: relative;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(1.5rem, 3.5vw, 3rem);
+  margin-top: 2.5rem;
+  transform: rotate(-0.4deg);
+}
+
+.pd-chart-rows-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.pd-chart-row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: center;
+  padding-bottom: 2rem;
+  border-bottom: 1.5px solid rgba(35, 42, 92, 0.15);
+}
+
+.pd-chart-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .pd-chart-row {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.pd-chart-row__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.pd-chart-row__icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-md);
+  border: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.pd-chart-row__title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 0.25rem 0;
+}
+
+.pd-chart-row__desc {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 0;
+}
+
+.pd-chart-row__stickers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.pd-skill-sticker {
+  border: var(--outline);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-sticker);
+  padding: 0.55rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: default;
+}
+
+.pd-skill-star {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pd-learning-action {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* --------------------------------------------------------------------------
+   Section 6: The Teachers (Lanyard ID Badges)
+   -------------------------------------------------------------------------- */
+.pd-teachers-section {
+  position: relative;
+  overflow-x: clip;
+}
+
+.pd-lanyard-badges-track {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1.5rem, 3.5vw, 3rem);
+  margin-top: 2.5rem;
+}
+
+.pd-lanyard-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+}
+
+.pd-lanyard-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pd-lanyard-strap {
+  width: 22px;
+  height: var(--strap-len, 36px);
+  background: repeating-linear-gradient(
+    45deg,
+    var(--ink),
+    var(--ink) 6px,
+    var(--sunny) 6px,
+    var(--sunny) 12px
+  );
+  border-left: 2px solid var(--ink);
+  border-right: 2px solid var(--ink);
+}
+
+.pd-lanyard-clip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -1px;
+}
+
+.pd-lanyard-clip__ring {
+  width: 14px;
+  height: 8px;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  background-color: #D3C3A3;
+}
+
+.pd-lanyard-clip__hook {
+  width: 6px;
+  height: 10px;
+  background-color: var(--ink);
+}
+
+.pd-id-badge {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: 1.5rem 1.25rem;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transform-origin: top center;
+  outline: none;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease;
+}
+
+.pd-id-badge:hover,
+.pd-id-badge:focus {
+  box-shadow: var(--shadow-sticker-hover);
+}
+
+.pd-id-badge__slot {
+  width: 32px;
+  height: 7px;
+  border-radius: 4px;
+  background-color: var(--ink);
+  margin-bottom: 0.9rem;
+}
+
+.pd-id-badge__photo-frame {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--pd-tint, var(--tint-yellow));
+  border: var(--outline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.pd-id-badge__name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+}
+
+.pd-id-badge__role {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--muted);
+  margin: 0.2rem 0 0.5rem 0;
+}
+
+.pd-id-badge__exp {
+  background-color: var(--tint-yellow);
+  border: 1.5px solid var(--ink);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.pd-id-badge__fact-box {
+  background-color: rgba(255, 201, 60, 0.25);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-sm);
+  padding: 0.5rem 0.65rem;
+  font-family: var(--font-note);
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-top: 0.85rem;
+  text-align: left;
+}
+
+.pd-teachers-action {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* --------------------------------------------------------------------------
+   Section 7: Pack the Bag (Backpack Checklist)
+   -------------------------------------------------------------------------- */
+.pd-pack-section {
+  position: relative;
+  background-color: var(--pd-tint-alt, var(--tint-sky));
+  overflow-x: clip;
+}
+
+.pd-pack-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  margin-top: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .pd-pack-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pd-backpack-card {
+  position: relative;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pd-backpack-mascot {
+  position: absolute;
+  top: -36px;
+  right: -18px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.pd-backpack-svg {
+  filter: drop-shadow(3px 4px 0 var(--ink));
+}
+
+.pd-backpack-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.pd-backpack-count {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  background-color: var(--paper);
+  border: 1.5px solid var(--ink);
+}
+
+.pd-backpack-celebrate {
+  font-family: var(--font-note);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--meadow);
+  margin: 0;
+  text-align: center;
+}
+
+.pd-checklist-frame {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.pd-checklist-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 1.25rem 0;
+}
+
+.pd-checklist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.pd-checklist-label {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  cursor: pointer;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--r-md);
+  border: 1.5px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  user-select: none;
+}
+
+.pd-checklist-label:hover {
+  background-color: rgba(35, 42, 92, 0.04);
+}
+
+.pd-checklist-label.is-checked {
+  background-color: rgba(47, 163, 107, 0.1);
+  border-color: rgba(47, 163, 107, 0.35);
+}
+
+.pd-checklist-box {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 2.5px solid var(--ink);
+  background-color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: background-color 0.2s ease;
+}
+
+.pd-checklist-label.is-checked .pd-checklist-box {
+  background-color: var(--sunny);
+}
+
+.pd-checklist-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+/* Good to Know Panel */
+.pd-good-to-know {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  margin-top: 1.5rem;
+}
+
+.pd-good-to-know__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 1rem 0;
+}
+
+.pd-good-to-know__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1.5px solid rgba(35, 42, 92, 0.15);
+}
+
+.pd-gtk-label {
+  display: block;
+  font-family: var(--font-note);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--tangerine);
+}
+
+.pd-gtk-val {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0.2rem 0 0 0;
+}
+
+.pd-good-to-know__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.pd-gtk-fee-note {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin: 0;
+  max-width: 38ch;
+}
+
+/* --------------------------------------------------------------------------
+   Section 8: Program Questions (FAQs)
+   -------------------------------------------------------------------------- */
+.pd-questions-section {
+  position: relative;
+  overflow-x: clip;
+}
+
+.pd-questions-accordion-wrap {
+  max-width: 780px;
+  margin: 2.5rem auto 0 auto;
+}
+
+.pd-questions-footer {
+  text-align: center;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pd-questions-footer__prompt {
+  font-family: var(--font-note);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Section 9: Station Navigation (Previous / Next Tickets)
+   -------------------------------------------------------------------------- */
+.pd-station-nav-section {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  background-color: var(--paper);
+  border-top: 2px solid rgba(35, 42, 92, 0.15);
+}
+
+.pd-station-nav-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+@media (max-width: 640px) {
+  .pd-station-nav-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pd-ticket-link {
+  position: relative;
+  display: flex;
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: 1.5rem 1.75rem;
+  text-decoration: none;
+  color: var(--ink);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pd-ticket-link:hover {
+    box-shadow: var(--shadow-sticker-hover);
+    transform: translateY(-3px) rotate(-1deg);
+  }
+  .pd-ticket-link--next:hover {
+    transform: translateY(-3px) rotate(1deg);
+  }
+}
+
+.pd-ticket-notch {
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.pd-notch-left {
+  left: -12px;
+}
+
+.pd-notch-right {
+  right: -12px;
+}
+
+.pd-ticket-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 100%;
+}
+
+.pd-ticket-sub {
+  font-family: var(--font-note);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--tangerine);
+}
+
+.pd-ticket-main {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.pd-ticket-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.pd-ticket-age {
+  align-self: flex-start;
+  background-color: var(--paper);
+  border: 1.5px solid var(--ink);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   Not Found State
+   -------------------------------------------------------------------------- */
+.pd-not-found-page {
+  position: relative;
+  overflow-x: clip;
+}
+
+.pd-not-found-body {
+  padding-block: var(--section-pad);
+}
+
+.pd-not-found-card {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.pd-not-found-text {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}

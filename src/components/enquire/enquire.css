@@ -1,0 +1,1094 @@
+/* ==========================================================================
+   WIGGLE PRESCHOOL — ENQUIRE NOW COMPONENT STYLES
+   Prefix: enq-
+   Design tokens: --ink, --paper, --tangerine, --meadow, --bubblegum, --sunny,
+                  --sky, --muted, --tint-*, --font-display, --font-body,
+                  --font-note, --outline, --shadow-sticker, --r-sm/md/lg/pill
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. THE WIZARD CARD & TAPE & PEEKING MASCOT
+   -------------------------------------------------------------------------- */
+.enq-wizard-card {
+  position: relative;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: 2.25rem 2rem 2.5rem;
+  transform: rotate(-0.5deg);
+  overflow: visible;
+  transition: transform 0.3s ease;
+}
+
+/* Washi tape over the top center edge */
+.enq-wizard-card__tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(1deg);
+  width: 104px;
+  height: 24px;
+  background-color: rgba(254, 240, 138, 0.85);
+  border-left: 1.5px solid rgba(35, 42, 92, 0.2);
+  border-right: 1.5px solid rgba(35, 42, 92, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(35, 42, 92, 0.15);
+  box-shadow: 0 2px 4px rgba(35, 42, 92, 0.1);
+  z-index: 4;
+}
+
+/* Wig Mascot peeking over the top-right corner */
+.enq-wizard-card__peek-mascot {
+  position: absolute;
+  top: -42px;
+  right: 28px;
+  z-index: 5;
+  pointer-events: none;
+  filter: drop-shadow(2px 2px 0px var(--ink));
+}
+
+.enq-wizard-form {
+  position: relative;
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   2. BUS PROGRESS & ROAD & GATE (Section 2)
+   -------------------------------------------------------------------------- */
+.enq-progress {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2.5rem;
+  padding: 0.5rem 0.5rem 1.25rem;
+  user-select: none;
+}
+
+.enq-road {
+  position: relative;
+  width: 100%;
+  height: 64px;
+}
+
+/* The physical road strip */
+.enq-road__track {
+  position: absolute;
+  top: 26px;
+  left: 0;
+  width: calc(100% - 32px);
+  height: 12px;
+  background-color: var(--ink);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.15);
+}
+
+.enq-road__line--solid {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--paper) 0,
+    var(--paper) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  opacity: 0.5;
+}
+
+.enq-road__line--visited {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--sunny);
+  opacity: 0.25;
+  transition: width 0.3s ease;
+}
+
+/* Mini Bus Holder */
+.enq-road__bus-holder {
+  position: absolute;
+  top: -4px;
+  z-index: 6;
+  transform: translate(-50%, 0);
+  pointer-events: none;
+}
+
+.enq-minibus {
+  display: inline-block;
+  will-change: transform;
+}
+
+.enq-minibus__svg {
+  display: block;
+  filter: drop-shadow(0 2px 3px rgba(35, 42, 92, 0.2));
+}
+
+/* Stepper Stops */
+.enq-stops {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+.enq-stop {
+  position: absolute;
+  top: 22px;
+  transform: translate(-50%, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.enq-stop__sign {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--r-pill);
+  background-color: var(--paper);
+  border: 2.5px solid var(--ink);
+  box-shadow: 1px 1px 0px var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.enq-stop__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--r-pill);
+  background-color: var(--ink);
+  opacity: 0.3;
+}
+
+.enq-stop.is-completed .enq-stop__sign {
+  background-color: var(--meadow);
+  border-color: var(--ink);
+}
+
+.enq-stop.is-completed .enq-stop__dot {
+  background-color: var(--paper);
+  opacity: 1;
+}
+
+.enq-stop.is-current .enq-stop__sign {
+  background-color: var(--sunny);
+  transform: scale(1.15);
+}
+
+.enq-stop.is-current .enq-stop__dot {
+  background-color: var(--ink);
+  opacity: 1;
+}
+
+.enq-stop__label {
+  font-family: var(--font-note);
+  font-size: 0.8125rem;
+  color: var(--ink);
+  white-space: nowrap;
+  pointer-events: auto;
+  transition: opacity 0.2s ease, font-weight 0.2s ease;
+}
+
+.enq-stop.is-current .enq-stop__label {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.enq-stop__number {
+  opacity: 0.65;
+}
+
+/* School Building & Gate at road end */
+.enq-school-gate {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  width: 44px;
+  height: 58px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  perspective: 400px;
+}
+
+.enq-school-building {
+  position: relative;
+  width: 32px;
+  height: 26px;
+  background-color: var(--bubblegum);
+  border: 2px solid var(--ink);
+  border-radius: 4px 4px 0 0;
+  box-shadow: 2px 2px 0px var(--ink);
+}
+
+.enq-school-roof {
+  position: absolute;
+  top: -8px;
+  left: -4px;
+  width: 36px;
+  height: 8px;
+  background-color: var(--tangerine);
+  border: 2px solid var(--ink);
+  border-radius: 3px;
+}
+
+.enq-school-flag {
+  position: absolute;
+  top: -18px;
+  left: 14px;
+  width: 8px;
+  height: 6px;
+  background-color: var(--sunny);
+  border: 1.5px solid var(--ink);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.enq-school-flag::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 2px;
+  height: 12px;
+  background-color: var(--ink);
+}
+
+.enq-gate-doors {
+  position: absolute;
+  bottom: 0;
+  width: 38px;
+  height: 26px;
+  display: flex;
+  justify-content: space-between;
+  transform-style: preserve-3d;
+}
+
+.enq-gate-door {
+  width: 17px;
+  height: 24px;
+  background-color: var(--sky);
+  border: 2px solid var(--ink);
+  border-radius: 2px;
+  box-shadow: 1px 1px 0px var(--ink);
+  will-change: transform;
+}
+
+.enq-gate-door--left {
+  transform-origin: 0% 50%;
+}
+
+.enq-gate-door--right {
+  transform-origin: 100% 50%;
+}
+
+/* --------------------------------------------------------------------------
+   3. STEP PANELS & FORM FIELDS STACK
+   -------------------------------------------------------------------------- */
+.enq-step-container {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+}
+
+.enq-step-panel {
+  width: 100%;
+}
+
+.enq-step-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 1.85rem);
+  color: var(--ink);
+  margin: 0 0 0.35rem 0;
+  outline: none;
+}
+
+.enq-step-heading:focus,
+.enq-step-heading:focus-visible {
+  outline: none;
+}
+
+.enq-step-subtext {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--muted);
+  margin: 0 0 1.75rem 0;
+  line-height: 1.45;
+}
+
+.enq-fields-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Error Summary alert */
+.enq-error-summary {
+  background-color: var(--tint-pink);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  outline: none;
+}
+
+.enq-error-summary:focus-visible {
+  outline: 3px solid var(--tangerine);
+}
+
+.enq-error-summary__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--ink);
+  margin: 0 0 0.5rem 0;
+}
+
+.enq-error-summary__list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.enq-error-summary__item {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+
+/* Step 2 Child Program Badge & Suggestions */
+.enq-program-chip-wrap {
+  margin-bottom: 1.25rem;
+}
+
+.enq-program-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  background-color: var(--tint-yellow);
+  border: var(--outline);
+  border-radius: var(--r-pill);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.enq-program-chip__link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+  margin-left: 0.25rem;
+}
+
+.enq-program-suggestion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background-color: var(--tint-mint);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  padding: 0.65rem 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.enq-program-suggestion__text {
+  font-family: var(--font-note);
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+
+.enq-program-suggestion__btn {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-pill);
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+  box-shadow: 1px 1px 0px var(--ink);
+  white-space: nowrap;
+}
+
+.enq-program-suggestion__btn:hover {
+  background-color: var(--sunny);
+}
+
+/* Step 3 Visit Details Box */
+.enq-visit-details-box {
+  background-color: var(--tint-sky);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.enq-textarea-wrap {
+  position: relative;
+}
+
+.enq-textarea-counter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.25rem;
+  font-family: var(--font-note);
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.enq-textarea-counter.is-warning {
+  color: var(--tangerine);
+  font-weight: 700;
+}
+
+.enq-consent-wrap {
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. STEP 4 — SEND / TICKET-STYLE REVIEW
+   -------------------------------------------------------------------------- */
+.enq-ticket {
+  position: relative;
+  background-color: #FAF8F2;
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: 2px 2px 0px var(--ink);
+  padding: 1.5rem 1.65rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.enq-ticket__section {
+  position: relative;
+}
+
+.enq-ticket__section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.enq-ticket__section-title {
+  font-family: var(--font-note);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.enq-ticket__edit-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--r-sm);
+}
+
+.enq-ticket__edit-btn:hover {
+  background-color: var(--tint-yellow);
+}
+
+.enq-ticket__data-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.enq-ticket__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.65rem;
+  font-size: 0.9375rem;
+}
+
+.enq-ticket__label {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--muted);
+  min-width: 130px;
+}
+
+.enq-ticket__val {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.enq-ticket__row--message {
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.enq-ticket__row--message .enq-ticket__val {
+  font-weight: 400;
+  font-size: 0.875rem;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-sm);
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.enq-ticket__perforation {
+  width: 100%;
+  height: 1px;
+  border-top: 1.5px solid rgba(35, 42, 92, 0.25);
+  margin: 1.15rem 0;
+}
+
+.enq-review-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .enq-review-actions {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.enq-review-actions__primary {
+  flex: 1;
+}
+
+.enq-review-actions__ghost {
+  flex: 1;
+}
+
+.enq-review-disclaimer {
+  font-family: var(--font-note);
+  font-size: 0.875rem;
+  color: var(--muted);
+  text-align: center;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   5. ACTION BAR (Back & Next)
+   -------------------------------------------------------------------------- */
+.enq-action-bar {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1.5px solid rgba(35, 42, 92, 0.2);
+}
+
+.enq-action-bar__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.enq-action-bar__spacer {
+  display: inline-block;
+  width: 1px;
+}
+
+.enq-action-bar__next {
+  min-width: 120px;
+}
+
+/* Sticky on phones (<768px) */
+@media (max-width: 767px) {
+  .enq-action-bar {
+    position: sticky;
+    bottom: 0;
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+    margin-bottom: -1.5rem;
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem calc(1rem + env(safe-area-inset-bottom, 0px));
+    background-color: var(--paper);
+    border-top: var(--outline);
+    box-shadow: 0 -4px 12px rgba(35, 42, 92, 0.08);
+    z-index: 10;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. SUCCESS PANEL & BLOCK RAIN (Section 2)
+   -------------------------------------------------------------------------- */
+.enq-success-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 0 0;
+}
+
+.enq-success-mascot {
+  margin-bottom: 0.75rem;
+  filter: drop-shadow(2px 2px 0px var(--ink));
+}
+
+.enq-success-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--ink);
+  margin: 0 0 0.5rem 0;
+  outline: none;
+}
+
+.enq-success-text {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  color: var(--ink);
+  max-width: 480px;
+  line-height: 1.5;
+  margin: 0 0 1.25rem 0;
+}
+
+.enq-success-fallback {
+  margin-bottom: 1.25rem;
+}
+
+.enq-success-actions {
+  margin-bottom: 0.75rem;
+}
+
+.enq-success-reset-btn {
+  font-size: 0.9375rem;
+}
+
+.enq-success-note {
+  font-family: var(--font-note);
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin: 0 0 1.5rem 0;
+}
+
+.enq-success-blocks-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  border-top: 1.5px solid rgba(35, 42, 92, 0.25);
+  margin-top: 1rem;
+  border-radius: 0 0 var(--r-md) var(--r-md);
+  overflow: hidden;
+}
+
+.enq-block-rain-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.enq-block-rain-canvas:active {
+  cursor: grabbing;
+}
+
+/* --------------------------------------------------------------------------
+   7. ENQUIRY ASIDE (Section 2)
+   -------------------------------------------------------------------------- */
+.enq-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .enq-aside {
+    position: sticky;
+    top: calc(var(--nav-h, 72px) + 2rem);
+  }
+}
+
+/* 1. Admissions Badge Sticker */
+.enq-badge-wrap {
+  align-self: flex-start;
+  transform: rotate(-2deg);
+  margin-bottom: -0.25rem;
+}
+
+.enq-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--sunny);
+  border: var(--outline);
+  border-radius: var(--r-pill);
+  padding: 0.45rem 1.15rem;
+  box-shadow: 2px 2px 0px var(--ink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.enq-badge__text {
+  font-family: var(--font-note);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* 2. Aside Cards */
+.enq-aside-card {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: 1.75rem 1.6rem;
+  position: relative;
+}
+
+.enq-aside-card__header {
+  margin-bottom: 1.25rem;
+}
+
+.enq-aside-card__title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--ink);
+  margin: 0 0 0.35rem 0;
+  line-height: 1.2;
+}
+
+.enq-aside-card__subtext {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Admission Step Ticket Stubs */
+.enq-stubs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.enq-stub {
+  position: relative;
+  background-color: #FAF8F2;
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: 2px 2px 0px var(--ink);
+  padding: 0.95rem 1.15rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.95rem;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .enq-stub:hover {
+    transform: translateY(-2px);
+    box-shadow: 2px 4px 0px var(--ink);
+    background-color: #FFFDF9;
+  }
+}
+
+.enq-stub__leading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  padding-top: 0.1rem;
+}
+
+.enq-stub__num {
+  font-family: var(--font-note);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  opacity: 0.75;
+}
+
+.enq-stub__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-pill);
+  background-color: var(--tint-yellow);
+  border: 1.5px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 0px var(--ink);
+}
+
+.enq-stub__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.enq-stub__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--ink);
+  margin: 0 0 0.25rem 0;
+  line-height: 1.25;
+}
+
+.enq-stub__text {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--ink);
+  opacity: 0.85;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Prefer to talk? Call Postcard */
+.enq-call-postcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.enq-call-postcard__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.85rem;
+}
+
+.enq-call-postcard__info {
+  flex: 1;
+}
+
+.enq-call-postcard__title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--ink);
+  margin: 0 0 0.35rem 0;
+  line-height: 1.2;
+}
+
+.enq-call-postcard__desc {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.enq-call-postcard__stamp {
+  width: 44px;
+  height: 50px;
+  background-color: var(--tint-yellow);
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transform: rotate(3deg);
+  box-shadow: 2px 2px 0px var(--ink);
+}
+
+.enq-call-postcard__details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  background-color: var(--tint-sky);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-md);
+}
+
+.enq-call-postcard__phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.enq-call-postcard__phone-link:hover {
+  color: var(--tangerine);
+  transform: translateX(2px);
+}
+
+.enq-open-status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-note);
+  font-size: 0.785rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--ink);
+  background-color: var(--paper);
+}
+
+.enq-open-status-chip--open {
+  color: var(--meadow);
+}
+
+.enq-open-status-chip--closed {
+  color: var(--muted);
+}
+
+.enq-open-status-chip__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  animation: enq-pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes enq-pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: 0.65; }
+}
+
+.enq-call-postcard__action {
+  margin-top: 0.25rem;
+}
+
+.enq-call-btn {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   8. FAQS SECTION (Section 3)
+   -------------------------------------------------------------------------- */
+.enq-faqs-section {
+  position: relative;
+  padding: 5rem 0 6rem;
+}
+
+.enq-faqs-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 3rem;
+}
+
+.enq-faqs-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.2vw, 2.5rem);
+  color: var(--ink);
+  margin: 0 0 0.6rem 0;
+  line-height: 1.15;
+}
+
+.enq-faqs-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.enq-faqs-accordion {
+  margin-bottom: 2.5rem;
+}
+
+.enq-faqs-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.enq-faqs-footer__text {
+  font-family: var(--font-note);
+  font-size: 1rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   9. RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 639px) {
+  .enq-wizard-card {
+    padding: 1.5rem 1rem 1.75rem;
+    transform: none;
+  }
+
+  .enq-stop__label {
+    display: none;
+  }
+
+  .enq-stop.is-current .enq-stop__label {
+    display: block;
+    position: absolute;
+    top: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper);
+    padding: 1px 6px;
+    border-radius: var(--r-pill);
+    border: 1px solid var(--ink);
+    box-shadow: 1px 1px 0px var(--ink);
+  }
+
+  .enq-school-gate {
+    width: 32px;
+  }
+
+  .enq-school-building {
+    width: 24px;
+    height: 20px;
+  }
+
+  .enq-ticket {
+    padding: 1.25rem 1rem;
+  }
+
+  .enq-ticket__label {
+    min-width: 100px;
+    font-size: 0.8125rem;
+  }
+
+  .enq-ticket__val {
+    font-size: 0.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enq-wizard-card {
+    transform: none !important;
+  }
+
+  .enq-stub {
+    transition: none !important;
+  }
+
+  .enq-minibus {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Playful Decor Floating Elements (Organic, Slow Flow Animation)
+   ========================================================================== */
+.playful-decor-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.playful-decor-item {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(2px 2px 0 rgba(35, 42, 92, 0.16));
+  will-change: transform;
+}
+
+/* Organic, slow, gentle drifting flows */
+.playful-flow--1 {
+  animation: playfulFloat1 7.2s ease-in-out infinite alternate;
+}
+
+.playful-flow--2 {
+  animation: playfulFloat2 8.4s ease-in-out infinite alternate;
+}
+
+.playful-flow--3 {
+  animation: playfulFloat3 6.8s ease-in-out infinite alternate;
+}
+
+.playful-flow--4 {
+  animation: playfulFloat4 7.8s ease-in-out infinite alternate;
+}
+
+@keyframes playfulFloat1 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-10px, -14px) rotate(4deg);
+  }
+  100% {
+    transform: translate(6px, -6px) rotate(-3deg);
+  }
+}
+
+@keyframes playfulFloat2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(12px, -12px) rotate(-5deg);
+  }
+  100% {
+    transform: translate(-6px, 8px) rotate(4deg);
+  }
+}
+
+@keyframes playfulFloat3 {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(-8px, 10px) scale(1.06) rotate(6deg);
+  }
+  100% {
+    transform: translate(10px, -8px) scale(0.97) rotate(-4deg);
+  }
+}
+
+@keyframes playfulFloat4 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(8px, 14px) rotate(-5deg);
+  }
+  100% {
+    transform: translate(-10px, -8px) rotate(3deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .playful-decor-item {
+    transform: scale(0.85);
+  }
+}
+
+@media (max-width: 640px) {
+  .playful-decor-item {
+    transform: scale(0.72);
+    opacity: 0.85;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .playful-flow--1,
+  .playful-flow--2,
+  .playful-flow--3,
+  .playful-flow--4 {
+    animation: none !important;
+  }
+}

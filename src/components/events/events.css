@@ -1,0 +1,1437 @@
+/* ==========================================================================
+   WIGGLE PRESCHOOL — EVENTS PAGE COMPONENT STYLES
+   Prefix: evt-
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Tint helpers
+   -------------------------------------------------------------------------- */
+.evt-tint--yellow {
+  background-color: var(--sunny) !important;
+  color: var(--ink) !important;
+}
+
+.evt-tint--pink {
+  background-color: var(--bubblegum) !important;
+  color: var(--ink) !important;
+}
+
+.evt-tint--mint {
+  background-color: var(--meadow) !important;
+  color: var(--ink) !important;
+}
+
+.evt-tint--sky {
+  background-color: var(--sky) !important;
+  color: var(--ink) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Event Actions (Buttons Row)
+   -------------------------------------------------------------------------- */
+.evt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.evt-action-btn {
+  font-size: 0.9375rem;
+  padding: 0.5rem 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Section 2: Next Up & Flip Countdown
+   -------------------------------------------------------------------------- */
+.evt-next-up {
+  position: relative;
+  overflow: clip;
+}
+
+.evt-next-up__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  gap: 1.25rem;
+}
+
+.evt-next-up__empty-text {
+  font-size: 1.25rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.evt-next-up__card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .evt-next-up__card {
+    grid-template-columns: 340px 1fr;
+    gap: 3.5rem;
+  }
+}
+
+.evt-next-up__left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Date Block with Metal Ring Binding */
+.evt-date-block-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 260px;
+  perspective: 900px;
+}
+
+.evt-ring-binding {
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 2.5rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.evt-ring-hole {
+  width: 24px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.evt-ring-svg {
+  overflow: visible;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.25));
+}
+
+.evt-date-block {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: 4px 5px 0 var(--ink);
+  overflow: hidden;
+  text-align: center;
+  transform-style: preserve-3d;
+}
+
+.evt-date-block__month-banner {
+  padding: 0.6rem 1rem;
+  border-bottom: var(--outline);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+}
+
+.evt-date-block__body {
+  padding: 1.25rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.8), transparent 70%), var(--paper);
+}
+
+.evt-date-block__day {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 8vw, 4.75rem);
+  line-height: 1;
+  color: var(--ink);
+}
+
+.evt-date-block__weekday {
+  font-family: var(--font-note);
+  font-size: 1.35rem;
+  color: var(--muted);
+}
+
+/* Split-Flap Countdown */
+.evt-next-up__countdown-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.evt-countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.evt-countdown__grid {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.evt-flip-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.evt-flip-card {
+  position: relative;
+  width: 68px;
+  height: 72px;
+  perspective: 400px;
+  border-radius: var(--r-sm);
+  background-color: var(--ink);
+  box-shadow: 2px 3px 0 rgba(35, 42, 92, 0.4);
+}
+
+@media (min-width: 640px) {
+  .evt-flip-card {
+    width: 76px;
+    height: 80px;
+  }
+}
+
+.evt-flip-half {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  background-color: var(--ink);
+  color: var(--paper);
+  display: flex;
+  justify-content: center;
+}
+
+.evt-flip-half--top {
+  top: 0;
+  border-top-left-radius: var(--r-sm);
+  border-top-right-radius: var(--r-sm);
+  align-items: flex-end;
+}
+
+.evt-flip-half--top span {
+  transform: translateY(50%);
+  font-family: var(--font-display);
+  font-size: 2.15rem;
+  line-height: 1;
+}
+
+.evt-flip-half--bottom {
+  bottom: 0;
+  border-bottom-left-radius: var(--r-sm);
+  border-bottom-right-radius: var(--r-sm);
+  align-items: flex-start;
+}
+
+.evt-flip-half--bottom span {
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 2.15rem;
+  line-height: 1;
+}
+
+.evt-flip-flap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  background-color: var(--ink);
+  color: var(--paper);
+  display: flex;
+  justify-content: center;
+  backface-visibility: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.evt-flip-flap--top {
+  top: 0;
+  border-top-left-radius: var(--r-sm);
+  border-top-right-radius: var(--r-sm);
+  align-items: flex-end;
+}
+
+.evt-flip-flap--top span {
+  transform: translateY(50%);
+  font-family: var(--font-display);
+  font-size: 2.15rem;
+  line-height: 1;
+}
+
+.evt-flip-flap--bottom {
+  bottom: 0;
+  border-bottom-left-radius: var(--r-sm);
+  border-bottom-right-radius: var(--r-sm);
+  align-items: flex-start;
+}
+
+.evt-flip-flap--bottom span {
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 2.15rem;
+  line-height: 1;
+}
+
+.evt-flip-split {
+  position: absolute;
+  top: calc(50% - 1px);
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: rgba(255, 247, 234, 0.25);
+  z-index: 5;
+}
+
+.evt-flip-label {
+  font-family: var(--font-note);
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.evt-countdown__live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1.25rem;
+  background-color: var(--bubblegum);
+  border: var(--outline);
+  border-radius: var(--r-pill);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.evt-countdown__pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--ink);
+  animation: evtPulse 1.4s infinite ease-in-out;
+}
+
+@keyframes evtPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+.evt-countdown__live-text {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+/* Right Column Details */
+.evt-next-up__right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.evt-next-up__meta {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.evt-next-up__title {
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  line-height: 1.2;
+  margin: 0;
+  color: var(--ink);
+}
+
+.evt-next-up__info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+  font-size: 1.0625rem;
+  color: var(--ink);
+}
+
+.evt-next-up__info-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.evt-next-up__desc {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  max-width: 65ch;
+  margin: 0;
+}
+
+.evt-next-up__actions {
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Section 3: Events Explorer & Toolbar
+   -------------------------------------------------------------------------- */
+.evt-explorer-section {
+  position: relative;
+  overflow: clip;
+}
+
+.evt-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.evt-toolbar__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.evt-toolbar__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.evt-toolbar__chip {
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.evt-toolbar__view-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.evt-toolbar__checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  color: var(--ink);
+  user-select: none;
+  min-height: 44px;
+}
+
+.evt-toolbar__checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+
+.evt-view-toggle {
+  display: inline-flex;
+  border: var(--outline);
+  border-radius: var(--r-pill);
+  background-color: var(--paper);
+  padding: 3px;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.evt-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border: none;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 44px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.evt-view-btn--active {
+  background-color: var(--sunny);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.evt-toolbar__status {
+  font-family: var(--font-note);
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin-top: -0.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   Calendar Layout (Wall Calendar + DaySheet)
+   -------------------------------------------------------------------------- */
+.evt-calendar-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+@media (min-width: 1024px) {
+  .evt-calendar-layout {
+    grid-template-columns: 1.65fr 1fr;
+    gap: 1.75rem;
+    align-items: stretch;
+  }
+}
+
+.evt-calendar-layout__cal,
+.evt-calendar-layout__sheet {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Wall Calendar Paper */
+.evt-wall-calendar {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: 1.25rem 1.25rem 1rem;
+  position: relative;
+  overflow: clip;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Metal Ring Loops Header */
+.evt-cal-rings {
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-evenly;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.evt-cal-ring-loop {
+  width: 14px;
+  height: 26px;
+  border: 3px solid var(--ink);
+  border-radius: var(--r-pill);
+  background-color: #E5E7EB;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.evt-cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.25rem;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.evt-cal-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.evt-cal-nav-btn {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--outline);
+  border-radius: var(--r-pill);
+  background-color: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.evt-cal-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .evt-cal-nav-btn:not(:disabled):hover {
+    background-color: var(--sunny);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+}
+
+.evt-cal-today-btn {
+  height: 44px;
+  padding: 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--outline);
+  border-radius: var(--r-pill);
+  background-color: var(--paper);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .evt-cal-today-btn:hover {
+    background-color: var(--bubblegum);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+}
+
+.evt-cal-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0;
+  color: var(--ink);
+}
+
+/* Calendar Pages Container */
+.evt-cal-pages-stack {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.evt-cal-page {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.evt-cal-page--current {
+  position: relative;
+  z-index: 2;
+}
+
+/* Calendar Table & Cells */
+.evt-cal-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.evt-cal-table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.evt-cal-th {
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 0.35rem 0.2rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.evt-cal-td {
+  vertical-align: top;
+  border: 1px solid rgba(35, 42, 92, 0.16);
+  height: clamp(38px, 4.2vw, 54px);
+  padding: 2px;
+  background-color: var(--paper);
+  transition: background-color 0.15s ease;
+}
+
+.evt-cal-td--outside {
+  opacity: 0.35;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.evt-cal-td--weekend {
+  background-color: rgba(255, 201, 60, 0.08);
+}
+
+.evt-cal-td--selected {
+  outline: 2.5px solid var(--ink);
+  outline-offset: -2px;
+  background-color: rgba(92, 200, 255, 0.15);
+}
+
+.evt-cal-td--dimmed {
+  opacity: 0.45;
+}
+
+.evt-day-btn {
+  width: 100%;
+  height: 100%;
+  min-height: 36px;
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: var(--r-sm);
+  transition: background-color 0.15s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .evt-day-btn:hover {
+    background-color: rgba(255, 240, 194, 0.5);
+  }
+}
+
+.evt-day-cell-static {
+  width: 100%;
+  height: 100%;
+  min-height: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2px;
+}
+
+.evt-day-num {
+  position: relative;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1;
+  padding: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.evt-today-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+}
+
+/* Event Chips on Calendar Day Cell */
+.evt-day-chips {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+@media (min-width: 1024px) {
+  .evt-day-chips {
+    display: flex;
+  }
+}
+
+.evt-day-chip {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.1;
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 1px solid var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.evt-day-more {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--muted);
+  align-self: flex-start;
+  padding-left: 2px;
+}
+
+/* Event Dots on Calendar Day Cell */
+.evt-day-dots {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+@media (min-width: 1024px) {
+  .evt-day-dots {
+    display: none;
+  }
+}
+
+.evt-day-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+}
+
+.evt-day-dots--dimmed {
+  opacity: 0.35;
+}
+
+/* Quiet Month Note & Legend */
+.evt-cal-quiet-note {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem;
+}
+
+.evt-cal-quiet-note .note {
+  font-size: 1.25rem;
+  color: var(--muted);
+}
+
+.evt-cal-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(35, 42, 92, 0.15);
+}
+
+.evt-cal-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.evt-cal-legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1px solid var(--ink);
+}
+
+.evt-cal-legend-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   DaySheet (Sticky-Note Panel)
+   -------------------------------------------------------------------------- */
+.evt-daysheet {
+  position: relative;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: 1.25rem 1.15rem 1rem;
+  transform-origin: top center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.evt-daysheet--empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+.evt-daysheet__prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.evt-daysheet__tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 22px;
+  background-color: rgba(255, 201, 60, 0.75);
+  border: 1px solid rgba(35, 42, 92, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+.evt-daysheet__header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1.5px solid rgba(35, 42, 92, 0.15);
+}
+
+.evt-daysheet__weekday {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin-bottom: 0.15rem;
+}
+
+.evt-daysheet__date-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--ink);
+}
+
+.evt-daysheet__close-btn {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--outline);
+  border-radius: 50%;
+  background-color: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.evt-daysheet__body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-right: 4px;
+}
+
+.evt-daysheet__events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.evt-daysheet__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(35, 42, 92, 0.12);
+}
+
+.evt-daysheet__item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.evt-daysheet__item-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--ink);
+}
+
+.evt-daysheet__item-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.9375rem;
+  color: var(--ink);
+}
+
+.evt-daysheet__meta-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.evt-daysheet__item-desc {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0.25rem 0;
+}
+
+.evt-daysheet__item-actions {
+  margin-top: 0.5rem;
+}
+
+.evt-action-btn {
+  padding: 0.45rem 0.85rem !important;
+  font-size: 0.85rem !important;
+  min-height: 38px !important;
+}
+
+/* --------------------------------------------------------------------------
+   List View & Ticket Stubs
+   -------------------------------------------------------------------------- */
+.evt-list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.evt-list-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  gap: 1.25rem;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+}
+
+.evt-list-empty-text {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.evt-list-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.evt-list-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.evt-list-sticky-header {
+  position: sticky;
+  top: var(--nav-h);
+  background-color: var(--sky);
+  padding: 0.6rem 0;
+  z-index: 5;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.evt-list-month-title {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  margin: 0;
+  color: var(--ink);
+}
+
+.evt-list-count-badge {
+  font-family: var(--font-note);
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.evt-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Ticket Stub Row */
+.evt-ticket-row {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sticker);
+  overflow: hidden;
+  transition: opacity 0.2s ease;
+}
+
+.evt-ticket-row--past {
+  opacity: 0.6;
+}
+
+.evt-ticket {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  min-height: 110px;
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  .evt-ticket {
+    grid-template-columns: 110px 1fr;
+  }
+}
+
+.evt-ticket-stub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 0.5rem;
+  border-right: 2px solid var(--ink);
+  text-align: center;
+}
+
+.evt-ticket-stub__month {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.evt-ticket-stub__day {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  line-height: 1;
+  color: var(--ink);
+  margin: 0.15rem 0;
+}
+
+.evt-ticket-stub__weekday {
+  font-family: var(--font-note);
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+/* Semi-circular notches at the perforation */
+.evt-ticket-stub__notch-top {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  width: 18px;
+  height: 18px;
+  background-color: var(--sky);
+  border-radius: 50%;
+  border-bottom: 2px solid var(--ink);
+}
+
+.evt-ticket-stub__notch-bottom {
+  position: absolute;
+  bottom: -9px;
+  right: -9px;
+  width: 18px;
+  height: 18px;
+  background-color: var(--sky);
+  border-radius: 50%;
+  border-top: 2px solid var(--ink);
+}
+
+.evt-ticket-main {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  position: relative;
+}
+
+/* Done Stamp for Past Events */
+.evt-ticket-stamp {
+  position: absolute;
+  right: 1.5rem;
+  top: 1rem;
+  transform: rotate(-14deg);
+  border: 3px solid #DC2626;
+  border-radius: var(--r-sm);
+  padding: 0.2rem 0.75rem;
+  color: #DC2626;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.evt-ticket-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.evt-ticket-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--ink);
+}
+
+.evt-ticket-details-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--ink);
+}
+
+.evt-ticket-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.25rem;
+}
+
+.evt-ticket-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: none;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  padding: 0.35rem 0.5rem;
+  min-height: 44px;
+}
+
+.evt-ticket-drawer__content {
+  padding: 1rem 1.25rem 1.25rem;
+  border-top: 1px solid rgba(35, 42, 92, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.evt-ticket-desc {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+
+.evt-list-footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Section 4: Fridge Rhythm (Fridge Door & Magnets)
+   -------------------------------------------------------------------------- */
+.evt-fridge-section {
+  position: relative;
+  overflow: clip;
+}
+
+.evt-fridge-door {
+  position: relative;
+  background-color: #DDF1FF;
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
+  min-height: 520px;
+}
+
+.evt-fridge-freezer-line {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--ink);
+  pointer-events: none;
+}
+
+.evt-fridge-handle {
+  display: none;
+  position: absolute;
+  right: 24px;
+  top: 120px;
+  bottom: 80px;
+  width: 18px;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .evt-fridge-handle {
+    display: block;
+  }
+}
+
+.evt-fridge-handle__bar {
+  width: 100%;
+  height: 100%;
+  background-color: #F3F4F6;
+  border: var(--outline);
+  border-radius: var(--r-pill);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.evt-fridge-notes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .evt-fridge-notes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3.5rem 2.5rem;
+  }
+}
+
+/* Fridge Note Paper */
+.evt-fridge-note {
+  position: relative;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: 3px 4px 0 var(--ink);
+  padding: 2.25rem 1.5rem 1.5rem;
+  cursor: pointer;
+  outline: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.evt-fridge-note:focus-visible {
+  outline: 3px solid var(--bubblegum);
+  outline-offset: 4px;
+}
+
+.evt-fridge-magnet-pin {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.evt-fridge-magnet {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.evt-magnet-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+.evt-magnet-icon {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.evt-fridge-note__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.evt-fridge-note__when {
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+.evt-fridge-note__title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  margin: 0;
+  color: var(--ink);
+}
+
+.evt-fridge-note__text {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Section 5: Subscribe Band
+   -------------------------------------------------------------------------- */
+.evt-subscribe-section {
+  position: relative;
+  overflow: clip;
+}
+
+.evt-subscribe-card {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.evt-subscribe-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.evt-subscribe-btn {
+  min-height: 44px;
+}
+
+.evt-subscribe-foot {
+  margin-top: -0.25rem;
+}
+
+.evt-subscribe-note {
+  font-size: 1.15rem;
+  color: var(--muted);
+}

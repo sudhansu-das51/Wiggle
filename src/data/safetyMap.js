@@ -1,0 +1,77 @@
+/**
+ * Campus Safety Tour Hotspots.
+ * 7 hotspots in guided tour order across the Wiggle campus map.
+ * x and y are percentages (0-100) of the illustrated campus map.
+ */
+export const hotspots = [
+  {
+    id: 'gate',
+    label: 'Main gate',
+    icon: 'key',
+    x: 50,
+    y: 88,
+    title: 'One gate, one verified log',
+    text: 'A single guarded biometric entrance with dual security gates. Every visitor is photo-verified and only pre-authorized guardians with RFID cards may collect a child.',
+    link: null,
+  },
+  {
+    id: 'bus',
+    label: 'Bus bay',
+    icon: 'clock',
+    x: 18,
+    y: 82,
+    title: 'GPS buses with female attendants',
+    text: 'Dedicated low-step school vans with speed limiters, three-point child harnesses, real-time vehicle GPS tracking for parents, and trained female attendants on every trip.',
+    link: null,
+  },
+  {
+    id: 'reception',
+    label: 'Reception',
+    icon: 'heart',
+    x: 50,
+    y: 66,
+    title: 'Guarded reception & family lounge',
+    text: 'A welcoming foyer where caregivers can stay during gradual settling days. Digital visitor passes, clear line of sight, and immediate access to campus leadership.',
+    link: null,
+  },
+  {
+    id: 'classrooms',
+    label: 'Classrooms',
+    icon: 'blocks',
+    x: 24,
+    y: 44,
+    title: 'Rounded, non-toxic classrooms',
+    text: 'Custom birchwood tables with rounded silicone edge buffers, anti-pinch door silencers, washable non-toxic wall paints, and child-height warm water handwash sinks.',
+    link: '/facilities',
+  },
+  {
+    id: 'outdoor',
+    label: 'Outdoor yard',
+    icon: 'leaf',
+    x: 76,
+    y: 44,
+    title: 'Shock-absorbing turf & sandpit',
+    text: 'Impact-tested rubberized playground tiles under our slides and climbing logs, sterilized beach-grade river sandpit, and shaded pergolas with continuous educator watch.',
+    link: '/facilities',
+  },
+  {
+    id: 'kitchen',
+    label: 'Kitchen pantry',
+    icon: 'apple',
+    x: 28,
+    y: 18,
+    title: 'Fresh organic pantry & food checks',
+    text: 'Spotless stainless steel kitchen cooking warm vegetarian meals every morning. Food temperature logs maintained daily, filtered RO water, and zero refined white sugar.',
+    link: null,
+  },
+  {
+    id: 'care',
+    label: 'Care room',
+    icon: 'shield',
+    x: 70,
+    y: 18,
+    title: 'Pediatric first-aid & rest station',
+    text: 'Quiet, air-purified recovery room with cozy daybeds, digital thermometers, pediatric nebulizers, and emergency response partnerships with neighboring hospitals.',
+    link: null,
+  },
+];

@@ -1,0 +1,26 @@
+/* ==========================================================================
+   WIGGLE PRESCHOOL — EVENTS PAGE LAYOUT STYLES
+   ========================================================================== */
+
+.events-page {
+  position: relative;
+  width: 100%;
+  overflow-x: clip;
+}
+
+.events-page .section {
+  overflow-x: clip;
+}
+
+.evt-divider {
+  line-height: 0;
+  width: 100%;
+  overflow: clip;
+  pointer-events: none;
+}
+
+.evt-cta-section {
+  position: relative;
+  overflow: clip;
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}

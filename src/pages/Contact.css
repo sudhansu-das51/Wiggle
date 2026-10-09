@@ -1,0 +1,22 @@
+/* ==========================================================================
+   WIGGLE PRESCHOOL — CONTACT PAGE LAYOUT STYLES
+   ========================================================================== */
+
+.contact-page {
+  position: relative;
+  overflow-x: clip;
+  width: 100%;
+}
+
+.contact-page .section {
+  overflow-x: clip;
+  position: relative;
+}
+
+/* Ensure smooth section spacing */
+.contact-page .con-channels,
+.contact-page .con-message-section,
+.contact-page .con-visit-section,
+.contact-page .con-faqs-section {
+  padding-block: clamp(3.5rem, 6vw, 5.5rem);
+}

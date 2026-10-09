@@ -1,0 +1,508 @@
+/* ==========================================================================
+   SCHOOL GATE INTRO OVERLAY
+   First-visit reveal animation: Grounded school gate with triangular gabled top,
+   lush green side lawns, bright blue sky with fluffy clouds, and 3D swing doors
+   zooming smoothly into the preschool campus hero.
+   ========================================================================== */
+
+.gate-intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+  background-color: #3DA9FC;
+}
+
+.gate-intro-stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* --------------------------------------------------------------------------
+   1. Sky, Sun & Fluffy Drifting Clouds
+   -------------------------------------------------------------------------- */
+.gate-intro-sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #329DF0 0%,
+    #57BCFF 45%,
+    #88D5FF 75%,
+    #D0EFFF 100%
+  );
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gate-sky-sun {
+  position: absolute;
+  top: clamp(1.5rem, 5vh, 4rem);
+  right: clamp(2rem, 8vw, 8rem);
+  z-index: 2;
+  animation: gateSunFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes gateSunFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-8px) rotate(4deg); }
+}
+
+.gate-cloud {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gate-cloud--1 {
+  top: clamp(2rem, 6vh, 5rem);
+  left: clamp(1rem, 6vw, 6rem);
+  animation: gateCloudDrift1 14s ease-in-out infinite alternate;
+}
+
+.gate-cloud--2 {
+  top: clamp(1rem, 3vh, 3rem);
+  left: 45%;
+  transform: translateX(-50%);
+  animation: gateCloudDrift2 18s ease-in-out infinite alternate;
+}
+
+.gate-cloud--3 {
+  top: clamp(5rem, 12vh, 9rem);
+  right: clamp(4rem, 14vw, 15rem);
+  animation: gateCloudDrift3 16s ease-in-out infinite alternate;
+}
+
+@keyframes gateCloudDrift1 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(25px); }
+}
+
+@keyframes gateCloudDrift2 {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(calc(-50% - 20px)); }
+}
+
+@keyframes gateCloudDrift3 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-30px); }
+}
+
+/* --------------------------------------------------------------------------
+   2. Ground, Lush Lawn & Pathway (Firmly at screen bottom)
+   -------------------------------------------------------------------------- */
+.gate-intro-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: clamp(80px, 14vh, 130px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gate-ground-meadow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(180deg, #5BB381 0%, #469E6B 100%);
+  border-top: 3.5px solid var(--ink);
+}
+
+.gate-ground-path {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(280px, 38vw, 480px);
+  height: 100%;
+  z-index: 3;
+}
+
+.gate-grass-cluster {
+  position: absolute;
+  bottom: 0;
+  width: clamp(180px, 30vw, 420px);
+  height: clamp(100px, 18vh, 160px);
+  z-index: 4;
+}
+
+.gate-grass-cluster--left {
+  left: 0;
+}
+
+.gate-grass-cluster--right {
+  right: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. Grounded School Gate Structure (~50vh height covering bottom half)
+   -------------------------------------------------------------------------- */
+.gate-structure {
+  position: absolute;
+  bottom: clamp(30px, 5.5vh, 60px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(340px, 48vw, 560px);
+  height: clamp(360px, 52vh, 520px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+}
+
+/* Triangular Roof ("Top se half triangular") */
+.gate-triangular-roof {
+  width: 100%;
+  height: clamp(100px, 14vh, 145px);
+  position: relative;
+  z-index: 12;
+  filter: drop-shadow(0 6px 0 rgba(35, 42, 92, 0.15));
+}
+
+/* Main Door Portal Frame & Pillars */
+.gate-portal-frame {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  margin-top: -4px;
+}
+
+/* Pillars on Left and Right */
+.gate-pillar {
+  width: clamp(38px, 4.8vw, 54px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 8;
+  filter: drop-shadow(2px 4px 0 rgba(35, 42, 92, 0.12));
+}
+
+.gate-pillar-cap {
+  width: 115%;
+  margin-left: -7.5%;
+  height: 18px;
+  background-color: #FFC93C;
+  border: 3px solid var(--ink);
+  border-radius: 4px;
+  box-shadow: 0 2px 0 rgba(35, 42, 92, 0.12);
+}
+
+.gate-pillar-body {
+  flex: 1;
+  background-color: #FFF7EA;
+  border-left: 3px solid var(--ink);
+  border-right: 3px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 12px 0;
+  position: relative;
+}
+
+.gate-pillar-groove {
+  width: 100%;
+  height: 2.5px;
+  background-color: rgba(35, 42, 92, 0.2);
+}
+
+.gate-pillar-base {
+  width: 120%;
+  margin-left: -10%;
+  height: 22px;
+  background-color: #FF7A3D;
+  border: 3px solid var(--ink);
+  border-radius: 4px;
+}
+
+/* Gate Hinges */
+.gate-hinge {
+  position: absolute;
+  width: 10px;
+  height: 16px;
+  background-color: #FFC93C;
+  border: 2px solid var(--ink);
+  border-radius: 2px;
+  z-index: 9;
+}
+
+.gate-pillar--left .gate-hinge {
+  right: -5px;
+}
+
+.gate-pillar--right .gate-hinge {
+  left: -5px;
+}
+
+.gate-hinge--top {
+  top: 25%;
+}
+
+.gate-hinge--bottom {
+  bottom: 25%;
+}
+
+/* Inner Portal View (Visible when doors swing open) */
+.gate-portal-inner-view {
+  position: absolute;
+  inset: 0;
+  left: clamp(38px, 4.8vw, 54px);
+  right: clamp(38px, 4.8vw, 54px);
+  background: linear-gradient(180deg, #82D1FF 0%, #D8F2FF 55%, #FFF0D6 100%);
+  overflow: hidden;
+  z-index: 1;
+  border-top: 3px solid var(--ink);
+}
+
+.gate-portal-horizon-glow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 201, 60, 0.85) 0%, rgba(255, 201, 60, 0) 70%);
+}
+
+.gate-portal-courtyard-path {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65%;
+  height: 60%;
+  background: linear-gradient(180deg, #FFE2B0 0%, #FFD699 100%);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+  border-top: 2px solid var(--ink);
+}
+
+.gate-portal-trees {
+  position: absolute;
+  bottom: 20%;
+  left: 5%;
+  right: 5%;
+  height: 40px;
+  background: radial-gradient(circle at 20% 100%, #5BB381 22px, transparent 23px),
+              radial-gradient(circle at 80% 100%, #5BB381 22px, transparent 23px),
+              radial-gradient(circle at 50% 100%, #3D8E5F 28px, transparent 29px);
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   4. 3D Swinging Gate Doors Assembly
+   -------------------------------------------------------------------------- */
+.gate-doors-assembly {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  position: relative;
+  z-index: 5;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+.gate-door-leaf {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.gate-door-leaf--left {
+  transform-origin: left center;
+}
+
+.gate-door-leaf--right {
+  transform-origin: right center;
+}
+
+.gate-door-panel {
+  width: 100%;
+  height: 100%;
+  background-color: #FFC93C;
+  border: 3.5px solid var(--ink);
+  position: relative;
+  box-shadow: 0 4px 0 rgba(35, 42, 92, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.gate-door-leaf--left .gate-door-panel {
+  border-right-width: 2px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.gate-door-leaf--right .gate-door-panel {
+  border-left-width: 2px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Vertical Slats */
+.gate-door-slats {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-evenly;
+  pointer-events: none;
+}
+
+.gate-slat {
+  width: clamp(10px, 1.4vw, 16px);
+  height: 100%;
+  background-color: #FFF7EA;
+  border-left: 2px solid var(--ink);
+  border-right: 2px solid var(--ink);
+}
+
+/* Horizontal Rails */
+.gate-door-rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: clamp(12px, 1.8vh, 18px);
+  background-color: #FF7A3D;
+  border-top: 2.5px solid var(--ink);
+  border-bottom: 2.5px solid var(--ink);
+  z-index: 2;
+}
+
+.gate-door-rail--top {
+  top: 15%;
+}
+
+.gate-door-rail--mid {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.gate-door-rail--bottom {
+  bottom: 12%;
+}
+
+/* Clean Modern Door Handles */
+.gate-door-handle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gate-door-handle--left {
+  right: 12px;
+}
+
+.gate-door-handle--right {
+  left: 12px;
+}
+
+.gate-handle-mount {
+  width: 10px;
+  height: 6px;
+  background-color: var(--ink);
+  border-radius: 2px;
+}
+
+.gate-handle-bar {
+  width: 7px;
+  height: 38px;
+  background-color: #232A5C;
+  border: 1.5px solid #FFF7EA;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   5. Skip Badge
+   -------------------------------------------------------------------------- */
+.gate-intro-skip-badge {
+  position: absolute;
+  bottom: clamp(1.2rem, 3vh, 2rem);
+  right: clamp(1.2rem, 3vw, 2.5rem);
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 247, 234, 0.95);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 2px 2px 0 var(--ink);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+
+.gate-intro-skip-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.gate-kbd {
+  font-family: inherit;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.45rem;
+  background-color: var(--ink);
+  color: #FFF7EA;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .gate-structure {
+    width: 92vw;
+    height: clamp(320px, 48vh, 420px);
+    bottom: 25px;
+  }
+
+  .gate-triangular-roof {
+    height: 95px;
+  }
+
+  .gate-pillar {
+    width: 32px;
+  }
+
+  .gate-slat {
+    width: 8px;
+  }
+
+  .gate-sky-sun {
+    top: 1rem;
+    right: 1.2rem;
+    transform: scale(0.85);
+  }
+
+  .gate-intro-skip-badge {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}

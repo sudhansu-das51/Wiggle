@@ -1,0 +1,948 @@
+/* ==========================================================================
+   WIGGLE — FACILITIES PAGE COMPONENTS (facilities.css)
+   Tokens, cutaway school building, room interiors, lift rail/bar, placards.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CUTAWAY BUILDING ARCHITECTURE
+   -------------------------------------------------------------------------- */
+.fac-building-section {
+  position: relative;
+  overflow-x: clip;
+}
+
+.fac-building-layout {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  width: 100%;
+}
+
+/* Building Shell Container (Centered) */
+.fac-building-shell {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Roof Wrap */
+.fac-roof-wrap {
+  position: relative;
+  width: 100%;
+  margin-bottom: -4px;
+  z-index: 4;
+}
+
+.fac-roof-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Building Main Body: Side Walls + Rooms Stack */
+.fac-building-body {
+  position: relative;
+  display: flex;
+  background-color: var(--paper);
+  border: var(--outline);
+  box-shadow: var(--shadow-sticker);
+  z-index: 3;
+}
+
+/* Brick Side Walls (Desktop / Tablet) */
+.fac-wall {
+  width: 38px;
+  background-color: var(--tint-yellow);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.fac-wall--left {
+  border-right: var(--outline);
+}
+
+.fac-wall--right {
+  border-left: var(--outline);
+}
+
+.fac-brick-pattern {
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 18px,
+    rgba(35, 42, 92, 0.15) 18px,
+    rgba(35, 42, 92, 0.15) 20px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 18px,
+    rgba(35, 42, 92, 0.12) 18px,
+    rgba(35, 42, 92, 0.12) 20px
+  );
+}
+
+/* Rooms Vertical Stack */
+.fac-rooms-stack {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ground Strip (Building Foundation) */
+.fac-ground-strip {
+  position: relative;
+  background-color: var(--meadow);
+  border: var(--outline);
+  border-top: none;
+  border-radius: 0 0 var(--r-lg) var(--r-lg);
+  padding: 1.5rem clamp(1.5rem, 4vw, 3rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  margin-top: -3px;
+  box-shadow: var(--shadow-sticker);
+}
+
+.fac-ground-lawn {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.fac-lawn-tuft {
+  display: inline-block;
+  width: 14px;
+  height: 16px;
+  border-left: 3px solid var(--paper);
+  border-right: 3px solid var(--paper);
+  border-radius: 50% 50% 0 0;
+  transform: rotate(-10deg);
+}
+
+.fac-lawn-tuft.tuft-2 { transform: rotate(12deg) scale(1.1); }
+.fac-lawn-tuft.tuft-3 { transform: rotate(-5deg) scale(0.9); }
+.fac-lawn-tuft.tuft-4 { transform: rotate(15deg); }
+
+.fac-gate-courtyard {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.fac-gate-arch {
+  position: relative;
+  background-color: var(--sunny);
+  border: var(--outline);
+  border-radius: var(--r-pill);
+  padding: 0.5rem 1.25rem;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.fac-gate-sign {
+  font-family: var(--font-note);
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--ink);
+}
+
+.fac-gate-mascot {
+  margin-bottom: -0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   2. ROOM COMPONENTS (STAGE, PLACARD, SWITCH, OVERLAY)
+   -------------------------------------------------------------------------- */
+.fac-room-card {
+  position: relative;
+  width: 100%;
+  padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 2.5rem);
+  background-color: var(--paper);
+}
+
+/* Floor Divider between rooms */
+.fac-floor-divider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: var(--ink);
+  box-shadow: 0 3px 0 rgba(35, 42, 92, 0.1);
+}
+
+.fac-room-inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+}
+
+/* Alternating sides on desktop (even: stage left, odd: stage right) */
+.fac-room--even .fac-room-inner {
+  flex-direction: row;
+}
+
+.fac-room--odd .fac-room-inner {
+  flex-direction: row-reverse;
+}
+
+/* Room Stage (Illustration Wrapper, ~60% on desktop) */
+.fac-room-stage {
+  flex: 1.4;
+  min-width: 0;
+  position: relative;
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sticker);
+  background-color: var(--paper);
+  overflow: hidden;
+  aspect-ratio: 500 / 360;
+}
+
+.fac-scene-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.fac-scene-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fac-photo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.fac-room-stage:hover .fac-photo-image {
+  transform: scale(1.03);
+}
+
+/* Hand-drawn Light Switch Plate (Indoor rooms only) */
+.fac-light-switch {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 8px; /* Assures >=44px tap target */
+  touch-action: manipulation;
+}
+
+.fac-switch-plate {
+  width: 32px;
+  height: 46px;
+  background-color: var(--paper);
+  border: 2.5px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 2px 2px 0 var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  position: relative;
+  transition: transform 0.15s ease;
+}
+
+.fac-light-switch:active .fac-switch-plate {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.fac-switch-screw {
+  width: 4px;
+  height: 4px;
+  background-color: var(--ink);
+  border-radius: 50%;
+}
+
+.fac-switch-lever {
+  width: 10px;
+  height: 16px;
+  background-color: var(--sunny);
+  border: 2px solid var(--ink);
+  border-radius: 3px;
+  transform-origin: center center;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.fac-lever--on {
+  transform: rotate(20deg);
+  background-color: var(--sunny);
+}
+
+.fac-lever--off {
+  transform: rotate(-20deg);
+  background-color: var(--muted);
+}
+
+.fac-switch-label {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--ink);
+  background-color: var(--paper);
+  border: 1.5px solid var(--ink);
+  padding: 1px 6px;
+  border-radius: var(--r-pill);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+/* Dark "Lights Off" Overlay (Covers illustration only, lifts when lit) */
+.fac-dark-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(22, 27, 65, 0.88);
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fac-overlay--lit {
+  opacity: 0;
+}
+
+.fac-overlay--dark {
+  opacity: 0.85;
+}
+
+.fac-dark-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(35, 42, 92, 0.9);
+  color: var(--paper);
+  border: 1.5px solid var(--paper);
+  border-radius: var(--r-pill);
+  padding: 0.4rem 1rem;
+}
+
+.fac-dark-indicator .note {
+  color: var(--paper);
+  font-size: 0.9rem;
+}
+
+/* Placard Wrap (~40% on desktop) */
+.fac-placard-wrap {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hanging Ropes */
+.fac-placard-ropes {
+  width: 75%;
+  height: 22px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: -4px;
+  z-index: 1;
+}
+
+.fac-rope {
+  width: 4px;
+  height: 100%;
+  background-color: var(--ink);
+  border-radius: 2px;
+  position: relative;
+}
+
+.fac-rope::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -4px;
+  width: 12px;
+  height: 6px;
+  background-color: var(--ink);
+  border-radius: 50%;
+}
+
+/* Hanging Placard Card */
+.fac-placard {
+  position: relative;
+  width: 100%;
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  transform-origin: top center;
+  outline: none;
+  z-index: 2;
+}
+
+.fac-placard:focus-visible {
+  outline: 3px solid var(--sky);
+  outline-offset: 4px;
+}
+
+/* Placard Header */
+.fac-placard-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.fac-placard-icon-bubble {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2.5px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fac-placard-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.fac-location-chip {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.65rem;
+  background-color: var(--tint-yellow);
+}
+
+.fac-room-number {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Placard Title */
+.fac-placard-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+
+/* Placard Description */
+.fac-placard-desc {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+}
+
+/* Concrete Details Bullets */
+.fac-details-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.fac-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.fac-check-bubble {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--meadow);
+  border: 1.5px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Sticky Note in Placard */
+.fac-placard-sticky {
+  position: relative;
+  background-color: var(--tint-yellow);
+  border: 2px solid var(--ink);
+  border-radius: var(--r-sm);
+  padding: 0.75rem 1rem 0.65rem 1rem;
+  box-shadow: 2px 2px 0 var(--ink);
+  transform: rotate(-1.5deg);
+  margin-top: 0.5rem;
+}
+
+.fac-placard-sticky p {
+  margin: 0;
+  font-family: var(--font-note);
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: var(--ink);
+  font-weight: bold;
+}
+
+.fac-sticky-tape {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   3. DESKTOP LIFT RAIL (1024px and up)
+   -------------------------------------------------------------------------- */
+.fac-lift-rail-wrap {
+  width: 90px;
+  flex-shrink: 0;
+  position: sticky;
+  top: calc(var(--nav-h, 80px) + 2rem);
+  height: calc(100vh - var(--nav-h, 80px) - 4rem);
+  display: flex;
+  justify-content: center;
+  z-index: 20;
+}
+
+@media (max-width: 1023px) {
+  .fac-lift-rail-wrap {
+    display: none;
+  }
+}
+
+.fac-lift-rail-nav {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.fac-lift-rail-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fac-rail-line {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 50%;
+  width: 6px;
+  transform: translateX(-50%);
+  background-color: var(--ink);
+  border-radius: 3px;
+  box-shadow: 2px 0 0 rgba(35, 42, 92, 0.15);
+}
+
+/* Sliding Lift Cabin */
+.fac-lift-cabin {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 82px;
+  background-color: var(--sunny);
+  border: var(--outline);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sticker);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 4px;
+  z-index: 5;
+  transition: transform 0.15s ease;
+  pointer-events: none;
+}
+
+.fac-cabin-cable {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 12px;
+  border: 2.5px solid var(--ink);
+  border-bottom: none;
+  border-radius: 7px 7px 0 0;
+}
+
+.fac-cabin-window {
+  width: 48px;
+  height: 42px;
+  background-color: var(--paper);
+  border: 2.5px solid var(--ink);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fac-cabin-readout {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--ink);
+  background-color: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-pill);
+  padding: 1px 6px;
+  line-height: 1.2;
+}
+
+/* Rail Stops */
+.fac-rail-stops {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+}
+
+.fac-rail-stop {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.fac-stop-dot {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  box-shadow: 1px 1px 0 var(--ink);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fac-rail-stop:hover .fac-stop-dot {
+    transform: scale(1.3);
+    background-color: var(--sunny);
+  }
+
+  .fac-rail-stop:hover .fac-stop-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+  }
+}
+
+.fac-rail-stop:focus-visible .fac-stop-dot {
+  outline: 3px solid var(--sky);
+  outline-offset: 3px;
+}
+
+.fac-stop--active .fac-stop-dot {
+  background-color: var(--sunny);
+  transform: scale(1.2);
+}
+
+/* Tooltip on stop hover */
+.fac-stop-tooltip {
+  position: absolute;
+  left: 36px;
+  white-space: nowrap;
+  background-color: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--r-sm);
+  padding: 3px 8px;
+  box-shadow: 2px 2px 0 var(--ink);
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  visibility: hidden;
+  pointer-events: none;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.fac-tooltip-num {
+  color: var(--bubblegum);
+}
+
+/* --------------------------------------------------------------------------
+   4. MOBILE / TABLET STICKY LIFT BAR (<1024px)
+   -------------------------------------------------------------------------- */
+.fac-lift-bar-sticky {
+  display: none;
+  position: sticky;
+  top: var(--nav-h, 72px);
+  z-index: 40;
+  width: 100%;
+  background-color: var(--paper);
+  border: var(--outline);
+  box-shadow: 0 4px 0 rgba(35, 42, 92, 0.15);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+@media (max-width: 1023px) {
+  .fac-lift-bar-sticky {
+    display: block;
+  }
+}
+
+.fac-lift-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  gap: 0.75rem;
+}
+
+.fac-bar-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--sunny);
+  border: 2px solid var(--ink);
+  border-radius: var(--r-sm);
+  box-shadow: 2px 2px 0 var(--ink);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.1s ease;
+}
+
+.fac-bar-btn:active:not(:disabled) {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.fac-bar-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.fac-bar-readout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.fac-bar-counter {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.2;
+}
+
+.fac-bar-room-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--ink);
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.fac-bar-progress-track {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(35, 42, 92, 0.15);
+  position: relative;
+}
+
+.fac-bar-progress-fill {
+  height: 100%;
+  background-color: var(--sunny);
+  transition: width 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   5. SECTION 4: SEE IT IN PHOTOS (SeeMoreBand)
+   -------------------------------------------------------------------------- */
+.fac-seemore-section {
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+  overflow-x: clip;
+}
+
+.fac-seemore-card {
+  background-color: var(--paper);
+  border: var(--outline);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sticker);
+  padding: clamp(2rem, 5vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  position: relative;
+}
+
+.fac-seemore-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.fac-seemore-tag {
+  font-size: 1.1rem;
+  color: var(--bubblegum);
+  font-weight: bold;
+}
+
+.fac-seemore-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  color: var(--ink);
+  line-height: 1.15;
+  margin: 0.25rem 0 0 0;
+}
+
+.fac-seemore-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.fac-action-btn {
+  background-color: var(--tint-yellow);
+}
+
+.fac-seemore-mascot {
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .fac-seemore-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .fac-seemore-mascot {
+    align-self: center;
+    margin-top: 1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. SECTION 5: QUESTIONS (FacilityFaqs)
+   -------------------------------------------------------------------------- */
+.fac-faqs-section {
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+  overflow-x: clip;
+}
+
+.fac-accordion-wrapper {
+  max-width: 820px;
+  margin: 2.5rem auto 0 auto;
+}
+
+.fac-faq-footer {
+  max-width: 820px;
+  margin: 3rem auto 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.fac-faq-footer-text {
+  font-family: var(--font-note);
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: var(--ink);
+  margin: 0;
+}
+
+.fac-whatsapp-btn {
+  background-color: var(--paper);
+}
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE BREAKPOINTS (Tablets & Phones)
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  /* Hide thick brick side walls on phones */
+  .fac-wall {
+    width: 6px;
+  }
+  .fac-brick-pattern {
+    display: none;
+  }
+
+  /* Stack illustration on top and placard below on mobile */
+  .fac-room-inner,
+  .fac-room--even .fac-room-inner,
+  .fac-room--odd .fac-room-inner {
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .fac-room-stage {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .fac-placard-wrap {
+    width: 100%;
+  }
+
+  .fac-ground-strip {
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: center;
+    text-align: center;
+  }
+}

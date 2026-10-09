@@ -1,0 +1,11 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.app-layout__main {
+  flex: 1 0 auto;
+  position: relative;
+}
