@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react'
 import { GalleryToolbar } from './GalleryToolbar';
 import { ClotheslineRow } from './ClotheslineRow';
 import { ProjectorViewer } from './ProjectorViewer';
+import { AddPhotoModal } from './AddPhotoModal';
 import { Button } from '../ui/Button';
 import { Mascot } from '../ui/Mascot';
 import { gallery } from '../../data/gallery';
@@ -29,10 +30,31 @@ export function GalleryWall() {
   const isReduced = useReducedMotion();
   const { register, unregister, setVisible } = useScrollSway();
 
-  // 1. Categories list derived in order of appearance
+  // Load photos including teacher uploaded photos from localStorage
+  const [allPhotos, setAllPhotos] = useState(() => {
+    try {
+      if (typeof window !== 'undefined') {
+        const saved = window.localStorage.getItem('wiggle_teacher_photos');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            return [...parsed, ...gallery];
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('Could not load custom photos from localStorage', e);
+    }
+    return gallery;
+  });
+
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+
+  // 1. Categories list derived in order of appearance from allPhotos
   const categories = useMemo(() => {
-    return Array.from(new Set(gallery.map((p) => p.category)));
-  }, []);
+    return Array.from(new Set(allPhotos.map((p) => p.category)));
+  }, [allPhotos]);
 
   // 2. Filter & pagination state
   const [activeCategory, setActiveCategory] = useState('All');
@@ -60,7 +82,7 @@ export function GalleryWall() {
 
   // 4. Current filtered matching photos
   const filteredPhotos = useMemo(() => {
-    return gallery.filter((photo) => {
+    return allPhotos.filter((photo) => {
       const matchCat = activeCategory === 'All' || photo.category === activeCategory;
       const query = searchQuery.trim().toLowerCase();
       const matchSearch =
@@ -69,7 +91,33 @@ export function GalleryWall() {
         photo.caption.toLowerCase().includes(query);
       return matchCat && matchSearch;
     });
-  }, [activeCategory, searchQuery]);
+  }, [allPhotos, activeCategory, searchQuery]);
+
+  const handleAddPhoto = useCallback((newPhoto) => {
+    setAllPhotos((prev) => {
+      const next = [newPhoto, ...prev];
+      try {
+        if (typeof window !== 'undefined') {
+          const userOnly = next.filter((p) => p.isUserAdded);
+          window.localStorage.setItem('wiggle_teacher_photos', JSON.stringify(userOnly));
+        }
+      } catch (err) {
+        console.warn('Could not persist photo to localStorage', err);
+      }
+      return next;
+    });
+
+    // Reset filters so the new photo is immediately visible at the top!
+    setActiveCategory('All');
+    setSearchQuery('');
+    setDisplayCount(12);
+
+    // Show cheerful notification toast
+    setToastMessage(`"${newPhoto.title}" pinned to clothesline! 📎✨`);
+    setTimeout(() => {
+      setToastMessage('');
+    }, 4500);
+  }, []);
 
   // 5. Rendered photos state (allows exit unpeg-and-drop animation before swap)
   const [renderedPhotos, setRenderedPhotos] = useState(filteredPhotos);
@@ -207,7 +255,7 @@ export function GalleryWall() {
       </div>
 
       <div className="container">
-        {/* Toolbar: Category Chips, Search, Live Count */}
+        {/* Toolbar: Category Chips, Search, Live Count, + Add Photo Button */}
         <GalleryToolbar
           categories={categories}
           activeCategory={activeCategory}
@@ -215,7 +263,24 @@ export function GalleryWall() {
           searchQuery={searchQuery}
           onSearchChange={handleSearchChange}
           matchCount={filteredPhotos.length}
+          onOpenAddModal={() => setIsAddModalOpen(true)}
         />
+
+        {/* Cheerful Success Toast when teacher adds photo */}
+        {toastMessage && (
+          <div className="gal-toast-banner sticker" role="status" aria-live="polite">
+            <span className="gal-toast-icon">📎</span>
+            <span className="gal-toast-text">{toastMessage}</span>
+            <button
+              type="button"
+              className="gal-toast-dismiss"
+              onClick={() => setToastMessage('')}
+              aria-label="Dismiss notification"
+            >
+              ×
+            </button>
+          </div>
+        )}
 
         {/* The Clothesline Wall Framework */}
         <div ref={wallContainerRef} className="gal-clothesline-framework">
@@ -321,6 +386,13 @@ export function GalleryWall() {
         currentIndex={currentViewerIndex}
         onNavigate={handleViewerNavigate}
         activeCategory={activeCategory}
+      />
+
+      {/* Teacher Add Photo Modal */}
+      <AddPhotoModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onAddPhoto={handleAddPhoto}
       />
     </section>
   );

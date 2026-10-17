@@ -65,6 +65,13 @@
   align-items: center;
   text-align: center;
   gap: clamp(1.2rem, 2.2vw, 1.75rem);
+  transition: opacity 0.2s ease;
+}
+
+.home-hero__content--hidden {
+  opacity: 0;
+  transform: translateY(35px);
+  pointer-events: none;
 }
 
 .home-hero__h1 {

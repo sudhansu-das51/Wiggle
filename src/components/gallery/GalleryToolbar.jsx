@@ -1,9 +1,10 @@
-import React from 'react';
 import { FilterBar } from '../ui/FilterBar';
+import { Button } from '../ui/Button';
+import { Icon } from '../ui/Icon';
 
 /**
  * GalleryToolbar: Category chips + search input using shared FilterBar,
- * plus an accessible live status announcement line.
+ * plus "+ Add Photo" button for teachers and an accessible live status announcement line.
  */
 export function GalleryToolbar({
   categories = [],
@@ -12,6 +13,7 @@ export function GalleryToolbar({
   searchQuery = '',
   onSearchChange,
   matchCount = 0,
+  onOpenAddModal,
 }) {
   const options = ['All', ...categories];
 
@@ -24,9 +26,21 @@ export function GalleryToolbar({
     statusText += ` matching "${searchQuery.trim()}"`;
   }
 
+  const addPhotoButton = (
+    <Button
+      variant="primary"
+      icon={<Icon name="camera" size={18} />}
+      onClick={onOpenAddModal}
+      className="gal-add-photo-btn"
+      title="Add a photo to the clothesline gallery"
+    >
+      + Add Photo
+    </Button>
+  );
+
   return (
     <div className="gal-toolbar-wrap">
-      {/* Shared FilterBar with chips and search */}
+      {/* Shared FilterBar with chips, search, and Add Photo button */}
       <FilterBar
         options={options}
         value={activeCategory}
@@ -35,6 +49,7 @@ export function GalleryToolbar({
         onSearchChange={onSearchChange}
         searchPlaceholder="Search photos by title or caption..."
         className="gal-filter-bar"
+        extraAction={addPhotoButton}
       />
 
       {/* Live Region Status Line */}

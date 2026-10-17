@@ -22,6 +22,11 @@ export function TransitionProvider({ children }) {
   const [introDone, setIntroDone] = useState(() => {
     try {
       if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('gate') === '1' || params.get('replay') === '1') {
+          window.sessionStorage.removeItem('wiggle_intro_seen');
+          return false;
+        }
         return window.sessionStorage.getItem('wiggle_intro_seen') === 'true';
       }
     } catch {
@@ -30,8 +35,16 @@ export function TransitionProvider({ children }) {
     return false;
   });
 
+  // Intermediate state: triggered when gate doors open wide and camera zooms through the gate
+  const [introRevealing, setIntroRevealing] = useState(false);
+
+  const markIntroRevealing = useCallback(() => {
+    setIntroRevealing(true);
+  }, []);
+
   const markIntroDone = useCallback(() => {
     setIntroDone(true);
+    setIntroRevealing(true);
     try {
       if (typeof window !== 'undefined') {
         window.sessionStorage.setItem('wiggle_intro_seen', 'true');
@@ -69,6 +82,8 @@ export function TransitionProvider({ children }) {
     go,
     isTransitioning,
     introDone,
+    introRevealing,
+    markIntroRevealing,
     markIntroDone,
     registerTransitionRunner,
   };

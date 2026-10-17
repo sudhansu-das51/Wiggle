@@ -15,35 +15,54 @@ import './SchoolGateIntro.css';
  */
 export function SchoolGateIntro() {
   const location = useLocation();
-  const { introDone, markIntroDone } = useTransition();
+  const { introDone, markIntroDone, markIntroRevealing } = useTransition();
   const lenis = useLenis();
   const reducedMotion = useReducedMotion();
 
-  const [visible, setVisible] = useState(false);
+  // Check synchronously whether the gate intro should be visible on initial render (eliminates FOUC)
+  const initialShouldShow = useCallback(() => {
+    if (typeof window === 'undefined') return false;
+    if (siteConfig?.animations?.gateIntro === false) return false;
+    if (location.pathname !== '/') return false;
+    if (reducedMotion) return false;
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('gate') === '1' || params.get('replay') === '1') {
+        return true;
+      }
+      return window.sessionStorage.getItem('wiggle_intro_seen') !== 'true';
+    } catch {
+      return !introDone;
+    }
+  }, [location.pathname, reducedMotion, introDone]);
+
+  const [visible, setVisible] = useState(initialShouldShow);
   const overlayRef = useRef(null);
   const stageRef = useRef(null);
   const leftDoorRef = useRef(null);
   const rightDoorRef = useRef(null);
   const timelineRef = useRef(null);
 
-  const shouldShow =
-    siteConfig?.animations?.gateIntro !== false &&
-    location.pathname === '/' &&
-    !introDone &&
-    !reducedMotion;
-
   useEffect(() => {
+    const shouldShow = initialShouldShow();
     if (shouldShow) {
       setVisible(true);
       if (lenis) lenis.stop();
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = 'hidden';
+      }
     } else if (!introDone) {
       markIntroDone();
     }
-  }, [shouldShow, lenis, introDone, markIntroDone]);
+  }, [initialShouldShow, lenis, introDone, markIntroDone]);
 
   const finishIntro = useCallback(() => {
     if (timelineRef.current) {
       timelineRef.current.kill();
+    }
+    markIntroRevealing();
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = '';
     }
     if (overlayRef.current) {
       gsap.to(overlayRef.current, {
@@ -61,10 +80,20 @@ export function SchoolGateIntro() {
       markIntroDone();
       if (lenis) lenis.start();
     }
-  }, [lenis, markIntroDone]);
+  }, [lenis, markIntroDone, markIntroRevealing]);
 
   useEffect(() => {
-    if (!visible) return;
+    if (!visible) {
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = '';
+      }
+      return;
+    }
+
+    if (lenis) lenis.stop();
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = 'hidden';
+    }
 
     // Handle skip keys: Escape or Enter or Space
     const handleKey = (e) => {
@@ -81,41 +110,49 @@ export function SchoolGateIntro() {
     });
     timelineRef.current = tl;
 
-    // Initial brief hold (0.35s) so visitor takes in the peaceful morning gate scene
-    // Step 1: Smooth 3D gate opening (left door -105deg, right door 105deg)
+    // Initial brief hold (0.35s) so visitor takes in the cheerful morning school gate scene
+    // Step 1: Smooth 3D gate opening (left door -112deg, right door 112deg)
     tl.to(leftDoorRef.current, {
-      rotateY: -105,
-      duration: 1.15,
+      rotateY: -112,
+      duration: 1.25,
       ease: 'power2.inOut',
     }, '+=0.35');
 
     tl.to(rightDoorRef.current, {
-      rotateY: 105,
-      duration: 1.15,
+      rotateY: 112,
+      duration: 1.25,
       ease: 'power2.inOut',
     }, '<');
 
     // Step 2: Smooth camera zoom-in through the gate threshold
     // Starts as the doors are opening wide
     tl.to(stageRef.current, {
-      scale: 4.6,
-      duration: 1.35,
+      scale: 4.8,
+      duration: 1.4,
       ease: 'power2.in',
       transformOrigin: '50% 72%',
     }, '-=0.55');
 
-    // Step 3: Seamless crossfade out to reveal the landing hero section
+    // Step 3: Trigger the hero landing reveal in sync as the camera moves past the threshold!
+    tl.add(() => {
+      markIntroRevealing();
+    }, '-=0.65');
+
+    // Step 4: Seamless crossfade out to reveal the landing hero section smoothly
     tl.to(overlayRef.current, {
       opacity: 0,
-      duration: 0.45,
-      ease: 'power1.out',
-    }, '-=0.35');
+      duration: 0.55,
+      ease: 'power2.out',
+    }, '-=0.55');
 
     return () => {
       window.removeEventListener('keydown', handleKey);
       if (timelineRef.current) timelineRef.current.kill();
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = '';
+      }
     };
-  }, [visible, finishIntro]);
+  }, [visible, lenis, finishIntro, markIntroRevealing]);
 
   if (!visible) return null;
 

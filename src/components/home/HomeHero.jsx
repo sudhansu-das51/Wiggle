@@ -16,33 +16,50 @@ export function HomeHero() {
   const containerRef = useRef(null);
   const contentRef = useRef(null);
   const buttonsRef = useRef(null);
+  const hasAnimatedRef = useRef(false);
 
-  const { introDone } = useTransition();
+  const { introDone, introRevealing } = useTransition();
   const reducedMotion = useReducedMotion();
 
-  // Entrance animation when gate intro finishes
-  useGSAP(() => {
-    if (reducedMotion || !introDone || !containerRef.current) return;
+  // If user already saw intro on a previous visit/page, or reduced motion, or gate reached reveal
+  const shouldReveal = introDone || introRevealing || reducedMotion;
 
-    const tl = gsap.timeline({ delay: 0.1 });
+  // Entrance animation when gate intro reaches reveal point
+  useGSAP(() => {
+    if (reducedMotion || !shouldReveal || hasAnimatedRef.current || !containerRef.current) return;
+    hasAnimatedRef.current = true;
+
+    // If intro was already done before mount (returning user/navigated from other page)
+    if (introDone && !introRevealing) {
+      if (contentRef.current) {
+        gsap.set(contentRef.current, { opacity: 1, y: 0 });
+      }
+      if (buttonsRef.current) {
+        gsap.set(buttonsRef.current, { opacity: 1, y: 0, scale: 1 });
+      }
+      return;
+    }
+
+    // First visit: Smooth entrance choreographed with the gate opening
+    const tl = gsap.timeline({ delay: 0.05 });
 
     if (contentRef.current) {
       tl.fromTo(
         contentRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out' }
+        { opacity: 0, y: 35 },
+        { opacity: 1, y: 0, duration: 0.95, ease: 'power3.out' }
       );
     }
 
     if (buttonsRef.current) {
       tl.fromTo(
         buttonsRef.current,
-        { opacity: 0, y: 18, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.65, ease: 'back.out(1.5)' },
-        '-=0.35'
+        { opacity: 0, y: 20, scale: 0.92 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: 'back.out(1.4)' },
+        '-=0.45'
       );
     }
-  }, { scope: containerRef, dependencies: [introDone, reducedMotion] });
+  }, { scope: containerRef, dependencies: [shouldReveal, introDone, introRevealing, reducedMotion] });
 
   return (
     <section ref={containerRef} className="home-hero" aria-label="Hero">
@@ -58,10 +75,13 @@ export function HomeHero() {
       </div>
 
       <div className="container home-hero__container">
-        <div ref={contentRef} className="home-hero__content">
+        <div
+          ref={contentRef}
+          className={`home-hero__content ${!shouldReveal ? 'home-hero__content--hidden' : ''}`}
+        >
           {/* Confident, bold centered headline */}
           <h1 className="home-hero__h1">
-            <WiggleText play={introDone}>Where little minds grow</WiggleText>{' '}
+            <WiggleText play={shouldReveal}>Where little minds grow</WiggleText>{' '}
             <span className="home-hero__h1-accent">
               through play, care &amp; confidence.
             </span>

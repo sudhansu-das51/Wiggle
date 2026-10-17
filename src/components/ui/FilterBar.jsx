@@ -21,6 +21,7 @@ export function FilterBar({
   onSearchChange,
   searchPlaceholder = 'Search...',
   className = '',
+  extraAction,
 }) {
   return (
     <div
@@ -60,41 +61,54 @@ export function FilterBar({
         })}
       </div>
 
-      {/* Optional Search Input */}
-      {onSearchChange && (
-        <div style={{ position: 'relative', minWidth: '240px' }}>
-          <label htmlFor="filter-search-input" className="sr-only">
-            {searchPlaceholder}
-          </label>
-          <input
-            id="filter-search-input"
-            type="search"
-            value={search || ''}
-            onChange={(e) => onSearchChange(e.target.value)}
-            placeholder={searchPlaceholder}
-            style={{
-              width: '100%',
-              padding: '0.6rem 2.25rem 0.6rem 1rem',
-              borderRadius: 'var(--r-pill)',
-              border: 'var(--outline)',
-              backgroundColor: 'var(--paper)',
-              fontSize: '0.9375rem',
-              color: 'var(--ink)',
-              boxShadow: '2px 2px 0 var(--ink)',
-            }}
-          />
-          <span
-            style={{
-              position: 'absolute',
-              right: '0.85rem',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              color: 'var(--muted)',
-              pointerEvents: 'none',
-            }}
-          >
-            <Icon name="pencil" size={16} />
-          </span>
+      {/* Right Controls: Optional Search Input & Extra Action (e.g. Add Photo) */}
+      {(onSearchChange || extraAction) && (
+        <div
+          className="filter-bar__actions"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            flexWrap: 'wrap',
+          }}
+        >
+          {onSearchChange && (
+            <div style={{ position: 'relative', minWidth: '240px' }}>
+              <label htmlFor="filter-search-input" className="sr-only">
+                {searchPlaceholder}
+              </label>
+              <input
+                id="filter-search-input"
+                type="search"
+                value={search || ''}
+                onChange={(e) => onSearchChange(e.target.value)}
+                placeholder={searchPlaceholder}
+                style={{
+                  width: '100%',
+                  padding: '0.6rem 2.25rem 0.6rem 1rem',
+                  borderRadius: 'var(--r-pill)',
+                  border: 'var(--outline)',
+                  backgroundColor: 'var(--paper)',
+                  fontSize: '0.9375rem',
+                  color: 'var(--ink)',
+                  boxShadow: '2px 2px 0 var(--ink)',
+                }}
+              />
+              <span
+                style={{
+                  position: 'absolute',
+                  right: '0.85rem',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: 'var(--muted)',
+                  pointerEvents: 'none',
+                }}
+              >
+                <Icon name="pencil" size={16} />
+              </span>
+            </div>
+          )}
+          {extraAction}
         </div>
       )}
     </div>
