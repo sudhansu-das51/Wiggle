@@ -20,6 +20,7 @@ import {
 } from '../../utils/enquiry';
 import { buildWhatsAppLink } from '../../utils/whatsapp';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
+import { saveEnquiry } from '../../utils/enquiryStorage';
 
 const STEP_TITLES = ['You', 'Your child', 'Your visit', 'Send'];
 
@@ -184,6 +185,13 @@ export function EnquiryWizard({
     const admissionsNumber = admissions?.whatsappNumber || siteConfig.whatsapp?.number;
 
     const messageText = buildEnquiryMessage(values, { brand, admissions });
+
+    // Automatically persist to preschool admin dashboard
+    try {
+      saveEnquiry(values, channel);
+    } catch (saveErr) {
+      console.warn('Dashboard auto-save error:', saveErr);
+    }
 
     if (channel === 'WhatsApp') {
       const waUrl = buildWhatsAppLink(messageText, admissionsNumber);

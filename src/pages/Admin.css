@@ -1,0 +1,55 @@
+/* ==========================================================================
+   WIGGLE PRESCHOOL — ADMIN PAGE CONTAINER
+   ========================================================================== */
+
+.admin-page {
+  min-height: 100vh;
+  background-color: var(--paper);
+  background-image: 
+    radial-gradient(var(--ink) 0.65px, transparent 0.65px),
+    radial-gradient(var(--ink) 0.65px, var(--paper) 0.65px);
+  background-size: 26px 26px;
+  background-position: 0 0, 13px 13px;
+  background-opacity: 0.04;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-page__main {
+  flex: 1;
+  padding: 2.5rem 0 4rem 0;
+}
+
+.admin-page__header {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-page__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  margin: 0 0 0.35rem 0;
+}
+
+.admin-page__subheading {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.admin-page__footer {
+  padding: 1.5rem 0;
+  border-top: 2px solid var(--ink);
+  background: #fff;
+  text-align: center;
+  font-size: 0.825rem;
+  color: var(--muted);
+}

@@ -82,6 +82,7 @@ export function Footer() {
           <div className="site-footer__bottom-links">
             <TransitionLink to="/careers" className="site-footer__link">Careers</TransitionLink>
             <TransitionLink to="/enquire" className="site-footer__link">Book a tour</TransitionLink>
+            <TransitionLink to="/admin" className="site-footer__link" style={{ opacity: 0.85, fontWeight: 700 }}>Staff Portal</TransitionLink>
           </div>
         </div>
       </div>

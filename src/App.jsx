@@ -15,6 +15,7 @@ import Teachers from './pages/Teachers';
 import Contact from './pages/Contact';
 import Careers from './pages/Careers';
 import Enquire from './pages/Enquire';
+import Admin from './pages/Admin';
 import { ComingSoon } from './components/ui/ComingSoon';
 
 /**
@@ -25,6 +26,10 @@ export function App() {
     <BrowserRouter>
       <TransitionProvider>
         <Routes>
+          {/* Dedicated Preschool Admin Portal */}
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/dashboard" element={<Admin />} />
+
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             {/* ROUTES: replace each ComingSoon with its real page when that page is built */}
